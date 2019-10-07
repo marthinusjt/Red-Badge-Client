@@ -9,15 +9,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // component imports
 import { AppComponent } from './app.component';
+import { SplashComponent } from './modules/home/splash/splash.component';
 
 // service imports
+import { GameSearch } from './game-search.service'
 
 
 // directive imports
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { AppComponent } from './app.component';
   ],
   providers: [
     HttpClient,
+    GameSearch
   ],
   bootstrap: [AppComponent]
 })
