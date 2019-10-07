@@ -1,0 +1,22 @@
+<h1 class="splash jumbotron">GAMES THING</h1>
+<div class="search input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
+  <input [(ngModel)]="query" type="text" class="form-control"
+    placeholder="ex: Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army"
+    aria-label="ex: Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army"
+    aria-describedby="button-addon2" (keyup.enter)='search(query)'>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)='search(query)'>Search
+      Game</button>
+  </div>
+</div>
+<div *ngIf="searching" class="row mx-auto col-1">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>
+
+<div class="game-list" *ngIf='results'>
+    <ul *ngFor="let result of results" class='list-group'>
+        <li class="list-group-item active">{{result.name}}</li>
+    </ul>
+</div>
