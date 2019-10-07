@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'; // <-- NgModel lives here
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 
@@ -8,9 +10,14 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
