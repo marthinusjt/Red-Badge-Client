@@ -12,12 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // component imports
 import { AppComponent } from './app.component';
 import { SplashComponent } from './modules/home/splash/splash.component';
+import { NavbarComponent } from './core/header/navbar/navbar.component';
+import { GameReviewComponent } from './modules/game-review/game-review/game-review.component';
 
 // service imports
 import { GameSearch } from './game-search.service';
-import { GameReviewComponent } from './modules/game-review/game-review/game-review.component'
-
-
 import { GameReview } from './game-review.service';
 
 // directive imports
@@ -35,10 +34,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SplashComponent,
-    GameReviewComponent
+    NavbarComponent,
+    GameReviewComponent,
   ],
   entryComponents:[
-    GameReviewComponent
+    GameReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,7 @@ const appRoutes: Routes = [
   providers: [
     HttpClient,
     GameSearch,
-    GameReview
+    GameReview,
   ],
   bootstrap: [AppComponent]
 })
