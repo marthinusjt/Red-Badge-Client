@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { GameSearch } from '../../../game-search.service'
 
 @Component({
@@ -8,10 +10,14 @@ import { GameSearch } from '../../../game-search.service'
 })
 export class SplashComponent implements OnInit {
 
+  
+
   public results: any = [];
   public searching: any = false;
 
-  constructor(private _gameSearch: GameSearch) {}
+  constructor(private _gameSearch: GameSearch,
+    
+    ) {}
 
   toggleSearching(){
     this.searching = !this.searching;
