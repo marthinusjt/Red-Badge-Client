@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
 import { SplashComponent } from './modules/home/splash/splash.component';
 
 // service imports
-import { GameSearch } from './game-search.service'
+import { GameSearch } from './game-search.service';
+import { NavbarComponent } from './core/header/navbar/navbar.component'
 
 
 // directive imports
@@ -20,7 +21,8 @@ import { GameSearch } from './game-search.service'
 @NgModule({
   declarations: [
     AppComponent,
-    SplashComponent
+    SplashComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

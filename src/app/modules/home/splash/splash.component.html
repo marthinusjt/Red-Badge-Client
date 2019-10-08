@@ -10,13 +10,30 @@
   </div>
 </div>
 <div *ngIf="searching" class="row mx-auto col-1">
-    <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
 
-<div class="game-list" *ngIf='results'>
-    <ul *ngFor="let result of results" class='list-group'>
-        <li class="list-group-item active">{{result.name}}</li>
-    </ul>
+<div class='container' *ngIf='results'>
+  <div *ngFor="let result of results" class="row result">
+    <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
+    <p class='col-4 result-title'>{{result.name}}</p>
+    <div class="col">
+      <div class="row result-text">Original Release Date:
+        <div class='result-tag'>
+          {{result.release_dates ? result.release_dates[0].human : 'N/A'}}
+        </div>
+      </div>
+      <div class="row result-text">
+        Genres:
+        <div class='result-tag' *ngFor='let genre of result.genres'>
+          {{genre.name == 'Platform' ? 'Platformer' : genre.name}}</div>
+      </div>
+      <div class="row result-text">
+        Platforms:
+        <div class='result-tag' *ngFor='let platform of result.platforms'>{{platform.abbreviation}}</div>
+      </div>
+    </div>
+  </div>
 </div>
