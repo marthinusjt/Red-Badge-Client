@@ -36,15 +36,7 @@ export class AuthComponent {
                 resData => {
                 console.log(resData);
                 this.isLoading = false;
-<<<<<<< HEAD
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-=======
-                
-
-                localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-
-
->>>>>>> 22a96a509061fa726a6b6bbae0a09e4e47dd47b5
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
