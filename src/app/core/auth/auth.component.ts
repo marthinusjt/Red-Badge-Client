@@ -34,6 +34,7 @@ export class AuthComponent {
             this.authService.login(email, password).subscribe(resData => {
                 console.log(resData);
                 this.isLoading = false;
+                localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
@@ -43,6 +44,7 @@ export class AuthComponent {
             this.authService.signup(firstName, lastName, userName, email, password).subscribe(resData => {
                 console.log(resData);
                 this.isLoading = false;
+                localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
