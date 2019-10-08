@@ -15,24 +15,24 @@
   </div>
 </div>
 <div class="container" *ngIf='results'>
-  <a href='/'>
+  <a routerLink="/review/{{result.id}}" routerLinkActive="active">
     <div *ngFor="let result of results" class="row result">
       <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
-      <p class='col-4 result-title'>{{result.name}}</p>
+      <p class='col-4 result-title'>{{ result.name }}</p>
       <div class="col">
         <div class="row result-text">Original Release Date:
           <div class='result-tag'>
-            {{result.release_dates ? result.release_dates[0].human : 'N/A'}}
+            {{ result.release_dates ? result.release_dates[0].human : 'N/A' }}
           </div>
         </div>
         <div class="row result-text">
           Genres:
           <div class='result-tag' *ngFor='let genre of result.genres'>
-            {{genre.name == 'Platform' ? 'Platformer' : genre.name}}</div>
+            {{ genre.name == 'Platform' ? 'Platformer' : genre.name }}</div>
         </div>
         <div class="row result-text">
           Platforms:
-          <div class='result-tag' *ngFor='let platform of result.platforms'>{{platform.abbreviation}}</div>
+          <div class='result-tag' *ngFor='let platform of result.platforms'>{{ platform.abbreviation }}</div>
         </div>
       </div>
     </div>
