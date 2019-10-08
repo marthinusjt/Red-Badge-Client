@@ -7,14 +7,45 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 @Injectable()
 export class GameReview {
 
-  private _url: string = `http://localhost:3001/review/`
+  private _url2: string = `http://localhost:3343/review/`
+  private _url: string = `https://api-v3.igdb.com/games`
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
 
 
   constructor(private http: HttpClient) {}
 
+  reviewFetch(query) {
+    const parseHeaders = {
+      headers: new HttpHeaders({
+            'user-key':'cc5441053548ed186c2e6a3add7af2f1',
+            'Accept':'application/json'    })
+     };
   
-  reviewPost(query) {
+    let data = `
+    where id=${query};
+    fields artworks.*, storyline, summary, name, release_dates.human, genres.name, platforms.*, videos.*;
+`
+    // if(type == 'people'){return this.http.get<Game[]>(this._url + 'people/?search=' + query)}
+    return this.http.post(this._proxy + this._url, data, parseHeaders)
+      // headers: new HttpHeaders ({
+      //     'user-key':'cc5441053548ed186c2e6a3add7af2f1',
+      //     'Accept':'application/json'
+      // })
+
+  }
+
+
+  
+  reviewPost(gameid, score, userName, headline, pros, cons, textArea) {
+    let body = `
+    ownerId: 1,
+    gameId: ${gameid},
+    userName: ${userName},
+    score: ${score},
+    headline: ${headline},
+    pros: ${pros},
+    cons: ${cons},
+    textArea:${textArea},`
     const parseHeaders = {
       headers: new HttpHeaders({
             // 'user-key':'cc5441053548ed186c2e6a3add7af2f1',
@@ -23,7 +54,7 @@ export class GameReview {
      };
   
 
-    return this.http.post(this._url,  parseHeaders)    //data,this._proxy + 
+    return this.http.post(this._url2,body,  parseHeaders)    //data,this._proxy + 
 
 
   }
@@ -37,21 +68,13 @@ export class GameReview {
      };
   
 
-    return this.http.get(this._url +`${query}`,  parseHeaders)    //data,this._proxy + 
+    return this.http.get(this._url2 +`${query}`,  parseHeaders)    //data,this._proxy + 
 
 
   }
 
   reviewGetAll(query) {
-    const parseHeaders = {
-      headers: new HttpHeaders({
-            // 'user-key':'cc5441053548ed186c2e6a3add7af2f1',
-            // 'Accept':'application/json'   
-           })
-     };
-  
-
-    return this.http.get(this._url +`all/${query}`,  parseHeaders)    //data,this._proxy + 
+    return this.http.get(this._url2 +`all/${query}`)    //data,this._proxy + 
 
 
   }

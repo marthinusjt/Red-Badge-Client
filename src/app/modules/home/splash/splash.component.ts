@@ -30,6 +30,7 @@ export class SplashComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }
