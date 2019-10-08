@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 @Injectable()
 export class GameReview {
 
-  private _url: string = `http://localhost:3001/review/`
+  private _url: string = `http://localhost:3343/review/`
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
 
 
