@@ -21,17 +21,10 @@ import { GameReviewComponent } from './modules/game-review/game-review/game-revi
 // service imports
 import { GameSearch } from './game-search.service';
 import { GameReview } from './game-review.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // directive imports
 
-
-
-const appRoutes: Routes = [
-  { path: '', 
-  component: SplashComponent },
-  { path: 'review/:gameid', 
-  component: GameReviewComponent },
-];
 
 @NgModule({
   declarations: [
@@ -41,6 +34,7 @@ const appRoutes: Routes = [
     SplashComponent,
     NavbarComponent,
     GameReviewComponent,
+    PageNotFoundComponent,
   ],
   entryComponents:[
     GameReviewComponent,
@@ -52,10 +46,6 @@ const appRoutes: Routes = [
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
-    ),
   ],
   exports: [
     GameReviewComponent,
