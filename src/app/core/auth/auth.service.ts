@@ -16,6 +16,7 @@ export class AuthService {
                 email: email,
                 password: password
             }
+            
         ).pipe(catchError(this.handleError));
     }
 
@@ -25,7 +26,7 @@ export class AuthService {
             {
                 email: email,
                 password: password
-            }
+            },
         ).pipe(catchError(this.handleError));
     }
 
