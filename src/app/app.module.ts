@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core'; // <-- NgModel lives here
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 
+import { RouterModule, Routes } from '@angular/router';
+
 // @bootstrap imports
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,15 +14,31 @@ import { AppComponent } from './app.component';
 import { SplashComponent } from './modules/home/splash/splash.component';
 
 // service imports
-import { GameSearch } from './game-search.service'
+import { GameSearch } from './game-search.service';
+import { GameReviewComponent } from './modules/game-review/game-review/game-review.component'
 
+
+import { GameReview } from './game-review.service';
 
 // directive imports
+
+
+
+const appRoutes: Routes = [
+  { path: '', 
+  component: SplashComponent },
+  { path: 'review/:gameid', 
+  component: GameReviewComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SplashComponent
+    SplashComponent,
+    GameReviewComponent
+  ],
+  entryComponents:[
+    GameReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -28,10 +46,18 @@ import { GameSearch } from './game-search.service'
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true }
+    )
+  ],
+  exports: [
+    GameReviewComponent,
   ],
   providers: [
     HttpClient,
-    GameSearch
+    GameSearch,
+    GameReview
   ],
   bootstrap: [AppComponent]
 })
