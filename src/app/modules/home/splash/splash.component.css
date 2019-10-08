@@ -1,7 +1,7 @@
-*{text-decoration: none;
-text-decoration-line: none}
-
-
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 .splash {
     text-align: center;
@@ -9,34 +9,32 @@ text-decoration-line: none}
     font-weight: 100;
     letter-spacing: 0.2em;
 }
-​
+
 .result {
     padding: 1em;
-    /* margin: 1em; */
     border-top: solid 1px lightgray;
     font-weight: 100;
 }
-​
 .result-title {
     font-size: 1.4em;
     letter-spacing: 0.08em;
     font-weight: 400;
 }
-​
+
 .result:hover {
     background-color:#e9ecef;
     transition: 200ms ease;
 }
-​
+
 .result-image {
     max-width: 100px;
     height: auto;
 }
-​
+
 .result-text {
     margin-bottom: 1em;
 }
-​
+
 .result-tag {
     margin-left: 1em;
 }
