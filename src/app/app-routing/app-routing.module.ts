@@ -7,10 +7,12 @@ import { AuthComponent } from '../core/auth/auth.component';
 import { SplashComponent } from '../modules/home/splash/splash.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { GameReviewComponent } from '../modules/game-review/game-review/game-review.component';
+import { SearchDisplayComponent } from './../search-display/search-display.component';
 
 const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'auth', component: AuthComponent },
+    { path: 'search/:searching', component: SearchDisplayComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
     { path: 'not-found', component: PageNotFoundComponent }, 
     // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} }, // 
@@ -19,7 +21,9 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes, { enableTracing: true })
+        RouterModule.forRoot(routes, 
+            //{ enableTracing: true }
+            )
     ],
     exports: [
         RouterModule
