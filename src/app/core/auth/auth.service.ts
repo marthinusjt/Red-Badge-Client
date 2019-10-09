@@ -5,7 +5,15 @@ import { throwError } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-    constructor(private http: HttpClient) {}
+
+    loggedIn = false;
+
+    constructor(
+        private http: HttpClient,
+        ) {
+
+    }
+
     signup(firstName: string, lastName: string, userName: string, email: string, password: string) {
         return this.http.post(
             'http://localhost:3343/auth/signup',
@@ -16,6 +24,7 @@ export class AuthService {
                 email: email,
                 password: password
             }
+            
         ).pipe(catchError(this.handleError));
     }
 
@@ -25,12 +34,12 @@ export class AuthService {
             {
                 email: email,
                 password: password
-            }
+            },
         ).pipe(catchError(this.handleError));
     }
 
     logout() {
-        
+        this.loggedIn = false;
     }
 
     private handleError(errorRes: HttpErrorResponse) {

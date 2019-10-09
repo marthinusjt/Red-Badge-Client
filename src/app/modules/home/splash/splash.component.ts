@@ -16,9 +16,12 @@ export class SplashComponent implements OnInit {
   public searching: any = false;
   public searchError: any = '';
 
-  constructor(private _gameSearch: GameSearch,
-    
+  constructor(
+    private _gameSearch: GameSearch,
     ) {}
+
+  ngOnInit() {
+  }
 
   toggleSearching(){
     this.searching = !this.searching;
@@ -28,10 +31,7 @@ export class SplashComponent implements OnInit {
     this.toggleSearching();
     // if(query.length >= 3){}else {searchError = 'Please enter at least 3 characters.'}
     this._gameSearch.fetch(query)
-      .subscribe(data => {this.results = data; console.log(data); this.toggleSearching()})
-  }
-
-  ngOnInit() {
+    .subscribe(data => {this.results = data; console.log(data); this.toggleSearching()})
   }
 
 }

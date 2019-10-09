@@ -5,7 +5,8 @@ import { AuthService } from './auth.service';
 
 @Component({
     selector: 'app-auth',
-    templateUrl: './auth.component.html'
+    templateUrl: './auth.component.html',
+    styleUrls: ['./auth.component.css']
 })
 export class AuthComponent { 
     isLoginPage = true;
@@ -31,9 +32,12 @@ export class AuthComponent {
 
         this.isLoading = true;
         if (this.isLoginPage) {
-            this.authService.login(email, password).subscribe(resData => {
+            this.authService.login(email, password).subscribe(
+                
+                resData => {
                 console.log(resData);
                 this.isLoading = false;
+                localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
@@ -43,6 +47,7 @@ export class AuthComponent {
             this.authService.signup(firstName, lastName, userName, email, password).subscribe(resData => {
                 console.log(resData);
                 this.isLoading = false;
+                localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
