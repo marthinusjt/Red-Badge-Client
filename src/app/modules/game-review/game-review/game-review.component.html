@@ -1,23 +1,21 @@
 <p>id is {{gameid}}</p>
 
 
-{{results[0].name}}
+<!-- {{results[0].name}}
 
 {{results[0].platforms[0].abbreviation}}
 {{results[0].genres[0].name}}
-{{results[0].release_dates[0].human}}
+{{results[0].release_dates[0].human}} -->
 <!-- {{imgUrlPrefix + results[0].artworks[0].image_id + '.jpg' (edited) }} -->
 
 
 
 
-<button type="button"  (click)='searchGetAll(gameid)'>Search
-    Game Review</button>
+<!-- <button type="button"  (click)='searchGetAll(gameid)'>Search
+    Game Review</button> -->
 
-<h4>score</h4>
+<h4>score  (needs to be integer)</h4>
     <input #score id="search-box"  />
-    <h4>userName</h4>
-    <input #userName id="search-box"  />
     <h4>headline</h4>
     <input #headline id="search-box" />
     <h4>pros</h4>
@@ -27,8 +25,14 @@
     <h4>textArea</h4>
     <input #textArea id="search-box"  />
     
-    <button type="button"  (click)='searchPost( gameid, score.value, userName.value, headline.value, pros.value, cons.value, textArea.value)'>Search
+    <button type="button"  (click)='searchPost( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
        POST</button>
+
+    <button type="button"  (click)='searchPut( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
+        PUT</button>
+
+    <button type="button"  (click)='searchDelete( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
+        DELETE</button>
 
        <a routerLink='/forum'>forum</a>
     

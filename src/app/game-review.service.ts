@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 // import { Game } from './game';
@@ -13,7 +14,7 @@ export class GameReview {
   private _url: string = `https://api-v3.igdb.com/games`
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
 
-  
+  public query: string;
 
 
   constructor(private http: HttpClient) {}
@@ -45,14 +46,14 @@ export class GameReview {
   reviewPost(gameid, score, userName, headline, pros, cons, textArea) {
 
 
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    var token = currentUser.token; // your token
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
 
 
     let body = {
     
     gameId: gameid,
-    userName: userName,
+    userName: token.user.userName,
     score: score,
     headline: headline,
     pros: pros,
@@ -69,7 +70,7 @@ export class GameReview {
   
 
 
-    console.log(token.sessionToken)
+    // console.log(token.user.userName)
 
     return this.http.post( this._url2, body,  parseHeaders2)    //data,this._proxy + 
 
@@ -77,15 +78,27 @@ export class GameReview {
   }
 
   reviewGet(query) {
-    const parseHeaders = {
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+
+    let body = {
+    
+    userid: token.user.id,
+
+    };
+
+    const parseHeaders2 = {
       headers: new HttpHeaders({
-            // 'Authorization':`${token.sessionToken}`,
-            // 'Content-Type':'application/json'   
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
            })
      };
   
+  
 
-    return this.http.get(this._url2 +`${query}`,  parseHeaders)    //data,this._proxy + 
+    return this.http.get(this._url2 +`${query}`, parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -97,4 +110,58 @@ export class GameReview {
   }
 
   
+
+  reviewPut(gameid, score, userName, headline, pros, cons, textArea) {
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+
+    let body = {
+    
+
+    userName: token.user.userName,
+    score: score,
+    headline: headline,
+    pros: pros,
+    cons: cons,
+    textArea: textArea
+    }
+    
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put( this._url2 + `${gameid}`, body,  parseHeaders2)    //data,this._proxy + 
+
+
+  }
+
+  reviewDelete(gameid, score, userName, headline, pros, cons, textArea) {
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+
+    
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+              
+           })
+     };
+
+  // console.log(token.user.userName)
+
+  return this.http.delete( this._url2 + gameid, parseHeaders2)    //data,this._proxy + 
+    }
 }
