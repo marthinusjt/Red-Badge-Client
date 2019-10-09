@@ -20,18 +20,19 @@
       <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
       <p class='col-4 result-title'>{{ result.name }}</p>
       <div class="col">
-        <div class="row result-text">Original Release Date:
+        <div class="row bottom-margin">
+          <b>Original Release Date:</b>
           <div class='result-tag'>
             {{ result.release_dates ? result.release_dates[0].human : 'N/A' }}
           </div>
         </div>
-        <div class="row result-text">
-          Genres:
+        <div class="row bottom-margin">
+          <b>Genres:</b>
           <div class='result-tag' *ngFor='let genre of result.genres'>
             {{ genre.name == 'Platform' ? 'Platformer' : genre.name }}</div>
         </div>
-        <div class="row result-text">
-          Platforms:
+        <div class="row">
+          <b>Platforms:</b>
           <div class='result-tag' *ngFor='let platform of result.platforms'>{{ platform.abbreviation }}</div>
         </div>
       </div>

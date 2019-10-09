@@ -17,6 +17,8 @@ import { LoadingSpinnerComponent } from '../app/shared/loading-spinner/loading-s
 import { SplashComponent } from './modules/home/splash/splash.component';
 import { NavbarComponent } from './core/header/navbar/navbar.component';
 import { GameReviewComponent } from './modules/game-review/game-review/game-review.component';
+import { GameForumComponent } from './modules/game-forum/game-forum/game-forum.component';
+
 
 // service imports
 import { GameSearch } from './game-search.service';
@@ -35,6 +37,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavbarComponent,
     GameReviewComponent,
     PageNotFoundComponent,
+    GameForumComponent,
   ],
   entryComponents:[
     GameReviewComponent,

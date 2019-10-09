@@ -11,7 +11,7 @@ a {
 }
 
 .result {
-    padding: 1em;
+    padding: 0.6em;
     border-top: solid 1px lightgray;
     font-weight: 100;
 }
@@ -27,12 +27,12 @@ a {
 }
 
 .result-image {
-    max-width: 100px;
-    height: auto;
+    width: 6em;
+    height: 6em;
 }
 
-.result-text {
-    margin-bottom: 1em;
+.bottom-margin {
+    margin-bottom: 0.6em;
 }
 
 .result-tag {
