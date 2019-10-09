@@ -15,8 +15,8 @@
   </div>
 </div>
 <div class="container" *ngIf='results'>
-  <a routerLink="/review/{{result.id}}" routerLinkActive="active">
-    <div *ngFor="let result of results" class="row result">
+  <div *ngFor="let result of results">
+    <a routerLink="/review/{{ result.id }}" routerLinkActive="active" class="row result">
       <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
       <p class='col-4 result-title'>{{ result.name }}</p>
       <div class="col">
@@ -35,6 +35,6 @@
           <div class='result-tag' *ngFor='let platform of result.platforms'>{{ platform.abbreviation }}</div>
         </div>
       </div>
-    </div>
-  </a>
+    </a>
+  </div>
 </div>

@@ -21,7 +21,11 @@ export class GameReviewComponent implements OnInit {
 
   
 
-
+    gameFetch(query){
+      
+      this._gameSearch.reviewFetch(query)
+        .subscribe(data => {this.results = data; console.log(data)})
+    }
 
   searchGet(query){
     
@@ -29,13 +33,20 @@ export class GameReviewComponent implements OnInit {
       .subscribe(data => {this.results = data; console.log(data)})
   }
 
-  searchGetAll(query){
+  searchGetAll(gameid){
     
-    this._gameSearch.reviewGetAll(query)
+    this._gameSearch.reviewGetAll(gameid)
+      .subscribe(data => {this.results = data; console.log(data)})
+  }
+  searchPost(gameid, score, userName, headline, pros, cons, textArea){
+    
+    this._gameSearch.reviewPost(gameid, score, userName, headline, pros, cons, textArea)
       .subscribe(data => {this.results = data; console.log(data)})
   }
 
   ngOnInit() {
     this.gameid = this.route.snapshot.paramMap.get('gameid');
+    console.log(this.gameid)
+    this.gameFetch(this.gameid)
   }
 }

@@ -15,9 +15,12 @@ export class SplashComponent implements OnInit {
   public results: any = [];
   public searching: any = false;
 
-  constructor(private _gameSearch: GameSearch,
-    
+  constructor(
+    private _gameSearch: GameSearch,
     ) {}
+
+  ngOnInit() {
+  }
 
   toggleSearching(){
     this.searching = !this.searching;
@@ -26,10 +29,7 @@ export class SplashComponent implements OnInit {
   search(query){
     this.toggleSearching();
     this._gameSearch.fetch(query)
-      .subscribe(data => {this.results = data; console.log(data); this.toggleSearching()})
-  }
-
-  ngOnInit() {
+    .subscribe(data => {this.results = data; console.log(data); this.toggleSearching()})
   }
 
 }
