@@ -8,7 +8,9 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 
 // @bootstrap imports
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 // component imports
 import { AppComponent } from './app.component';
@@ -49,8 +51,9 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
     AppRoutingModule,
+    // NgbModule,
+    MDBBootstrapModule.forRoot(),
   ],
   exports: [
     GameReviewComponent,
