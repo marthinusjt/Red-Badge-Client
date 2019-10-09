@@ -12,8 +12,8 @@ const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'auth', component: AuthComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
-    { path: 'not-found', component: PageNotFoundComponent }, 
-    // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} }, // 
+    { path: 'not-found', component: PageNotFoundComponent }, // Static Message
+    // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} }, // Dynamic Messagae
     { path: '**', redirectTo: '/not-found' }, // ** - Wildcart Route !Has to be last in the routes!
 ];
 
