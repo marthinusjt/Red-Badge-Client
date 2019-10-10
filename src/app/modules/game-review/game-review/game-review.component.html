@@ -35,4 +35,21 @@
         DELETE</button>
 
        <a routerLink='/forum'>forum</a>
+
+
+
+       <mdb-card class="indigo lighten-5">
+        <mdb-card-body>
+      
+          <div class="d-flex justify-content-center align-items-center my-4">
+            <span class="font-weight-bold indigo-text mr-2">{{min}}</span>
+            <form class="my-3 w-25">y
+              <input type="range" id="range" [min]="min" value="50" [max]="max">
+            </form>
+            <span class="font-weight-bold indigo-text ml-2">{{max}}</span>
+          </div>
+    
+      
+        </mdb-card-body>
+      </mdb-card>
     

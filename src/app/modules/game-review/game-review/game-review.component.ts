@@ -14,6 +14,17 @@ export class GameReviewComponent implements OnInit {
   public searching: any = false;
   public gameid: string;
 
+  public range: any = 0;
+  public min = 0;
+  public max = 100;
+  onRangeValueChange(event: any) {
+      const value = event.value;
+      this.range = value;
+  }
+
+
+
+
   @Input () state: string;
 
   constructor(private _gameSearch: GameReview,
