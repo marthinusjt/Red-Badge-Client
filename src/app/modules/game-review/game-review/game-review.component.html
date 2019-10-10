@@ -169,7 +169,7 @@
                 
                 <div class="md-form mb-5">
                         <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
-                        <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate
+                        <input #headline2 type="text" id="form32" class="form-control" mdbInput mdbValidate
                                [formControl]="contactFormModalSubject" value= {{headline1}}>
                                <label for="form8" >headline</label>
                                
@@ -180,7 +180,7 @@
               
                     <div class="md-form">
                       <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-                      <textarea #pros type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                      <textarea #pros2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
                                 [formControl]="contactFormModalMessage" value= {{pros1}}></textarea>
                                 <label for="form8">pros</label>
 
@@ -188,7 +188,7 @@
               
                             <div class="md-form">
                               <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-                              <textarea #cons type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                              <textarea #cons2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
                                         [formControl]="contactFormModalMessage" value= {{cons1}}></textarea>
                                         <label for="form8">cons</label>
       
@@ -198,7 +198,7 @@
               
                       <div class="md-form">
                         <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-                        <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                        <textarea #textArea2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
                                   [formControl]="contactFormModalMessage" value= {{textArea1}}></textarea>
                                   <label for="form8">textArea</label>
 
@@ -209,7 +209,7 @@
       </div>
       <div class="modal-footer  " >
         <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal2.hide()" mdbWavesEffect>Close</button>
-        <button type="button" mdbBtn color="primary" class="relative waves-light"  (click)='searchPut( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect>PUT</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light"  (click)='searchPut( gameid, 1, 1, headline2.value, pros2.value, cons2.value, textArea2.value)' mdbWavesEffect>PUT</button>
         
       </div>
     </div>

@@ -1,4 +1,4 @@
-<h1 class="splash jumbotron">GAMES THING</h1>
+<!-- <h1 class="splash jumbotron">GAMES THING</h1>
 <div class="search input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
   <input  [(ngModel)]="query" type="text" class="form-control" 
     placeholder="ex: Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army"
@@ -10,7 +10,21 @@
                  Search Game
               </button>
   </div>
+</div> -->
+
+<h1 class="splash jumbotron">GAMES THING</h1>
+
+<div class="SEARCH input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
+  <input [(ngModel)]="query" type="text" class="form-control" placeholder="ex: Super Metroid"
+    aria-label="ex: Super Metroid" aria-describedby="basic-addon2" (keyup.enter)='onEnter(query)'>
+  <div class="input-group-append">
+    <!-- <span routerLink="/search/{{query}}" routerLinkActive="active" class="input-group-text" id="basic-addon2">Find
+      Games</span> -->
+      <!-- <button mdbBtn color="primary" mdbWavesEffect routerLink="/search/{{query}}" [(ngModel)]="query" (click)='search2(query)'>Find Games</button> -->
+      <button routerLink="/search/{{query}}" (click)='search2(query)' type="button" mdbBtn color="primary" mdbWavesEffect>Primary</button>
+  </div>
 </div>
+
 
 
 <div *ngIf="searching" class="row mx-auto col-1">
