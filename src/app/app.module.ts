@@ -3,13 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; // <-- NgModel lives here
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-
-
 import { RouterModule, Routes } from '@angular/router';
 
-// @bootstrap imports
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// MDB Imports
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
@@ -26,10 +22,13 @@ import { GameForumComponent } from './modules/game-forum/game-forum/game-forum.c
 // service imports
 import { GameSearch } from './game-search.service';
 import { GameReview } from './game-review.service';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
 
 // directive imports
+
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 @NgModule({
@@ -46,6 +45,7 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
   ],
   entryComponents:[
     GameReviewComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +53,6 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    // NgbModule,
     MDBBootstrapModule.forRoot(),
   ],
   exports: [
