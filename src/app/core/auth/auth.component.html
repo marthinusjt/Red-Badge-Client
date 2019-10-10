@@ -1,4 +1,134 @@
-<div class="row">
+<!-- <button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+  (click)="frame.show()" mdbWavesEffect>Login</button> -->
+
+<!-- <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
+  <!-- <div class="modal-dialog" role="document"> -->
+    <div class="modal-content">
+      <div class="modal-header text-center">
+            <button mdbBtn type="button" color="info" outline="true" mdbWavesEffect (click)="onSwitchMode()">
+                <h4 class="modal-title w-100 font-weight-bold">Switch to {{ isLoginPage ? 'Sign Up' : 'Login' }}</h4>
+            </button>
+
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+
+      <!-- OUR CODE -->
+      <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+       <!-- MDB CODE -->
+        <div class="modal-body mx-3">
+            
+            <!-- SignUp Details -->
+            <div *ngIf="!isLoginPage">
+
+                <div class="md-form mb-5">
+                    <div class="form-group">
+                        <label for="name">First Name</label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            class="form-control" 
+                            mdbInput 
+                            mdbValidate
+                            [formControl]="firstName">
+                    </div>
+
+                    <div class="md-form mb-5">
+                        
+                        <div class="form-group">
+                            <label for="name">Last Name</label>                
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                class="form-control" 
+                                mdbInput 
+                                mdbValidate
+                                [formControl]="lastName">
+                        </div>
+                    </div>
+
+                    <div class="md-form mb-5">
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                class="form-control" 
+                                mdbInput 
+                                mdbValidate
+                                [formControl]="userName">
+                        </div>
+                    </div>
+                </div>    
+            </div>
+
+                <!-- LogIn -->
+                
+                <div class="md-form mb-5">
+                    <div class="form-group">
+                    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                        <input 
+                            type="email" 
+                            id="defaultForm-email" 
+                            [formControl]="email"
+                            class="form-control" 
+                            mdbInput 
+                            mdbValidate
+                            oninput="this.value = this.value.toLowerCase()">
+                        <label for="defaultForm-email">Your email</label>            
+                        <mdb-error
+                            *ngIf="!email.valid && (email.dirty || email.touched)">
+                            Input invalid
+                        </mdb-error>
+                        <mdb-success
+                            *ngIf="email.valid && (email.dirty || email.touched)">Input
+                            valid
+                        </mdb-success>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                <div class="md-form mb-4">
+                    <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+                    <input 
+                        type="password" 
+                        id="defaultForm-pass" 
+                        [formControl]="password" 
+                        class="form-control"
+                        mdbInput 
+                        mdbValidate 
+                        >
+                    <label for="defaultForm-pass">Your password</label>
+                    <mdb-error
+                        *ngIf="password.invalid && (password.dirty || password.touched)">
+                        Input invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="password.valid && (password.dirty || password.touched)">
+                        Input valid
+                    </mdb-success>
+                </div>
+            </div>
+            
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        
+            <button mdbBtn color="info" type="submit" [disabled]="!validatingForm.valid" class="waves-light" mdbWavesEffect>{{ isLoginPage ? 'Login' : 'Sign Up' }}</button>
+                    
+      </div>
+      </form>
+    </div>
+  <!-- </div> -->
+<!-- </div> -->
+
+
+
+
+
+<!-- <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
         <div *ngIf="error" class="alert alert-danger">
             <p>{{ error }}</p>
@@ -8,7 +138,7 @@
         </div>
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
             <div *ngIf="!isLoginPage">
-            <!-- Sign Up details if not logged in -->
+
                 <div class="form-group">
                     <label for="name">First Name</label>
                     <input id="firstName" class="form-control" ngModel name="firstName" required>
@@ -19,10 +149,19 @@
                 </div>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="username" id="username" class="form-control" ngModel name="username" required username >
+                    <input 
+                        type="username" 
+                        id="username" 
+                        class="form-control" 
+                        ngModel 
+                        name="username" 
+                        required 
+                        username
+                        #username="ngModel">
+                    <span class="help-block" *ngIf="!username.valid && username.touched">Please enter a valid username!</span>
                 </div>
             </div>
-<!-- Shared input fields between sign up and login -->
+
             <div class="form-group">
                 <label for="email">Email</label>
                 <input 
@@ -32,7 +171,9 @@
                     ngModel name="email" 
                     required 
                     email
+                    #email="ngModel"
                     oninput="this.value = this.value.toLowerCase()">
+                <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
             </div>
 
             <div class="form-group">
@@ -46,60 +187,4 @@
             </div>
         </form>
     </div>
-</div>
-
-<!-- <div *ngIf="!isLoginPage" class="form-group">
-                <label for="name">First Name</label>
-                <input id="first-name" class="form-control">
-            </div>
-            <div *ngIf="!isLoginPage" class="form-group">
-                <label for="name">Last Name</label>
-                <input id="last-name" class="form-control">
-            </div>
-            <div *ngIf="!isLoginPage" class="form-group">
-                <label for="username">Username</label>
-                <input id="username" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" class="form-control">
-            </div> -->
-            <!-- <div *ngIf="!isLoginPage; then signUpBlock; else loginBlock"></div>
-
-            <ng-template #signUpBlock>
-                <div class="form-group">
-                    <label for="name">First Name</label>
-                    <input id="first-name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="name">Last Name</label>
-                    <input id="last-name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input id="username" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control">
-                </div>
-            </ng-template>
-
-            <ng-template #loginBlock>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control">
-                </div>
-            </ng-template> -->
+</div> -->

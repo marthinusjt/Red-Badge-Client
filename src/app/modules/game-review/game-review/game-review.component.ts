@@ -14,6 +14,17 @@ export class GameReviewComponent implements OnInit {
   public searching: any = false;
   public gameid: string;
 
+  public range: any = 0;
+  public min = 0;
+  public max = 100;
+  onRangeValueChange(event: any) {
+      const value = event.value;
+      this.range = value;
+  }
+
+
+
+
   @Input () state: string;
 
   constructor(private _gameSearch: GameReview,
@@ -62,6 +73,8 @@ export class GameReviewComponent implements OnInit {
     this.gameid = this.route.snapshot.paramMap.get('gameid');
     this.gameFetch(this.gameid)
     this.searchGetAll(this.gameid)
-    this.searchGet(this.gameid)
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    currentUser ? this.searchGet(this.gameid) : null
   }
 }
