@@ -44,9 +44,24 @@ export class GameReviewComponent implements OnInit {
       .subscribe(data => {this.results = data; console.log(data)})
   }
 
+  searchPut(gameid, score, userName, headline, pros, cons, textArea){
+    
+    this._gameSearch.reviewPut(gameid, score, userName, headline, pros, cons, textArea)
+      .subscribe(data => {this.results = data; console.log(data)})
+  }
+
+  searchDelete(gameid, score, userName, headline, pros, cons, textArea){
+    
+    this._gameSearch.reviewDelete(gameid, score, userName, headline, pros, cons, textArea)
+      .subscribe(data => {this.results = data; console.log(data)})
+      
+  }
+
+
   ngOnInit() {
     this.gameid = this.route.snapshot.paramMap.get('gameid');
-    console.log(this.gameid)
     this.gameFetch(this.gameid)
+    this.searchGetAll(this.gameid)
+    this.searchGet(this.gameid)
   }
 }

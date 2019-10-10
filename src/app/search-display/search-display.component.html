@@ -1,0 +1,46 @@
+<h1 class="splash jumbotron">GAMES THING</h1>
+<div class="search input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
+  <input  [(ngModel)]="query" type="text" class="form-control" 
+    placeholder="ex: Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army"
+    aria-label="ex: Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army"
+    aria-describedby="button-addon2" (keyup.enter)='onEnter(query)'>
+  <div class="input-group-append">
+        <button routerLink="/search/{{query}}" #search class="btn btn-outline-secondary" type="button" id="button-addon2"
+        (click)='search2(query)'>
+                 Search Game
+              </button>
+  </div>
+</div>
+
+
+<div *ngIf="searching" class="row mx-auto col-1">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div class="container" *ngIf='results'>
+        <div *ngFor="let result of results">
+          <a routerLink="/review/{{ result.id }}" routerLinkActive="active" class="row result">
+            <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
+            <p class='col-4 result-title'>{{ result.name }}</p>
+            <div class="col">
+              <div class="row bottom-margin">
+                <b>Original Release Date:</b>
+                <div class='result-tag'>
+                  {{ result.release_dates ? result.release_dates[0].human : 'N/A' }}
+                </div>
+              </div>
+              <div class="row bottom-margin">
+                <b>Genres:</b>
+                <div class='result-tag' *ngFor='let genre of result.genres'>
+                  {{ genre.name == 'Platform' ? 'Platformer' : genre.name }}</div>
+              </div>
+              <div class="row">
+                <b>Platforms:</b>
+                <div class='result-tag' *ngFor='let platform of result.platforms'>{{ platform.abbreviation }}</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      

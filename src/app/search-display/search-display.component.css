@@ -1,0 +1,40 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.splash {
+    text-align: center;
+    font-size: 6em;
+    font-weight: 100;
+    letter-spacing: 0.2em;
+}
+
+.result {
+    padding: 0.6em;
+    border-top: solid 1px lightgray;
+    font-weight: 100;
+}
+.result-title {
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+}
+
+.result:hover {
+    background-color:#e9ecef;
+    transition: 200ms ease;
+}
+
+.result-image {
+    width: 6em;
+    height: 6em;
+}
+
+.bottom-margin {
+    margin-bottom: 0.6em;
+}
+
+.result-tag {
+    margin-left: 1em;
+}
