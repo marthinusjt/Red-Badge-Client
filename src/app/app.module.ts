@@ -8,7 +8,9 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 
 // @bootstrap imports
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 // component imports
 import { AppComponent } from './app.component';
@@ -24,6 +26,7 @@ import { GameForumComponent } from './modules/game-forum/game-forum/game-forum.c
 import { GameSearch } from './game-search.service';
 import { GameReview } from './game-review.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SearchDisplayComponent } from './search-display/search-display.component';
 
 // directive imports
 
@@ -37,6 +40,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavbarComponent,
     GameReviewComponent,
     PageNotFoundComponent,
+    SearchDisplayComponent,
     GameForumComponent,
   ],
   entryComponents:[
@@ -47,11 +51,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
     AppRoutingModule,
+    // NgbModule,
+    MDBBootstrapModule.forRoot(),
   ],
   exports: [
     GameReviewComponent,
+    
   ],
   providers: [
     HttpClient,
