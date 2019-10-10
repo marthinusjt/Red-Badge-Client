@@ -85,10 +85,9 @@ public headline1: string;
     this.gameid = this.route.snapshot.paramMap.get('gameid');
     this.gameFetch(this.gameid)
     this.searchGetAll(this.gameid)
-    this.searchGet(this.gameid)
-    
 
-
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    currentUser ? this.searchGet(this.gameid) : null
   }
   
 }
