@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameReview } from '../../../game-review.service'
-import { ɵHttpInterceptingHandler } from '@angular/common/http';
+// import { ɵHttpInterceptingHandler } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
