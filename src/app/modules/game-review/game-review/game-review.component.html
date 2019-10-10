@@ -12,16 +12,20 @@
 
     <div class="col-6">
       <mdb-carousel *ngIf='results[0].artworks || results[0].screenshots' class="carousel slide carousel-fade" [animation]="'fade'">
-        <div *ngIf='results[0].artworks'>
+          <mdb-carousel-item *ngFor='let video of results[0].videos'>
+            <!-- https://stackoverflow.com/questions/38037760/how-to-set-iframe-src-without-causing-unsafe-value-exception -->
+            <iframe class="d-block w-100" width="560" height="315" src="https://www.youtube.com/embed/l-x-1fm2cq8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </mdb-carousel-item>
+          <!-- <div *ngIf='results[0].artworks'> -->
           <mdb-carousel-item *ngFor='let artwork of results[0].artworks'>
             <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{artwork.image_id}}.jpg"
-              alt="First slide">
+            alt="First slide">
           </mdb-carousel-item>
+          <!-- </div> -->
           <mdb-carousel-item *ngFor='let screenshot of results[0].screenshots'>
             <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{screenshot.image_id}}.jpg"
               alt="First slide">
           </mdb-carousel-item>
-        </div>
       </mdb-carousel>
     </div>
 
@@ -29,6 +33,9 @@
       <div class="row"><p>Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
       <div class="row"><p>Platforms:</p>
         <div *ngFor="let platform of results[0].platforms"><p class="game-tag">{{platform.abbreviation}}</p></div>
+      </div>
+      <div class="row"><p>Genres:</p>
+        <div *ngFor="let genre of results[0].genres"><p class="game-tag">{{genre.name}}</p></div>
       </div>  
     </div>
 
