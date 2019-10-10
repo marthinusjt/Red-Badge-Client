@@ -13,24 +13,16 @@ export class GameReviewComponent implements OnInit {
   public results: any = [];
   public searching: any = false;
   public gameid: string;
-
-  public range: any = 0;
-  public min = 0;
-  public max = 100;
-  onRangeValueChange(event: any) {
-      const value = event.value;
-      this.range = value;
-  }
-
-
-
+  public score: string;
 
   @Input () state: string;
 
   constructor(private _gameSearch: GameReview,
     private route: ActivatedRoute) {}
 
-  
+  setScore(insertscore){
+    this.score=insertscore
+  }
 
     gameFetch(query){
       
@@ -51,13 +43,13 @@ export class GameReviewComponent implements OnInit {
   }
   searchPost(gameid, score, userName, headline, pros, cons, textArea){
     
-    this._gameSearch.reviewPost(gameid, score, userName, headline, pros, cons, textArea)
+    this._gameSearch.reviewPost(gameid, this.score, userName, headline, pros, cons, textArea)
       .subscribe(data => {this.results = data; console.log(data)})
   }
 
   searchPut(gameid, score, userName, headline, pros, cons, textArea){
     
-    this._gameSearch.reviewPut(gameid, score, userName, headline, pros, cons, textArea)
+    this._gameSearch.reviewPut(gameid,  this.score, userName, headline, pros, cons, textArea)
       .subscribe(data => {this.results = data; console.log(data)})
   }
 

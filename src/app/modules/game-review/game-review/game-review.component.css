@@ -1,0 +1,13 @@
+.btn-group>*{
+    padding:1.8em;
+    margin: 1px;
+}
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+/* ::-webkit-scrollbar {
+    visibility: hidden;
+  } */
