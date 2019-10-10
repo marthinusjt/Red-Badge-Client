@@ -28,6 +28,7 @@ import { GameReview } from './game-review.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
 
+
 // directive imports
 
 
@@ -42,6 +43,7 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
     PageNotFoundComponent,
     SearchDisplayComponent,
     GameForumComponent,
+    
   ],
   entryComponents:[
     GameReviewComponent,

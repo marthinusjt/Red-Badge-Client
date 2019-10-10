@@ -1,5 +1,7 @@
 <p>id is {{gameid}}</p>
 
+{{pros1}}
+
 
 <!-- {{results[0].name}}
 
@@ -19,7 +21,15 @@
     <button type="button" mdbBtn color="primary" class="relative waves-light" (click)='searchDelete( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect>DELETE</button>
 
 <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New POST</button>
+
 <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.show()" mdbWavesEffect>PUT</button>
+
+
+
+
+
+
+
 <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -121,7 +131,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal2.hide()">
           <span aria-hidden="true">×</span>
         </button>
         <h4 class="modal-title w-100" id="myModalLabel">Edit Review</h4>
@@ -131,7 +141,7 @@
 
             <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
                     <div class=" btn-group  mr-2"   role="group" aria-label="First group">
-                        <button mdbBtn type="button"  color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        <button mdbBtn type="button"  color="default" size="sm" autocomplete="off"  [(ngModel)]="singleModel" mdbCheckbox
                         btnCheckboxTrue="1" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(1)'>1</button>
                         <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
                         btnCheckboxTrue="2" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(2)'>2</button>
@@ -157,26 +167,21 @@
             
 
                 
-          
-
                 <div class="md-form mb-5">
                         <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
                         <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate
-                               [formControl]="contactFormModalSubject">
-                               <label for="form8">headline</label>
+                               [formControl]="contactFormModalSubject" value= {{headline1}}>
+                               <label for="form8" >headline</label>
                                
 
                             </div>
 
                         
               
-
-                   
-              
                     <div class="md-form">
                       <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
                       <textarea #pros type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
-                                [formControl]="contactFormModalMessage"></textarea>
+                                [formControl]="contactFormModalMessage" value= {{pros1}}></textarea>
                                 <label for="form8">pros</label>
 
                     </div>
@@ -184,7 +189,7 @@
                             <div class="md-form">
                               <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
                               <textarea #cons type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
-                                        [formControl]="contactFormModalMessage"></textarea>
+                                        [formControl]="contactFormModalMessage" value= {{cons1}}></textarea>
                                         <label for="form8">cons</label>
       
                             </div>
@@ -194,7 +199,7 @@
                       <div class="md-form">
                         <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
                         <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
-                                  [formControl]="contactFormModalMessage"></textarea>
+                                  [formControl]="contactFormModalMessage" value= {{textArea1}}></textarea>
                                   <label for="form8">textArea</label>
 
                       </div>
@@ -203,7 +208,7 @@
 
       </div>
       <div class="modal-footer  " >
-        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal2.hide()" mdbWavesEffect>Close</button>
         <button type="button" mdbBtn color="primary" class="relative waves-light"  (click)='searchPut( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect>PUT</button>
         
       </div>
@@ -214,5 +219,6 @@
 
        <a routerLink='/forum'>forum</a>
 
+ 
 
     
