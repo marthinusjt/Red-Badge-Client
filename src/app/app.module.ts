@@ -26,6 +26,7 @@ import { GameReview } from './game-review.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
 
+
 // directive imports
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -42,6 +43,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     PageNotFoundComponent,
     SearchDisplayComponent,
     GameForumComponent,
+    
   ],
   entryComponents:[
     GameReviewComponent,
