@@ -1,16 +1,16 @@
 <h1 class="splash jumbotron">GAMES THING</h1>
-<div class="search input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
-  <input [(ngModel)]="query" type="text" class="form-control"
-    placeholder="ex: Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army"
-    aria-label="ex: Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army"
-    aria-describedby="button-addon2" (keyup.enter)='onEnter(query)'>
+
+<!-- <div class="search input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
+  <input [(ngModel)]="query" type="text" class="form-control" placeholder="ex: Super Metroid"
+    aria-label="ex: Super Metroid" aria-describedby="basic-addon2" (keyup.enter)='onEnter(query)'>
   <div class="input-group-append">
-
-     
-    <button routerLink="/search/{{query}}" routerLinkActive="active" class="row result" #search class="btn btn-outline-secondary" type="button" id="button-addon2">
-      Search Game
-    </button>
-    
-
+    <span routerLink="/search/{{query}}" routerLinkActive="active" class="input-group-text" id="basic-addon2">Find
+      Games</span>
   </div>
+</div> -->
+<div class='container'>
+  <form class="form-inline md-form mr-auto mb-4 row col-10 col-md-8 mx-auto">
+    <input [ngModelOptions]="{standalone: true}" [(ngModel)]="query" class="form-control mr-sm-2 col" type="text" placeholder="ex: Super Metroid" aria-label="ex: Super Metroid">
+    <button routerLink="/search/{{query}}" routerLinkActive="active" mdbBtn size="md" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search Games</button>
+  </form>
 </div>
