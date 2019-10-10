@@ -64,6 +64,7 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
     HttpClient,
     GameSearch,
     GameReview,
+    
   ],
   bootstrap: [AppComponent]
 })
