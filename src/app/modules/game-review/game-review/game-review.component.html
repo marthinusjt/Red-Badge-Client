@@ -1,3 +1,47 @@
+<div *ngIf="!results[0]" class="row mx-auto"  style="margin-top: 20vh">
+  <div class="col text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  </div>
+
+<div *ngIf='results[0]' class="container game-box">
+  <div class="row mx-auto"><h1 class="game-name col">{{results[0].name.toUpperCase()}}</h1></div>
+  <div class="row">
+
+    <div class="col-6">
+      <mdb-carousel *ngIf='results[0].artworks || results[0].screenshots' class="carousel slide carousel-fade" [animation]="'fade'">
+        <div *ngIf='results[0].artworks'>
+          <mdb-carousel-item *ngFor='let artwork of results[0].artworks'>
+            <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{artwork.image_id}}.jpg"
+              alt="First slide">
+          </mdb-carousel-item>
+          <mdb-carousel-item *ngFor='let screenshot of results[0].screenshots'>
+            <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{screenshot.image_id}}.jpg"
+              alt="First slide">
+          </mdb-carousel-item>
+        </div>
+      </mdb-carousel>
+    </div>
+
+    <div class="col-5 offset-1 game-info">
+      <div class="row"><p>Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
+      <div class="row"><p>Platforms:</p>
+        <div *ngFor="let platform of results[0].platforms"><p class="game-tag">{{platform.abbreviation}}</p></div>
+      </div>  
+    </div>
+
+  </div>
+
+  <div class="row game-summary">
+    <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
+  </div>
+
+</div>
+
+
+
 <!-- <p>id is {{gameid}}</p>
 
 
@@ -38,8 +82,8 @@
 
 
 
-     
-     <!-- NEW CODE BELOW -->
+
+<!-- NEW CODE BELOW -->
 
 <!-- <div class="container">
   <ngb-tabset>
