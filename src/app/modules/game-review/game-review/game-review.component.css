@@ -1,0 +1,24 @@
+.game-name{
+    letter-spacing: 0.1em;
+    font-size: 2em;
+    margin: 2em;
+    text-align: center;
+}
+
+/* vertical space between game-info rows */
+.game-info>.row{
+    margin-top: 1em;
+}
+
+/* horizontal space between each game-info tag */
+.game-tag{
+    margin-left: 1em;
+    font-size: 1.3em;
+}
+
+.game-summary{
+    margin-top: 2em;
+    padding-top: 2em;
+    border-top: solid 1px #e9ecef;
+    font-size: 1.1em;
+}
