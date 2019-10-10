@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameReview } from '../../../game-review.service'
-import { ɵHttpInterceptingHandler } from '@angular/common/http';
+// import { ɵHttpInterceptingHandler } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,6 +13,17 @@ export class GameReviewComponent implements OnInit {
   public results: any = [];
   public searching: any = false;
   public gameid: string;
+
+  public range: any = 0;
+  public min = 0;
+  public max = 100;
+  onRangeValueChange(event: any) {
+      const value = event.value;
+      this.range = value;
+  }
+
+
+
 
   @Input () state: string;
 
@@ -62,6 +73,8 @@ export class GameReviewComponent implements OnInit {
     this.gameid = this.route.snapshot.paramMap.get('gameid');
     this.gameFetch(this.gameid)
     this.searchGetAll(this.gameid)
-    this.searchGet(this.gameid)
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    currentUser ? this.searchGet(this.gameid) : null
   }
 }

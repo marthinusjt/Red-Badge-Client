@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
+
 import { RouterModule, Routes } from '@angular/router';
 
 // @bootstrap imports
@@ -63,6 +64,7 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
     HttpClient,
     GameSearch,
     GameReview,
+    
   ],
   bootstrap: [AppComponent]
 })
