@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 
@@ -13,7 +14,10 @@ export class AuthComponent {
     isLoading = false;
     error: string = null;
 
-    constructor(private authService: AuthService) {}
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        ) {}
 
     onSwitchMode () {
         this.isLoginPage = !this.isLoginPage;
@@ -38,6 +42,7 @@ export class AuthComponent {
                 console.log(resData);
                 this.isLoading = false;
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                this.router.navigate(['/']);
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
@@ -48,6 +53,7 @@ export class AuthComponent {
                 console.log(resData);
                 this.isLoading = false;
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                this.router.navigate(['/']);
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
