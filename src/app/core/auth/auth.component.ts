@@ -32,7 +32,7 @@ export class AuthComponent {
         const lastName = form.value.lastName;
         const userName = form.value.username;
         const email = form.value.email;
-        const password = form.value.password
+        const password = form.value.password;
 
         this.isLoading = true;
         if (this.isLoginPage) {
