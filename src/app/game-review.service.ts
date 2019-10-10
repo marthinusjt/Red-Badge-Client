@@ -28,7 +28,7 @@ export class GameReview {
   
     let data = `
     where id=${query};
-    fields artworks.*, storyline, summary, name, release_dates.human, genres.name, platforms.*, videos.*;
+    fields artworks.*, storyline, summary, name, release_dates.human, genres.name, platforms.*, videos.*, dlcs.*, age_ratings.*, total_rating, total_rating_count, websites.*, game_modes.*, multiplayer_modes.*, screenshots.*;
 `
 
 

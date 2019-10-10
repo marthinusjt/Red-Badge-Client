@@ -1,106 +1,48 @@
-<p>id is {{gameid}}</p>
+<div *ngIf="!results[0]" class="row mx-auto"  style="margin-top: 20vh">
+  <div class="col text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  </div>
 
+<div *ngIf='results[0]' class="container game-box">
+  <div class="row mx-auto"><h1 class="game-name col">{{results[0].name.toUpperCase()}}</h1></div>
+  <div class="row">
 
-<!-- {{results[0].name}}
+    <div class="col-6">
+      <mdb-carousel *ngIf='results[0].artworks || results[0].screenshots' class="carousel slide carousel-fade" [animation]="'fade'">
+          <mdb-carousel-item *ngFor='let video of results[0].videos'>
+            <!-- https://stackoverflow.com/questions/38037760/how-to-set-iframe-src-without-causing-unsafe-value-exception -->
+            <iframe class="d-block w-100" width="560" height="315" src="https://www.youtube.com/embed/l-x-1fm2cq8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </mdb-carousel-item>
+          <!-- <div *ngIf='results[0].artworks'> -->
+          <mdb-carousel-item *ngFor='let artwork of results[0].artworks'>
+            <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{artwork.image_id}}.jpg"
+            alt="First slide">
+          </mdb-carousel-item>
+          <!-- </div> -->
+          <mdb-carousel-item *ngFor='let screenshot of results[0].screenshots'>
+            <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{screenshot.image_id}}.jpg"
+              alt="First slide">
+          </mdb-carousel-item>
+      </mdb-carousel>
+    </div>
 
-{{results[0].platforms[0].abbreviation}}
-{{results[0].genres[0].name}}
-{{results[0].release_dates[0].human}}
-{{imgUrlPrefix + results[0].artworks[0].image_id + '.jpg' (edited) }} -->
+    <div class="col-5 offset-1 game-info">
+      <div class="row"><p>Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
+      <div class="row"><p>Platforms:</p>
+        <div *ngFor="let platform of results[0].platforms"><p class="game-tag">{{platform.abbreviation}}</p></div>
+      </div>
+      <div class="row"><p>Genres:</p>
+        <div *ngFor="let genre of results[0].genres"><p class="game-tag">{{genre.name}}</p></div>
+      </div>  
+    </div>
 
+  </div>
 
+  <div class="row game-summary">
+    <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
+  </div>
 
- <button type="button"  (click)='searchGetAll(gameid)'>Search
-    Game Review</button>
-
-<h4>score  (needs to be integer)</h4>
-    <input #score id="search-box"  />
-    <h4>headline</h4>
-    <input #headline id="search-box" />
-    <h4>pros</h4>
-    <input #pros id="search-box" />
-    <h4>cons</h4>
-    <input #cons id="search-box"  />
-    <h4>textArea</h4>
-    <input #textArea id="search-box"  />
-    
-    <button type="button"  (click)='searchPost( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
-       POST</button>
-
-    <button type="button"  (click)='searchPut( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
-        PUT</button>
-
-    <button type="button"  (click)='searchDelete( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
-        DELETE</button>
-
-       <a routerLink='/forum'>forum</a>
-
-
-
-       <mdb-card class="indigo lighten-5">
-        <mdb-card-body>
-      
-          <div class="d-flex justify-content-center align-items-center my-4">
-            <span class="font-weight-bold indigo-text mr-2">{{min}}</span>
-            <form class="my-3 w-25">y
-              <input type="range" id="range" [min]="min" value="50" [max]="max">
-            </form>
-            <span class="font-weight-bold indigo-text ml-2">{{max}}</span>
-          </div>
-    
-      
-        </mdb-card-body>
-      </mdb-card>
-
-
-
-     
-     <!-- NEW CODE BELOW -->
-
-<!-- <div class="container">
-  <ngb-tabset>
-
-    <ngb-tab title="Artwork">
-      <ng-template ngbTabContent>
-
-        <ngb-carousel>
-          <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-              <img [src]="images[0]" alt="Random first slide">
-            </div>
-            <div class="carousel-caption">
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </div>
-          </ng-template>
-          <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-              <img [src]="images[1]" alt="Random second slide">
-            </div>
-            <div class="carousel-caption">
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          </ng-template>
-          <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-              <img [src]="images[2]" alt="Random third slide">
-            </div>
-            <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-          </ng-template>
-        </ngb-carousel>
-
-      </ng-template>
-    </ngb-tab>
-
-    <ngb-tab title="Screenshots">
-      <ng-template ngbTabContent>
-
-      </ng-template>
-    </ngb-tab>
-
-  </ngb-tabset>
-</div> -->
+</div>
