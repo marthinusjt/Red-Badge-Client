@@ -7,6 +7,7 @@ import { GameSearch } from '../../../game-search.service'
   selector: 'app-splash',
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.css']
+  
 })
 export class SplashComponent implements OnInit {
 
