@@ -8,12 +8,15 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 import { GameReviewComponent } from '../modules/game-review/game-review/game-review.component';
 import { SearchDisplayComponent } from './../search-display/search-display.component';
 import { GameForumComponent } from '../modules/game-forum/game-forum/game-forum.component';
+import { GeneralDiscussionComponent } from '../modules/game-forum/game-forum/general-discussion/general-discussion.component';
 
 const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'search/:searching', component: SearchDisplayComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
-    { path: 'forum', component: GameForumComponent },
+    { path: 'forum/11195', component: GameForumComponent, children: [
+        {path: 'generalDiscussion', component: GeneralDiscussionComponent}
+    ] },
 
     // place paths above here
     { path: 'not-found', component: PageNotFoundComponent }, // Static Message
