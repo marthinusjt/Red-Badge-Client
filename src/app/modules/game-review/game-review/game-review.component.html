@@ -1,4 +1,155 @@
+<div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal2.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title w-100" id="myModalLabel">Edit Review</h4>
+            </div>
+            <div class="modal-body">
+      
+      
+                  <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
+                          <div class=" btn-group  mr-2"   role="group" aria-label="First group">
+                              <button mdbBtn type="button"  color="default" size="sm" autocomplete="off"  [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="1" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(1)'>1</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="2" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(2)'>2</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="3" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(3)'>3</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="4" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(4)'>4</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="5" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(5)'>5</button>
+                              
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="6" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(6)'>6</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="7" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(7)'>7</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="8" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(8)'>8</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="9" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(9)'>9</button>
+                              <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                              btnCheckboxTrue="10" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(10)'>10</button>
+                          </div>
+                      </div>
+                  
+      
+                      
+                      <div class="md-form mb-5">
+                              <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                              <input #headline2 type="text" id="form32" class="form-control" mdbInput mdbValidate
+                                     [formControl]="contactFormModalSubject" value= {{headline1}}>
+                                     <label for="form8" >headline</label>
+                                     
+      
+                                  </div>
+      
+                              
+                    
+                          <div class="md-form">
+                            <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                            <textarea #pros2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                                      [formControl]="contactFormModalMessage" value= {{pros1}}></textarea>
+                                      <label for="form8">pros</label>
+      
+                          </div>
+                    
+                                  <div class="md-form">
+                                    <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                                    <textarea #cons2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                                              [formControl]="contactFormModalMessage" value= {{cons1}}></textarea>
+                                              <label for="form8">cons</label>
+            
+                                  </div>
+            
+      
+                    
+                            <div class="md-form">
+                              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                              <textarea #textArea2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                                        [formControl]="contactFormModalMessage" value= {{textArea1}}></textarea>
+                                        <label for="form8">textArea</label>
+      
+                            </div>
+      
+      
+      
+            </div>
+            <div class="modal-footer  " >
+              <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal2.hide()" mdbWavesEffect>Close</button>
+              <button type="button" mdbBtn color="primary" class="relative waves-light"  (click)='searchPut( gameid, 1, 1, headline2.value, pros2.value, cons2.value, textArea2.value)' mdbWavesEffect>PUT</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+             <a routerLink='/forum'>forum</a>
+      
+       
+      
+          
+      <div *ngIf="!results[0]" class="row mx-auto"  style="margin-top: 20vh">
+        <div class="col text-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        </div>
+      
+      <div *ngIf='results[0]' class="container game-box">
+        <div class="row mx-auto"><h1 class="game-name col">{{results[0].name.toUpperCase()}}</h1></div>
+        <div class="row">
+      
+          <div class="col-6">
+            <mdb-carousel *ngIf='results[0].artworks || results[0].screenshots' class="carousel slide carousel-fade" [animation]="'fade'">
+                <mdb-carousel-item *ngFor='let video of results[0].videos'>
+                  <!-- https://stackoverflow.com/questions/38037760/how-to-set-iframe-src-without-causing-unsafe-value-exception -->
+                  <iframe class="d-block w-100" width="560" height="315" src="https://www.youtube.com/embed/l-x-1fm2cq8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </mdb-carousel-item>
+                <!-- <div *ngIf='results[0].artworks'> -->
+                <mdb-carousel-item *ngFor='let artwork of results[0].artworks'>
+                  <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{artwork.image_id}}.jpg"
+                  alt="First slide">
+                </mdb-carousel-item>
+                <!-- </div> -->
+                <mdb-carousel-item *ngFor='let screenshot of results[0].screenshots'>
+                  <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{screenshot.image_id}}.jpg"
+                    alt="First slide">
+                </mdb-carousel-item>
+            </mdb-carousel>
+          </div>
+      
+          <div class="col-5 offset-1 game-info">
+            <div class="row"><p>Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
+            <div class="row"><p>Platforms:</p>
+              <div *ngFor="let platform of results[0].platforms"><p class="game-tag">{{platform.abbreviation}}</p></div>
+            </div>
+            <div class="row"><p>Genres:</p>
+              <div *ngFor="let genre of results[0].genres"><p class="game-tag">{{genre.name}}</p></div>
+            </div>  
+          </div>
+      
+        </div>
+      
+        <div class="row game-summary">
+          <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
+        </div>
+      
+      </div>
+      
+
+
+
+
+
 <p>id is {{gameid}}</p>
+
+{{pros1}}
 
 
 <!-- {{results[0].name}}
@@ -6,101 +157,124 @@
 {{results[0].platforms[0].abbreviation}}
 {{results[0].genres[0].name}}
 {{results[0].release_dates[0].human}}
-{{imgUrlPrefix + results[0].artworks[0].image_id + '.jpg' (edited) }} -->
+{{imgUrlPrefix + results[0].artworks[0].image_id + '.jpg' (edited) }}
+{{results[0].release_dates[0].human}} -->
+<!-- {{imgUrlPrefix + results[0].artworks[0].image_id + '.jpg' (edited) }} -->
 
 
 
- <button type="button"  (click)='searchGetAll(gameid)'>Search
-    Game Review</button>
 
-<h4>score  (needs to be integer)</h4>
-    <input #score id="search-box"  />
-    <h4>headline</h4>
-    <input #headline id="search-box" />
-    <h4>pros</h4>
-    <input #pros id="search-box" />
-    <h4>cons</h4>
-    <input #cons id="search-box"  />
-    <h4>textArea</h4>
-    <input #textArea id="search-box"  />
+<!-- <button type="button"  (click)='searchGetAll(gameid)'>Search
+    Game Review</button> -->
+
+
     
-    <button type="button"  (click)='searchPost( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
-       POST</button>
+    <button type="button" mdbBtn color="primary" class="relative waves-light" (click)='searchDelete( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect>DELETE</button>
 
-    <button type="button"  (click)='searchPut( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
-        PUT</button>
+<button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New POST</button>
 
-    <button type="button"  (click)='searchDelete( gameid, score.value, 1, headline.value, pros.value, cons.value, textArea.value)'>
-        DELETE</button>
-
-       <a routerLink='/forum'>forum</a>
+<button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.show()" mdbWavesEffect>PUT</button>
 
 
 
-       <mdb-card class="indigo lighten-5">
-        <mdb-card-body>
+
+
+
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">New Review</h4>
+      </div>
+      <div class="modal-body">
+
+
+            <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
+                    <div class=" btn-group  mr-2"   role="group" aria-label="First group">
+                        <button mdbBtn type="button"  color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="1" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(1)'>1</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="2" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(2)'>2</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="3" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(3)'>3</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="4" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(4)'>4</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="5" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(5)'>5</button>
+                        
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="6" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(6)'>6</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="7" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(7)'>7</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="8" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(8)'>8</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="9" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(9)'>9</button>
+                        <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel" mdbCheckbox
+                        btnCheckboxTrue="10" btnCheckboxFalse="0" mdbWavesEffect  (click)='setScore(10)'>10</button>
+                    </div>
+                </div>
+            
+
+                
+          
+
+                <div class="md-form mb-5">
+                        <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                        <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate
+                               [formControl]="contactFormModalSubject">
+                               <label for="form8">headline</label>
+                               
+
+                            </div>
+
+                        
+              
+
+                   
+              
+                    <div class="md-form">
+                      <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                      <textarea #pros type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                                [formControl]="contactFormModalMessage"></textarea>
+                                <label for="form8">pros</label>
+
+                    </div>
+              
+                            <div class="md-form">
+                              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                              <textarea #cons type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                                        [formControl]="contactFormModalMessage"></textarea>
+                                        <label for="form8">cons</label>
       
-          <div class="d-flex justify-content-center align-items-center my-4">
-            <span class="font-weight-bold indigo-text mr-2">{{min}}</span>
-            <form class="my-3 w-25">y
-              <input type="range" id="range" [min]="min" value="50" [max]="max">
-            </form>
-            <span class="font-weight-bold indigo-text ml-2">{{max}}</span>
-          </div>
-    
+                            </div>
       
-        </mdb-card-body>
-      </mdb-card>
+
+              
+                      <div class="md-form">
+                        <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                        <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
+                                  [formControl]="contactFormModalMessage"></textarea>
+                                  <label for="form8">textArea</label>
+
+                      </div>
 
 
 
-     
-     <!-- NEW CODE BELOW -->
+      </div>
+      <div class="modal-footer  " >
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)='searchPost( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect>POST</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light"  (click)='searchPut( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect>PUT</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- <div class="container">
-  <ngb-tabset>
 
-    <ngb-tab title="Artwork">
-      <ng-template ngbTabContent>
 
-        <ngb-carousel>
-          <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-              <img [src]="images[0]" alt="Random first slide">
-            </div>
-            <div class="carousel-caption">
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </div>
-          </ng-template>
-          <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-              <img [src]="images[1]" alt="Random second slide">
-            </div>
-            <div class="carousel-caption">
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          </ng-template>
-          <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-              <img [src]="images[2]" alt="Random third slide">
-            </div>
-            <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-          </ng-template>
-        </ngb-carousel>
-
-      </ng-template>
-    </ngb-tab>
-
-    <ngb-tab title="Screenshots">
-      <ng-template ngbTabContent>
-
-      </ng-template>
-    </ngb-tab>
-
-  </ngb-tabset>
-</div> -->
