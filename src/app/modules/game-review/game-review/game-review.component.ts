@@ -13,40 +13,70 @@ export class GameReviewComponent implements OnInit {
   public results: any = [];
   public searching: any = false;
   public gameid: string;
+  public score: string;
+  public carousel: string;
 
-  @Input () state: string;
+public headline1: string;
+  public score1: string;
+  public textArea1: string;
+  public pros1: string;
+  public cons1: string;
+
+  
 
   constructor(private _gameSearch: GameReview,
     private route: ActivatedRoute) {}
 
-  
+  setScore(insertscore){
+    this.score=insertscore
+  }
+
+
 
     gameFetch(query){
       
       this._gameSearch.reviewFetch(query)
-        .subscribe(data => {this.results = data; console.log(data)})
+        .subscribe(data => {
+          this.results = data;
+          console.log('IGDB data:', data);
+          this.results[0].screenshots ? this.carousel = 'screenshots' :
+          this.results[0].artworks ? this.carousel = 'artwork' :
+          this.results[0].videos ? this.carousel = 'video' : null;
+        })
     }
 
   searchGet(query){
     
     this._gameSearch.reviewGet(query)
-      .subscribe(data => {this.results = data; console.log(data)})
+      .subscribe(data => {this.results = data; console.log(data);
+        this.setScore(this.results.score)
+        this.headline1=this.results.headline
+        this.textArea1=this.results.textArea
+       this.pros1=this.results.pros
+       this.cons1=this.results.cons
+      //  console.log(this.pros1)
+      
+      }
+      
+      )
+
   }
 
   searchGetAll(gameid){
     
     this._gameSearch.reviewGetAll(gameid)
       .subscribe(data => {this.results = data; console.log(data)})
+      
   }
   searchPost(gameid, score, userName, headline, pros, cons, textArea){
     
-    this._gameSearch.reviewPost(gameid, score, userName, headline, pros, cons, textArea)
+    this._gameSearch.reviewPost(gameid, this.score, userName, headline, pros, cons, textArea)
       .subscribe(data => {this.results = data; console.log(data)})
   }
 
   searchPut(gameid, score, userName, headline, pros, cons, textArea){
     
-    this._gameSearch.reviewPut(gameid, score, userName, headline, pros, cons, textArea)
+    this._gameSearch.reviewPut(gameid,  this.score, userName, headline, pros, cons, textArea)
       .subscribe(data => {this.results = data; console.log(data)})
   }
 
@@ -61,6 +91,10 @@ export class GameReviewComponent implements OnInit {
     return "https://www.youtube.com/embed/" + id
   }
 
+  changeCarousel(type){
+    this.carousel = type;
+  }
+
 
   ngOnInit() {
     this.gameid = this.route.snapshot.paramMap.get('gameid');
@@ -70,4 +104,5 @@ export class GameReviewComponent implements OnInit {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     currentUser ? this.searchGet(this.gameid) : null
   }
+  
 }
