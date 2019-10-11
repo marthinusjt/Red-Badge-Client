@@ -1,4 +1,4 @@
-.btn-group>*{
+.rating-buttons>*{
     padding:1.8em;
     margin: 1px;
 }
@@ -13,14 +13,15 @@
   } */
 .game-name{
     letter-spacing: 0.1em;
-    font-size: 2em;
-    margin: 2em;
+    font-size: 2.5em;
+    margin: 1em;
     text-align: center;
 }
 
 /* vertical space between game-info rows */
 .game-info>.row{
-    margin-top: 1em;
+    margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 /* horizontal space between each game-info tag */
@@ -34,4 +35,8 @@
     padding-top: 2em;
     border-top: solid 1px #e9ecef;
     font-size: 1.1em;
+}
+
+.media-buttons{
+    margin-top: -0.4em;
 }
