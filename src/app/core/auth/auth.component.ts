@@ -81,7 +81,8 @@ export class AuthComponent implements OnInit {
                 resData => {
                 console.log(resData);
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-                this.modalService.hide(1)
+                // this.modalService.hide(1)
+                location.reload();
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
@@ -90,7 +91,8 @@ export class AuthComponent implements OnInit {
             this.authService.signup(firstName, lastName, userName, email, password).subscribe(resData => {
                 console.log(resData);
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-                this.modalService.hide(1)
+                // this.modalService.hide(1)
+                location.reload();
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
