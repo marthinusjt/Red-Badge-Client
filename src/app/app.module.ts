@@ -33,7 +33,7 @@ import { SafePipe } from './shared/safe.pipe';
 // directive imports
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
+import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/general-discussion/general-discussion.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     SearchDisplayComponent,
     GameForumComponent,
     SafePipe,
+    GeneralDiscussionComponent,
+    
   ],
   entryComponents:[
     GameReviewComponent,
