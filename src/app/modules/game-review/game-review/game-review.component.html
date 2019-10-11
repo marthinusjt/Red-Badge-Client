@@ -13,8 +13,7 @@
     <div class="col-6">
       <mdb-carousel *ngIf='results[0].artworks || results[0].screenshots' class="carousel slide carousel-fade" [animation]="'fade'">
           <mdb-carousel-item *ngFor='let video of results[0].videos'>
-            <!-- https://stackoverflow.com/questions/38037760/how-to-set-iframe-src-without-causing-unsafe-value-exception -->
-            <iframe class="d-block w-100" width="560" height="315" src="https://www.youtube.com/embed/l-x-1fm2cq8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="d-block w-100" width="560" height="315" [src]="youTube(video.video_id) | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </mdb-carousel-item>
           <!-- <div *ngIf='results[0].artworks'> -->
           <mdb-carousel-item *ngFor='let artwork of results[0].artworks'>

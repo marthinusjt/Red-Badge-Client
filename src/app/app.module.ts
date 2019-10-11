@@ -28,6 +28,7 @@ import { GameSearch } from './game-search.service';
 import { GameReview } from './game-review.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
+import { SafePipe } from './shared/safe.pipe';
 
 // directive imports
 
@@ -43,6 +44,7 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
     PageNotFoundComponent,
     SearchDisplayComponent,
     GameForumComponent,
+    SafePipe,
   ],
   entryComponents:[
     GameReviewComponent,

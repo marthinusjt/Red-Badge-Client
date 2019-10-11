@@ -57,6 +57,10 @@ export class GameReviewComponent implements OnInit {
       
   }
 
+  youTube(id){
+    return "https://www.youtube.com/embed/" + id
+  }
+
 
   ngOnInit() {
     this.gameid = this.route.snapshot.paramMap.get('gameid');
