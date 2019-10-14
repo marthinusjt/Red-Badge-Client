@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, of } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-    loggedIn = false;
+    public isloggedIn: boolean;
 
     constructor(
         private http: HttpClient,
         ) {
-
+        this.isloggedIn = false;
     }
 
     isAuthenticated() {
         const promise = new Promise(
             (resolve, reject) => {
                 setTimeout(() => {
-                    resolve(this.loggedIn)
+                    resolve(this.isloggedIn)
                 }, 800)
             }
         );
@@ -47,10 +47,11 @@ export class AuthService {
                 password: password
             },
         ).pipe(catchError(this.handleError));
+        
     }
 
     logout() {
-        this.loggedIn = false;
+        this.isloggedIn = false;
     }
 
     private handleError(errorRes: HttpErrorResponse) {
