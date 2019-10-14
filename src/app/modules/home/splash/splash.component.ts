@@ -33,7 +33,7 @@ export class SplashComponent implements OnInit {
   search(query){
     this.toggleSearching();
     // if(query.length >= 3){}else {searchError = 'Please enter at least 3 characters.'}
-    this._gameSearch.fetch(query)
+    this._gameSearch.fetch(query, 0) //static offset, fix this
     .subscribe(data => {this.results = data; console.log(data); this.toggleSearching()})
   }
 

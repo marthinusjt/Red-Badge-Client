@@ -14,7 +14,7 @@ export class GameSearch {
   constructor(private http: HttpClient) {}
 
   
-  fetch(query) {
+  fetch(query, offset) {
     const parseHeaders = {
       headers: new HttpHeaders({
             // 'user-key':'cc5441053548ed186c2e6a3add7af2f1', // Aaron's Key
@@ -25,7 +25,7 @@ export class GameSearch {
   
     let data = `
       search "${query}";
-      offset 0;
+      offset ${offset};
       limit 50;
       fields name, release_dates.human, cover.url, genres.*, platforms.*;
       where themes != 42;
