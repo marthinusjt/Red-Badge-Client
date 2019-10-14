@@ -84,11 +84,11 @@ export class AuthComponent implements OnInit {
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 if (localStorage.getItem('currentUser') !== null) {
                     console.log('test');
+                    this.modalService.hide(1)
+                    location.reload();
                     this.authService.isLoggedIn = true;
                     return of(this.authService.isLoggedIn);
                 }
-                // this.modalService.hide(1)
-                location.reload();
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
@@ -97,7 +97,7 @@ export class AuthComponent implements OnInit {
             this.authService.signup(firstName, lastName, userName, email, password).subscribe(resData => {
                 console.log(resData);
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-                // this.modalService.hide(1)
+                this.modalService.hide(1)
                 location.reload();
             }, errorMessage => {
                 console.log(errorMessage);
