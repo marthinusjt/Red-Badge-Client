@@ -17,7 +17,7 @@ export class GameSearch {
   fetch(query) {
     const parseHeaders = {
       headers: new HttpHeaders({
-            'user-key':'cc5441053548ed186c2e6a3add7af2f1',
+            'user-key':'5a82182a64789d3546faae4b10160803',
             'Accept':'application/json'    })
      };
   
@@ -25,10 +25,10 @@ export class GameSearch {
       search "${query}";
       offset 0;
       limit 50;
-      fields name, release_dates.human, cover.url, genres.*, platforms.*;
+      fields name ;
       where themes != 42;
     `
-    
+    //release_dates.human, cover.url, genres.*, platforms.*;
     return this.http.post(this._proxy + this._url, data, parseHeaders)
   }
 }
