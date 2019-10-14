@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private modalService: MDBModalService,
-    // private authService: AuthService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
   onLogout() {
     localStorage.clear();
     this.currentUser = undefined;
+    this.authService.isLoggedIn = false;
   }
 
 }

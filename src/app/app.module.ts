@@ -34,6 +34,7 @@ import { SafePipe } from './shared/safe.pipe';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/general-discussion/general-discussion.component';
+import { AuthGuard } from './core/guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/gene
     HttpClient,
     GameSearch,
     GameReview,
-    
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
