@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
@@ -26,6 +26,7 @@ export class AuthComponent implements OnInit {
         private authService: AuthService,
         private router: Router,
         private modalService: MDBModalService,
+        private route: ActivatedRoute,
         ) {}
 
     // mdbCode
@@ -84,11 +85,12 @@ export class AuthComponent implements OnInit {
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 if (localStorage.getItem('currentUser') !== null) {
                     console.log('test');
+                    location.reload();
                     this.authService.isLoggedIn = true;
+                    this.modalService.hide(1);
+                    this.router.navigate(['/'])
                     return of(this.authService.isLoggedIn);
                 }
-                // this.modalService.hide(1)
-                location.reload();
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;

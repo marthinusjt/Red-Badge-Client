@@ -52,16 +52,12 @@ export class AuthService {
         
     }
 
-    isUserLoggedIn(): boolean {
-        return this.isLoggedIn;
-    }
+    // isUserLoggedIn(): boolean {
+    //     return this.isLoggedIn;
+    // }
 
     logout() {
-<<<<<<< HEAD
-        this.isloggedIn = false;
-=======
         this.isLoggedIn = false;
->>>>>>> 59dd024d57dacb718dbb62293349ec61b2de7c6a
     }
 
     private handleError(errorRes: HttpErrorResponse) {

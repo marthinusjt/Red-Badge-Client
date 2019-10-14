@@ -10,20 +10,20 @@ import { SearchDisplayComponent } from './../search-display/search-display.compo
 import { GameForumComponent } from '../modules/game-forum/game-forum/game-forum.component';
 import { GeneralDiscussionComponent } from '../modules/game-forum/game-forum/general-discussion/general-discussion.component';
 import { AuthGuard } from '../core/guards/auth-guard.service';
+import { ForumPostComponent } from '../modules/game-forum/game-forum/forum-post/forum-post.component';
 
 const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'search/:searching', component: SearchDisplayComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
-    { path: 'forum/11195', component: GameForumComponent, children: [
-        {path: 'generalDiscussion', component: GeneralDiscussionComponent}
-    ] },
+    { path: 'forum/11195', component: GameForumComponent},
+    { path: 'forum/11195/generalDiscussion', component: GeneralDiscussionComponent},
 
     // place paths above here
-    { path: 'not-found', component: PageNotFoundComponent }, // Static Message
+    // { path: 'not-found', component: PageNotFoundComponent }, // Static Message
     // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} }, // Dynamic Messagae
-    { path: '**', redirectTo: '/not-found' }, // ** - Wildcart Route !Has to be last in the routes!
+    // { path: '**', redirectTo: '/not-found' }, // ** - Wildcart Route !Has to be last in the routes!
 ];
 
 @NgModule({
