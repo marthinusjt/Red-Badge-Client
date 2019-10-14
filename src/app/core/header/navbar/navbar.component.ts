@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     localStorage.clear();
-    this.authService.isloggedIn = false;
+    this.authService.isLoggedIn = false;
   }
 
 }

@@ -6,23 +6,25 @@ import { throwError, of } from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-    public isloggedIn: boolean;
+    isLoggedIn = false;
 
     constructor(
         private http: HttpClient,
         ) {
-        this.isloggedIn = false;
+        this.isLoggedIn = false;
     }
 
     isAuthenticated() {
         const promise = new Promise(
             (resolve, reject) => {
                 setTimeout(() => {
-                    resolve(this.isloggedIn)
+                    resolve(this.isLoggedIn)
                 }, 800)
             }
         );
         return promise;
+        // this.isLoggedIn;
+        // return this.isLoggedIn;
     }
 
     signup(firstName: string, lastName: string, userName: string, email: string, password: string) {
@@ -50,8 +52,16 @@ export class AuthService {
         
     }
 
+    isUserLoggedIn(): boolean {
+        return this.isLoggedIn;
+    }
+
     logout() {
+<<<<<<< HEAD
         this.isloggedIn = false;
+=======
+        this.isLoggedIn = false;
+>>>>>>> 59dd024d57dacb718dbb62293349ec61b2de7c6a
     }
 
     private handleError(errorRes: HttpErrorResponse) {
