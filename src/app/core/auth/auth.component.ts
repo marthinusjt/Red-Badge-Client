@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
@@ -15,6 +16,7 @@ export class AuthComponent implements OnInit {
     isLoginPage = true;
     isLoading = false;
     error: string = null;
+    public direct: string;
 
     
 
@@ -26,6 +28,7 @@ export class AuthComponent implements OnInit {
         private authService: AuthService,
         private router: Router,
         private modalService: MDBModalService,
+        private route: ActivatedRoute,
         ) {}
 
     // mdbCode
@@ -81,14 +84,29 @@ export class AuthComponent implements OnInit {
                 
                 resData => {
                 console.log(resData);
+                //this.direct = JSON.parse(localStorage.getItem('redirect'))
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                //this.modalService.hide(1)
+                //location.reload();
+                
+
                 if (localStorage.getItem('currentUser') !== null) {
                     console.log('test');
                     this.authService.isLoggedIn = true;
+<<<<<<< HEAD
                     this.modalService.hide(1);
                     // location.reload();
                     return of(this.authService.isLoggedIn);
                 }
+=======
+                this.modalService.hide(1)
+                
+
+                    return of(this.authService.isLoggedIn,
+                        this.router.navigate(['/redirect'])  );
+                };
+
+>>>>>>> c3f6bfae9da566f1bcba583612c14e433e3dddb0
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
@@ -98,7 +116,8 @@ export class AuthComponent implements OnInit {
                 console.log(resData);
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 // this.modalService.hide(1)
-                location.reload();
+                //location.reload();
+                this.router.navigate(['/redirect'])
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
