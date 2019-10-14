@@ -17,6 +17,7 @@ export class SearchDisplayComponent implements OnInit {
   public searching: any = false;
   public query: string;
   public value: string;
+  public offset: number = 0;
   
 
   constructor(
@@ -34,16 +35,31 @@ export class SearchDisplayComponent implements OnInit {
 
   search(query){
     this.toggleSearching();
-    this._gameSearch.fetch(query)
-    .subscribe(data => {this.results = data;  this.toggleSearching()}) //console.log(data);
+    this._gameSearch.fetch(query, this.offset)
+    .subscribe(data => {this.results = data;  this.toggleSearching(); console.log(data)})
     
   }
   search2(query){
     this.toggleSearching();
-    this._gameSearch.fetch(query)
-    .subscribe(data => {this.results = data;  this.toggleSearching()}) //console.log(data);
+    this._gameSearch.fetch(query, this.offset)
+    .subscribe(data => {this.results = data;  this.toggleSearching(); console.log(data)})
     
   }
+
+  nextPage(){
+    if(this.offset < 150){
+      this.offset = this.offset + 50
+      this.search2(this.query)
+    }
+  }
+
+  prevPage(){
+    if(this.offset > 0){
+      this.offset = this.offset - 50
+      this.search2(this.query)
+    }
+  }
+
   ngOnInit() {
     this.query = this.route.snapshot.paramMap.get('searching');
     this.search(this.query)

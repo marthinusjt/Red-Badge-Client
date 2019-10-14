@@ -18,9 +18,13 @@
     text-align: center;
 }
 
+.game-tag-type {
+    margin-left: 1em;
+}
+
 /* vertical space between game-info rows */
 .game-info>.row{
-    margin-top: 2em;
+    /* margin-top: 2em; */
     margin-bottom: 1em;
 }
 
@@ -38,5 +42,5 @@
 }
 
 .media-buttons{
-    margin-top: -0.4em;
+    margin-top: -1em;
 }
