@@ -10,15 +10,15 @@
   <div class="row mx-auto"><h1 class="game-name col">{{results[0].name.toUpperCase()}}</h1></div>
   <div class="row">
 
-    <div class="col-6">
+    <div class="col-6 game-media">
       <mdb-card class="row">
         <div class="row mx-auto justify-content-center media-buttons">
-          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-              <button mdbBtn type="button" color="unique" size="sm" class="waves-light" mdbWavesEffect *ngIf="results[0].screenshots" (click)="changeCarousel('screenshots')">Screenshots</button>
+          <div class="btn-group" role="group" aria-label="Basic example">
+              <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].screenshots" (click)="changeCarousel('screenshots')">Screenshots</button>
 
-              <button mdbBtn type="button" color="unique" size="sm" class="waves-light" mdbWavesEffect *ngIf="results[0].artworks" (click)="changeCarousel('artwork')">Artwork</button>
+              <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].artworks" (click)="changeCarousel('artwork')">Artwork</button>
               
-              <button mdbBtn type="button" color="unique" size="sm" class="waves-light" mdbWavesEffect *ngIf="results[0].videos" (click)="changeCarousel('video')">Video</button>
+              <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].videos" (click)="changeCarousel('video')">Video</button>
           </div>
         </div>
         <mdb-card-body>
@@ -46,16 +46,16 @@
       </mdb-card>
     </div>
 
-    <div class="col-5 offset-1 game-info">
-      <div *ngIf="results[0].total_rating" class="row"><p>User Score:</p><p class="game-tag">{{results[0].total_rating.toFixed(1)}} / 100</p></div>  
-      <div class="row"><p>Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
-      <div class="row"><p>Platforms:</p>
+    <div class="col-6 game-info">
+      <div *ngIf="results[0].total_rating" class="row"><p class="game-tag-type">User Score:</p><p class="game-tag">{{results[0].total_rating.toFixed(1)}} / 100</p></div>  
+      <div class="row"><p class="game-tag-type">Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
+      <div class="row"><p class="game-tag-type">Platforms:</p>
         <div *ngFor="let platform of results[0].platforms"><p class="game-tag">{{platform.abbreviation}}</p></div>
       </div>
-      <div class="row"><p>Genres:</p>
+      <div class="row"><p class="game-tag-type">Genres:</p>
         <div *ngFor="let genre of results[0].genres"><p class="game-tag">{{genre.name}}</p></div>
       </div>
-      <div class="row"><p>Modes:</p>
+      <div class="row"><p class="game-tag-type">Modes:</p>
         <div *ngFor="let mode of results[0].game_modes"><p class="game-tag">{{mode.name}}</p></div>
       </div>  
     </div>
