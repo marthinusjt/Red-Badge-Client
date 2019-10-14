@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
+import { of } from 'rxjs';
 
 @Component({
     selector: 'app-auth',
@@ -81,6 +82,11 @@ export class AuthComponent implements OnInit {
                 resData => {
                 console.log(resData);
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                if (localStorage.getItem('currentUser') !== null) {
+                    console.log('test');
+                    this.authService.isLoggedIn = true;
+                    return of(this.authService.isLoggedIn);
+                }
                 // this.modalService.hide(1)
                 location.reload();
             }, errorMessage => {
