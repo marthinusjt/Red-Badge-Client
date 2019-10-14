@@ -6,12 +6,25 @@ import { throwError } from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-    loggedIn = false;
+    isLoggedIn = false;
 
     constructor(
         private http: HttpClient,
         ) {
 
+    }
+
+    isAuthenticated() {
+        const promise = new Promise(
+            (resolve, reject) => {
+                setTimeout(() => {
+                    resolve(this.isLoggedIn)
+                }, 800)
+            }
+        );
+        return promise;
+        // this.isLoggedIn;
+        // return this.isLoggedIn;
     }
 
     signup(firstName: string, lastName: string, userName: string, email: string, password: string) {
@@ -38,8 +51,12 @@ export class AuthService {
         ).pipe(catchError(this.handleError));
     }
 
+    isUserLoggedIn(): boolean {
+        return this.isLoggedIn;
+    }
+
     logout() {
-        this.loggedIn = false;
+        this.isLoggedIn = false;
     }
 
     private handleError(errorRes: HttpErrorResponse) {

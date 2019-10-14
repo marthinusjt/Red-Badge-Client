@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
+import { of } from 'rxjs';
 
 @Component({
     selector: 'app-auth',
@@ -85,9 +86,19 @@ export class AuthComponent implements OnInit {
                 console.log(resData);
                 //this.direct = JSON.parse(localStorage.getItem('redirect'))
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-                this.modalService.hide(1)
+                //this.modalService.hide(1)
                 //location.reload();
-                this.router.navigate(['/redirect'])
+                
+
+                if (localStorage.getItem('currentUser') !== null) {
+                    console.log('test');
+                    this.authService.isLoggedIn = true;
+                this.modalService.hide(1)
+                
+
+                    return of(this.authService.isLoggedIn,
+                        this.router.navigate(['/redirect'])  );
+                };
 
             }, errorMessage => {
                 console.log(errorMessage);
@@ -98,7 +109,8 @@ export class AuthComponent implements OnInit {
                 console.log(resData);
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 // this.modalService.hide(1)
-                location.reload();
+                //location.reload();
+                this.router.navigate(['/redirect'])
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;

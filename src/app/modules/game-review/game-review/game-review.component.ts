@@ -18,6 +18,7 @@ export class GameReviewComponent implements OnInit {
   public searching: any = false;
   public gameid: string;
   public score: string;
+  public carousel: string;
 
 public headline1: string;
   public score1: string;
@@ -47,7 +48,13 @@ public headline1: string;
     gameFetch(query){
       
       this._gameSearch.reviewFetch(query)
-        .subscribe(data => {this.results = data; console.log(data)})
+        .subscribe(data => {
+          this.results = data;
+          console.log('IGDB data:', data);
+          this.results[0].screenshots ? this.carousel = 'screenshots' :
+          this.results[0].artworks ? this.carousel = 'artwork' :
+          this.results[0].videos ? this.carousel = 'video' : null;
+        })
     }
 
   searchGet(query){
@@ -108,6 +115,14 @@ public headline1: string;
   openModal() {
     localStorage.setItem('redirect', JSON.stringify({ redirect: `review/${this.gameid}` }));
     this.modalRef = this.modalService.show(AuthComponent);
+  }
+
+  youTube(id){
+    return "https://www.youtube.com/embed/" + id
+  }
+
+  changeCarousel(type){
+    this.carousel = type;
   }
 
 

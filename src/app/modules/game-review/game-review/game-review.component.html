@@ -1,60 +1,70 @@
+<div *ngIf="!results[0]" class="row mx-auto"  style="margin-top: 20vh">
+  <div class="col text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  </div>
 
-      
-      
-             <a routerLink='/forum'>forum</a>
-      
-       
-      
-          
-      <div *ngIf="!results[0]" class="row mx-auto"  style="margin-top: 20vh">
-        <div class="col text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+<div *ngIf='results[0]' class="container game-box">
+  <div class="row mx-auto"><h1 class="game-name col">{{results[0].name.toUpperCase()}}</h1></div>
+  <div class="row">
+
+    <div class="col-6 game-media">
+      <mdb-card class="row">
+        <div class="row mx-auto justify-content-center media-buttons">
+          <div class="btn-group" role="group" aria-label="Basic example">
+              <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].screenshots" (click)="changeCarousel('screenshots')">Screenshots</button>
+
+              <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].artworks" (click)="changeCarousel('artwork')">Artwork</button>
+              
+              <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].videos" (click)="changeCarousel('video')">Video</button>
           </div>
         </div>
-        </div>
-      
-      <div *ngIf='results[0]' class="container game-box">
-        <div class="row mx-auto"><h1 class="game-name col">{{results[0].name.toUpperCase()}}</h1></div>
-        <div class="row">
-      
-          <div class="col-6">
-            <mdb-carousel *ngIf='results[0].artworks || results[0].screenshots' class="carousel slide carousel-fade" [animation]="'fade'">
-                <mdb-carousel-item *ngFor='let video of results[0].videos'>
-                  <!-- https://stackoverflow.com/questions/38037760/how-to-set-iframe-src-without-causing-unsafe-value-exception -->
-                  <iframe class="d-block w-100" width="560" height="315" src="https://www.youtube.com/embed/l-x-1fm2cq8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </mdb-carousel-item>
-                <!-- <div *ngIf='results[0].artworks'> -->
-                <mdb-carousel-item *ngFor='let artwork of results[0].artworks'>
-                  <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{artwork.image_id}}.jpg"
+        <mdb-card-body>
+
+          <mdb-carousel *ngIf="carousel == 'artwork'" class="carousel slide carousel-fade" [animation]="'fade'">
+              <mdb-carousel-item *ngFor='let artwork of results[0].artworks'>
+                <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{artwork.image_id}}.jpg"
+                alt="First slide">
+              </mdb-carousel-item>
+          </mdb-carousel>
+
+          <mdb-carousel *ngIf="carousel == 'screenshots'" class="carousel slide carousel-fade" [animation]="'fade'">
+              <!-- <mdb-carousel-item *ngFor='let video of results[0].videos'>
+                <iframe class="d-block w-100" width="560" height="315" [src]="youTube(video.video_id) | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </mdb-carousel-item> -->
+              <mdb-carousel-item *ngFor='let screenshot of results[0].screenshots'>
+                <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{screenshot.image_id}}.jpg"
                   alt="First slide">
-                </mdb-carousel-item>
-                <!-- </div> -->
-                <mdb-carousel-item *ngFor='let screenshot of results[0].screenshots'>
-                  <img class="d-block w-100" src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/{{screenshot.image_id}}.jpg"
-                    alt="First slide">
-                </mdb-carousel-item>
-            </mdb-carousel>
-          </div>
-      
-          <div class="col-5 offset-1 game-info">
-            <div class="row"><p>Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
-            <div class="row"><p>Platforms:</p>
-              <div *ngFor="let platform of results[0].platforms"><p class="game-tag">{{platform.abbreviation}}</p></div>
-            </div>
-            <div class="row"><p>Genres:</p>
-              <div *ngFor="let genre of results[0].genres"><p class="game-tag">{{genre.name}}</p></div>
-            </div>  
-          </div>
-      
-        </div>
-      
-        <div class="row game-summary">
-          <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
-        </div>
-      
+              </mdb-carousel-item>
+          </mdb-carousel>
+
+          <iframe *ngIf="carousel == 'video'" class="d-block w-100" width="560" height="315" [src]="youTube(results[0].videos[0].video_id) | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-6 game-info">
+      <div *ngIf="results[0].total_rating" class="row"><p class="game-tag-type">User Score:</p><p class="game-tag">{{results[0].total_rating.toFixed(1)}} / 100</p></div>  
+      <div class="row"><p class="game-tag-type">Release date:</p><p class="game-tag">{{results[0].release_dates[0].human}}</p></div>
+      <div class="row"><p class="game-tag-type">Platforms:</p>
+        <div *ngFor="let platform of results[0].platforms"><p class="game-tag">{{platform.abbreviation}}</p></div>
       </div>
-      
+      <div class="row"><p class="game-tag-type">Genres:</p>
+        <div *ngFor="let genre of results[0].genres"><p class="game-tag">{{genre.name}}</p></div>
+      </div>
+      <div class="row"><p class="game-tag-type">Modes:</p>
+        <div *ngFor="let mode of results[0].game_modes"><p class="game-tag">{{mode.name}}</p></div>
+      </div>  
+    </div>
+
+  </div>
+
+  <div class="row game-summary">
+    <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
+  </div>
 
 
 

@@ -22,7 +22,8 @@ export class GameReview {
   reviewFetch(query) {
     const parseHeaders = {
       headers: new HttpHeaders({
-            'user-key':'5a82182a64789d3546faae4b10160803',
+            'user-key':'5a82182a64789d3546faae4b10160803',    // Phil's API key
+            // 'user-key':'cc5441053548ed186c2e6a3add7af2f1', // Aaron's API key
             'Accept':'application/json'    })
      };
   

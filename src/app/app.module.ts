@@ -26,12 +26,16 @@ import { GameReview } from './game-review.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
 
+// pipe imports
+import { SafePipe } from './shared/safe.pipe';
+
 
 // directive imports
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/general-discussion/general-discussion.component';
 import { RedirectComponent } from './redirect/redirect.component';
+import { AuthGuard } from './core/guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,7 @@ import { RedirectComponent } from './redirect/redirect.component';
     PageNotFoundComponent,
     SearchDisplayComponent,
     GameForumComponent,
+    SafePipe,
     GeneralDiscussionComponent,
     RedirectComponent,
     
@@ -68,7 +73,7 @@ import { RedirectComponent } from './redirect/redirect.component';
     HttpClient,
     GameSearch,
     GameReview,
-    
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

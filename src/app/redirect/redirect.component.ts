@@ -18,7 +18,8 @@ export class RedirectComponent implements OnInit {
   ngOnInit() {
     this.direct = JSON.parse(localStorage.getItem('redirect'))
     console.log(this.direct)
-
+    
+    if (this.direct==null) {this.router.navigate([`/`])}
     this.router.navigate([`/${this.direct.redirect}`])
   }
 
