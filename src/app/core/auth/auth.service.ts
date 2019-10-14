@@ -14,6 +14,17 @@ export class AuthService {
 
     }
 
+    isAuthenticated() {
+        const promise = new Promise(
+            (resolve, reject) => {
+                setTimeout(() => {
+                    resolve(this.loggedIn)
+                }, 800)
+            }
+        );
+        return promise;
+    }
+
     signup(firstName: string, lastName: string, userName: string, email: string, password: string) {
         return this.http.post(
             'http://localhost:3343/auth/signup',
