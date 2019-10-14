@@ -27,10 +27,11 @@ export class GameSearch {
       search "${query}";
       offset ${offset};
       limit 50;
-      fields name ;
+      fields name;
       where themes != 42;
-    `
-    //release_dates.human, cover.url, genres.*, platforms.*;
+      `
+      // fields name, release_dates.human, cover.url, genres.*, platforms.*;
+    
     return this.http.post(this._proxy + this._url, data, parseHeaders)
   }
 }

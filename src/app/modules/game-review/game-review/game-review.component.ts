@@ -127,7 +127,7 @@ public headline1: string;
 
 
   ngOnInit() {
-    this.gameid = this.route.snapshot.paramMap.get('gameid');
+    this.gameid = this.route.snapshot.paramMap.get('gameid').split('#')[0];
     this.gameFetch(this.gameid)
     this.searchGetAll(this.gameid)
 

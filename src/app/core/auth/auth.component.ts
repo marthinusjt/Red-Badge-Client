@@ -92,6 +92,8 @@ export class AuthComponent implements OnInit {
 
                 if (localStorage.getItem('currentUser') !== null) {
                     console.log('test');
+                    this.modalService.hide(1)
+                    location.reload();
                     this.authService.isLoggedIn = true;
                 this.modalService.hide(1)
                 
