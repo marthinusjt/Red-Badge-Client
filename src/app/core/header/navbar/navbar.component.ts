@@ -15,12 +15,16 @@ export class NavbarComponent implements OnInit {
 
   modalRef: MDBModalRef;
 
+  public currentUser: string = JSON.parse(localStorage.getItem('currentUser'));
+
+
   constructor(
     private modalService: MDBModalService,
     private authService: AuthService,
   ) { }
 
   ngOnInit() {
+    console.log(this.currentUser);
   }
 
   openModal() {
@@ -29,6 +33,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     localStorage.clear();
+    this.currentUser = undefined;
     this.authService.isLoggedIn = false;
   }
 

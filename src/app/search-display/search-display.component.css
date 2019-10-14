@@ -38,3 +38,7 @@ a {
 .result-tag {
     margin-left: 1em;
 }
+
+.search-spinner {
+    margin-bottom: 2em;
+}
