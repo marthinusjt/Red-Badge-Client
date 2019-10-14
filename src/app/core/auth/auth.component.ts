@@ -93,12 +93,6 @@ export class AuthComponent implements OnInit {
                 if (localStorage.getItem('currentUser') !== null) {
                     console.log('test');
                     this.authService.isLoggedIn = true;
-<<<<<<< HEAD
-                    this.modalService.hide(1);
-                    // location.reload();
-                    return of(this.authService.isLoggedIn);
-                }
-=======
                 this.modalService.hide(1)
                 
 
@@ -106,7 +100,6 @@ export class AuthComponent implements OnInit {
                         this.router.navigate(['/redirect'])  );
                 };
 
->>>>>>> c3f6bfae9da566f1bcba583612c14e433e3dddb0
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
