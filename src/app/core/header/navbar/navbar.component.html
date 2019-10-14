@@ -29,29 +29,24 @@
           <mdb-icon fab icon="google-plus"></mdb-icon>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <div class="btn-group" mdbDropdown>
-            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="divider dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-          </div>
-        </a>
+      <!-- Dropdown -->
+      <li *ngIf="currentUser" class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <mdb-icon fas icon="user"></mdb-icon>{{(currentUser.token.user.firstName + ' ' + currentUser.token.user.lastName).toUpperCase()}}<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+          <a class="dropdown-item waves-light"  mdbWavesEffect href="#" (click)="onLogout()">Log out</a>
+        </div>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="auth">Login</a>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li *ngIf="currentUser" class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect (click)="onLogout()" routerLink="/">Logout</a>
-      </li>
+      </li> -->
     </ul>
     <!-- MODAL Test -->
-    <button mdbBtn color="primary" (click)="openModal()">Login / Sign Up</button>
+    <button *ngIf="!currentUser" mdbBtn color="primary" (click)="openModal()">Login / Sign Up</button>
   </links>
   <!-- Collapsible content -->
 
