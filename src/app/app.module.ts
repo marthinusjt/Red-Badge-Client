@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; // <-- NgModel lives here
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 // MDB Imports
@@ -39,6 +39,17 @@ import { ForumPostComponent } from './modules/game-forum/game-forum/forum-post/f
 // import { AuthGuard } from './core/guards/auth-guard.service';
 import { RedirectComponent } from './redirect/redirect.component';
 
+// NEW IMPORTS TESTING
+// import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { HomeComponent } from './modules/home/home.component';
+// import { LoginComponent } from './core/login/login.component';
+// import { RegisterComponent } from './core/register/register.component';
+// import { AlertComponent } from './core/alert/alert.component';
+// import { backendProvider } from './core/guards/backend'
+// import { JwtInterceptor } from './core/guards/jwt.interceptor';
+// import { ErrorInterceptor } from './core/guards/error.interceptor';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +65,11 @@ import { RedirectComponent } from './redirect/redirect.component';
     GeneralDiscussionComponent,
     ForumPostComponent,
     RedirectComponent,
+    // AlertComponent,
+    // HomeComponent,
+    // LoginComponent,
+    // RegisterComponent,
+    // AlertComponent,
     
   ],
   entryComponents:[
@@ -77,6 +93,14 @@ import { RedirectComponent } from './redirect/redirect.component';
     GameSearch,
     GameReview,
     // AuthGuard,
+
+    // Testing
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    // backendProvider
+
   ],
   bootstrap: [AppComponent]
 })

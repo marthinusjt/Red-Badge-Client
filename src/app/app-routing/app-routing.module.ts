@@ -20,6 +20,7 @@ const routes: Routes = [
     { path: 'review/:gameid', component: GameReviewComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
     { path: 'forum/11195', component: GameForumComponent},
+    // { path: 'forum/11195/dev', component: GameForumComponent},
     { path: 'forum/11195/generalDiscussion', component: GeneralDiscussionComponent},
     { path: 'redirect', component: RedirectComponent },
     // place paths above here

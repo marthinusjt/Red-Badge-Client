@@ -29,26 +29,13 @@
           <mdb-icon fab icon="google-plus"></mdb-icon>
         </a>
       </li>
-    </ul>
       <!-- Dropdown -->
-      <div [ngSwitch]="!currentUser">
-
-        <div *ngSwitchCase="currentUser">
-
-          <li class="nav-item dropdown" dropdown>
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-              <mdb-icon fas icon="user"></mdb-icon>{{(currentUser.token.user.firstName + ' ' + currentUser.token.user.lastName).toUpperCase()}}<span class="caret"></span></a>
-              <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-                <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
-                <a class="dropdown-item waves-light"  mdbWavesEffect href="#" (click)="onLogout()">Log out</a>
-              </div>
-            </li>
-          </div>
-          
-        <!-- MODAL Test -->
-        <div *ngSwitchCase="!currentUser">
-
-          <button mdbBtn color="primary" (click)="openModal()">Login / Sign Up</button>
+      <li *ngIf="currentUser" class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <mdb-icon fas icon="user"></mdb-icon>{{ (currentUser.token.user.firstName + ' ' + currentUser.token.user.lastName) | titlecase }}<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+          <a class="dropdown-item waves-light"  mdbWavesEffect href="#" (click)="onLogout()">Log out</a>
         </div>
       </li>
     </ul>
