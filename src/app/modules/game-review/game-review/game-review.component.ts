@@ -13,7 +13,7 @@ import { AuthComponent } from '../../../core/auth/auth.component';
 export class GameReviewComponent implements OnInit {
 
   public results: any = [];
-  public results2: any = [];
+  public userReview: any = [];
   public allReviews: any = [];
 
 
@@ -63,13 +63,13 @@ public headline1: string;
     
     this._gameSearch.reviewGet(query)
       .subscribe(data => { 
-        this.results2 = data; console.log(data);
-        this.setScore(this.results2.score)
-        this.headline1=this.results2.headline
-        this.textArea1=this.results2.textArea
-       this.pros1=this.results2.pros
-       this.cons1=this.results2.cons
-      //  console.log(this.pros1)
+        this.userReview = data; console.log("userReview: ", this.userReview);
+        this.setScore(this.userReview.score)
+        this.headline1=this.userReview.headline
+        this.textArea1=this.userReview.textArea
+        this.pros1=this.userReview.pros
+        this.cons1=this.userReview.cons
+        //  console.log(this.pros1)
 
       }
       
@@ -80,13 +80,13 @@ public headline1: string;
   searchGetAll(gameid){
     
     this._gameSearch.reviewGetAll(gameid)
-      .subscribe(data => {this.allReviews = data; console.log(data)})
+      .subscribe(data => {this.allReviews = data; console.log("allReviews: ", this.allReviews)})
       
   }
   searchPost(gameid, score, userName, headline, pros, cons, textArea){
     
     this._gameSearch.reviewPost(gameid, this.score, userName, headline, pros, cons, textArea)
-      .subscribe(data => {this.results2 = data; console.log(data)
+      .subscribe(data => {this.userReview = data; console.log("userReview: ", this.userReview)
         this.searchGet(this.gameid)
       })
      
@@ -97,7 +97,7 @@ public headline1: string;
   searchPut(gameid, score, userName, headline, pros, cons, textArea){
     
     this._gameSearch.reviewPut(gameid,  this.score, userName, headline, pros, cons, textArea)
-      .subscribe(data => {this.results2 = data; console.log(data)
+      .subscribe(data => {this.userReview = data; console.log("userReview: ", this.userReview)
       this.searchGet(this.gameid)
       })
       
@@ -106,7 +106,7 @@ public headline1: string;
   searchDelete(gameid, score, userName, headline, pros, cons, textArea){
     
     this._gameSearch.reviewDelete(gameid, score, userName, headline, pros, cons, textArea)
-      .subscribe(data => {this.results2 = data; console.log(data)
+      .subscribe(data => {this.userReview = data; console.log("userReview: ", this.userReview)
       this.searchGet(this.gameid)
       })
       
