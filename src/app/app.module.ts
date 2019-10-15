@@ -36,6 +36,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/general-discussion/general-discussion.component';
 import { AuthGuard } from './core/guards/auth-guard.service';
 import { ForumPostComponent } from './modules/game-forum/game-forum/forum-post/forum-post.component';
+// import { AuthGuard } from './core/guards/auth-guard.service';
+import { RedirectComponent } from './redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { ForumPostComponent } from './modules/game-forum/game-forum/forum-post/f
     SafePipe,
     GeneralDiscussionComponent,
     ForumPostComponent,
+    RedirectComponent,
     
   ],
   entryComponents:[
@@ -73,7 +76,7 @@ import { ForumPostComponent } from './modules/game-forum/game-forum/forum-post/f
     HttpClient,
     GameSearch,
     GameReview,
-    AuthGuard,
+    // AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

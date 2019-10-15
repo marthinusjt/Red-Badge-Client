@@ -66,16 +66,15 @@
     <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
   </div>
 
+
+
+
+    <div *ngIf="!results2 || currentUser == null">
+<div *ngIf= "currentUser == null">
+<button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New POST</button>
 </div>
 
-    <!-- <div *ngIf="!results2 || currentUser == null"> -->
-    <div>
-      <!-- <div *ngIf= "currentUser == null">
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New POST</button>
-      </div> -->
-
-<!-- <div *ngIf="currentUser != null"> -->
-<div>
+<div *ngIf="currentUser != null">
     <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New POST</button>
     </div>
 
@@ -176,7 +175,7 @@
     </div>
 
 
-    <!-- <div *ngIf="results2 && currentUser != null"> -->
+    <div *ngIf="results2 && currentUser != null">
 <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.show()" mdbWavesEffect>PUT</button>
 <button type="button" mdbBtn color="primary" class="relative waves-light" (click)='searchDelete( gameid, 1, 1, 2, 2, 2, 2)' mdbWavesEffect>DELETE</button>
 <div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
@@ -268,13 +267,13 @@
   </div>
 </div>
 
-<!-- </div> -->
+</div>
 
 
 
 
-
-
+<div id="reviews"></div>
+<div style="height: 100vh; margin: 2em; border: solid 2px black">REVIEWS GO HERE</div>
 
 
 

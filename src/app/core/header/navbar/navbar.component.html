@@ -50,7 +50,9 @@
 
           <button mdbBtn color="primary" (click)="openModal()">Login / Sign Up</button>
         </div>
-      </div>
+      </li>
+    </ul>
+    <button *ngIf="!currentUser" mdbBtn color="primary" (click)="openModal()">Login / Sign Up</button>
   </links>
   <!-- Collapsible content -->
 
