@@ -1,0 +1,12 @@
+.breadcrumb-item {
+  cursor: default
+}
+
+.breadcrumb-item.active {
+  color: red!important;
+}
+
+mdb-breadcrumb-item.breadcrumb-item::before {
+  color: transparent;
+  cursor: default
+}

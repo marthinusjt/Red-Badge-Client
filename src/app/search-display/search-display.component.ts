@@ -2,6 +2,7 @@ import { Component, OnInit, Query } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { GameSearch } from '../game-search.service'
+import '../../assets/no-image.png';
 
 
 @Component({

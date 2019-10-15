@@ -22,6 +22,8 @@ import { GameForumComponent } from './modules/game-forum/game-forum/game-forum.c
 // service imports
 import { GameSearch } from './game-search.service';
 import { GameReview } from './game-review.service';
+import { AuthService } from './core/auth/auth.service';
+import { GameForumService } from './modules/game-forum/game-forum/game-forum.service';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
@@ -34,10 +36,13 @@ import { SafePipe } from './shared/safe.pipe';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/general-discussion/general-discussion.component';
+// import { AuthGuard } from './core/guards/auth-guard.service';
 import { RedirectComponent } from './redirect/redirect.component';
 import { AuthGuard } from './core/guards/auth-guard.service';
 import { AdminComponent } from './admin/admin.component';
 
+import { ForumPostComponent } from './modules/game-forum/game-forum/forum-display/forum-post/forum-post.component';
+import { ForumDisplayComponent } from './modules/game-forum/game-forum/forum-display/forum-display.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +60,8 @@ import { AdminComponent } from './admin/admin.component';
     RedirectComponent,
     AdminComponent,
     
+    ForumPostComponent,
+    ForumDisplayComponent,
     
   ],
   entryComponents:[
@@ -77,7 +84,9 @@ import { AdminComponent } from './admin/admin.component';
     HttpClient,
     GameSearch,
     GameReview,
-    AuthGuard,
+    AuthService,
+    GameForumService,
+    // AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
