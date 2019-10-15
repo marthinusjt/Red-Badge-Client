@@ -8,6 +8,8 @@ a {
     font-size: 6em;
     font-weight: 100;
     letter-spacing: 0.2em;
+    font-style: italic;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .result {
@@ -15,6 +17,7 @@ a {
     border-top: solid 1px lightgray;
     font-weight: 100;
 }
+
 .result-title {
     font-size: 1.4em;
     letter-spacing: 0.05em;
