@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./redirect.component.scss']
 })
 export class RedirectComponent implements OnInit {
-  public direct: string;
+  public direct: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,9 +17,11 @@ export class RedirectComponent implements OnInit {
 
   ngOnInit() {
     this.direct = JSON.parse(localStorage.getItem('redirect'))
-    console.log(this.direct)
-    
+    //console.log(this.direct)
+
+    localStorage.removeItem('redirect');
     if (this.direct==null) {this.router.navigate([`/`])}
+    // if (this.direct==null) {window.history.go(-1);}
     this.router.navigate([`/${this.direct.redirect}`])
   }
 

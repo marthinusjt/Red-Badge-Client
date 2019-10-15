@@ -37,6 +37,7 @@ import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/gene
 import { RedirectComponent } from './redirect/redirect.component';
 import { AuthGuard } from './core/guards/auth-guard.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { AuthGuard } from './core/guards/auth-guard.service';
     SafePipe,
     GeneralDiscussionComponent,
     RedirectComponent,
+    
     
   ],
   entryComponents:[

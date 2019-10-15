@@ -16,7 +16,7 @@ export class AuthComponent implements OnInit {
     isLoginPage = true;
     isLoading = false;
     error: string = null;
-    public direct: string;
+    public direct: any;
 
     
 
@@ -69,6 +69,10 @@ export class AuthComponent implements OnInit {
 
     onSubmit () {
         
+
+       
+
+
         if(!this.validatingForm.valid){
             return;
         }
@@ -91,13 +95,14 @@ export class AuthComponent implements OnInit {
                 
 
                 if (localStorage.getItem('currentUser') !== null) {
-                    console.log('test');
+                    //console.log('test');
                     this.authService.isLoggedIn = true;
                 this.modalService.hide(1)
                 
 
                     return of(this.authService.isLoggedIn,
-                        this.router.navigate(['/redirect'])  );
+                        this.router.navigate(['/redirect'],  { relativeTo: this.route, skipLocationChange: true })
+                          );
                 };
 
             }, errorMessage => {
@@ -110,7 +115,7 @@ export class AuthComponent implements OnInit {
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 // this.modalService.hide(1)
                 //location.reload();
-                this.router.navigate(['/redirect'])
+                this.router.navigate([this.direct])
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
