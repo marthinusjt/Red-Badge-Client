@@ -115,7 +115,7 @@ export class AuthComponent implements OnInit {
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 // this.modalService.hide(1)
                 //location.reload();
-                this.router.navigate([this.direct])
+                this.router.navigate(['/redirect'],  { relativeTo: this.route, skipLocationChange: true })
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;
