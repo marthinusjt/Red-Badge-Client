@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.currentUser);
+    localStorage.setItem('redirect', JSON.stringify({ redirect: this.direct }));
 
     for(let i=0; i <this.route.snapshot.url.length; i++){
       //console.log(this.route.snapshot.url[i].path)

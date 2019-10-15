@@ -17,6 +17,7 @@ export class AuthComponent implements OnInit {
     isLoading = false;
     error: string = null;
     public direct: any;
+    public resData: any;
 
     
 
@@ -88,13 +89,20 @@ export class AuthComponent implements OnInit {
                 
                 resData => {
                 console.log(resData);
+                this.resData=resData
+                //console.log(this.resData.user.id);
                 //this.direct = JSON.parse(localStorage.getItem('redirect'))
-                localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                //localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 //this.modalService.hide(1)
                 //location.reload();
+                if(this.resData.user.banned){
+                    return alert('warning this user is banned')
+                }else{
+                    localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                }
                 
 
-                if (localStorage.getItem('currentUser') !== null) {
+                 if (localStorage.getItem('currentUser') !== null) {
                     //console.log('test');
                     this.authService.isLoggedIn = true;
                 this.modalService.hide(1)

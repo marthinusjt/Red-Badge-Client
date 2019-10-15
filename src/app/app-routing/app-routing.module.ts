@@ -11,11 +11,13 @@ import { GameForumComponent } from '../modules/game-forum/game-forum/game-forum.
 import { GeneralDiscussionComponent } from '../modules/game-forum/game-forum/general-discussion/general-discussion.component';
 import { RedirectComponent } from '../redirect/redirect.component';
 import { AuthGuard } from '../core/guards/auth-guard.service';
+import { AdminComponent} from '../admin/admin.component'
 
 const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'search/:searching', component: SearchDisplayComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
+    { path: 'admin', component: AdminComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
     { path: 'forum/11195', component: GameForumComponent, children: [
         {path: 'generalDiscussion', component: GeneralDiscussionComponent}

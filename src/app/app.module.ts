@@ -36,6 +36,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/general-discussion/general-discussion.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { AuthGuard } from './core/guards/auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AuthGuard } from './core/guards/auth-guard.service';
     SafePipe,
     GeneralDiscussionComponent,
     RedirectComponent,
+    AdminComponent,
     
     
   ],
