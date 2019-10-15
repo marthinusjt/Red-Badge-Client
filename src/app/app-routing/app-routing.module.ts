@@ -19,9 +19,9 @@ const routes: Routes = [
     { path: 'search/:searching', component: SearchDisplayComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
-    { path: 'forum/11195', component: GameForumComponent},
-    { path: 'forum/11195/generalDiscussion', component: GeneralDiscussionComponent },
-    { path: 'forum/11195/generalDiscussion/topic', component: ForumDisplayComponent },
+    { path: 'forum/:gameid', component: GameForumComponent},
+    { path: 'forum/:gameid/generalDiscussion', component: GeneralDiscussionComponent },
+    { path: 'forum/:gameid/generalDiscussion/topic', component: ForumDisplayComponent },
     { path: 'forum/:gameid', component: ForumPostComponent },
     { path: 'redirect', component: RedirectComponent },
     // place paths above here
