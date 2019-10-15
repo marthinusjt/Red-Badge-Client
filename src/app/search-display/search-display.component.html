@@ -61,6 +61,16 @@
           <div class='result-tag' *ngFor='let platform of result.platforms'>{{ platform.abbreviation }}</div>
         </div>
       </div>
+      <div class="col-2 text-right">
+        <div style="z-index: 1300" class="btn-group-vertical" role="group" aria-label="Vertical button group">
+          <a routerLink="/review/{{ result.id }}#reviews">
+            <button  mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
+          </a>
+          <a routerLink="/forum/{{ result.id }}">
+            <button mdbBtn type="button" color="primary" class="waves-light" outline="true" mdbWavesEffect>Forums</button>
+          </a>
+        </div>
+      </div>
     </a>
   </div>
 

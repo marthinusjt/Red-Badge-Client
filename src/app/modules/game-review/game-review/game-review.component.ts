@@ -14,6 +14,8 @@ export class GameReviewComponent implements OnInit {
 
   public results: any = [];
   public results2: any = [];
+  public allReviews: any = [];
+
 
   public searching: any = false;
   public gameid: string;
@@ -51,9 +53,9 @@ public headline1: string;
         .subscribe(data => {
           this.results = data;
           console.log('IGDB data:', data);
+          this.results[0].videos ? this.carousel = 'video' :
           this.results[0].screenshots ? this.carousel = 'screenshots' :
-          this.results[0].artworks ? this.carousel = 'artwork' :
-          this.results[0].videos ? this.carousel = 'video' : null;
+          this.results[0].artworks ? this.carousel = 'artwork' : null
         })
     }
 
@@ -78,7 +80,7 @@ public headline1: string;
   searchGetAll(gameid){
     
     this._gameSearch.reviewGetAll(gameid)
-      .subscribe(data => {this.results2 = data; console.log(data)})
+      .subscribe(data => {this.allReviews = data; console.log(data)})
       
   }
   searchPost(gameid, score, userName, headline, pros, cons, textArea){
@@ -127,7 +129,7 @@ public headline1: string;
 
 
   ngOnInit() {
-    this.gameid = this.route.snapshot.paramMap.get('gameid');
+    this.gameid = this.route.snapshot.paramMap.get('gameid').split('#')[0];
     this.gameFetch(this.gameid)
     this.searchGetAll(this.gameid)
 

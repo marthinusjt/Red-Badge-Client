@@ -2,6 +2,7 @@ import { Component, OnInit, Query } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { GameSearch } from '../game-search.service'
+import '../../assets/no-image.png';
 
 
 @Component({
@@ -24,7 +25,12 @@ export class SearchDisplayComponent implements OnInit {
     private _gameSearch: GameSearch,
     private route: ActivatedRoute,
     private router: Router,
-    ) {}
+    ) {
+      route.params.subscribe(val => {
+        this.query = this.route.snapshot.paramMap.get('searching');
+        this.search(this.query)
+      });
+    }
 
 
     
