@@ -25,7 +25,12 @@ export class SearchDisplayComponent implements OnInit {
     private _gameSearch: GameSearch,
     private route: ActivatedRoute,
     private router: Router,
-    ) {}
+    ) {
+      route.params.subscribe(val => {
+        this.query = this.route.snapshot.paramMap.get('searching');
+        this.search(this.query)
+      });
+    }
 
 
     

@@ -1,4 +1,4 @@
-.rating-buttons>*{
+.rating-buttons > * {
     padding:1.8em;
     margin: 1px;
 }
@@ -8,39 +8,88 @@
     overflow-y: auto;
 }
 
-/* ::-webkit-scrollbar {
-    visibility: hidden;
-  } */
-.game-name{
-    letter-spacing: 0.1em;
-    font-size: 2.5em;
-    margin: 1em;
-    text-align: center;
+.game-header {
+    border-bottom: solid 1px #e9ecef;
+    margin-bottom: 4em;
+    margin-top: 2em;
 }
 
-.game-tag-type {
-    margin-left: 1em;
+.game-name {
+    letter-spacing: 0.1em;
+    font-size: 2.6em;
+    /* margin: 1em; */
+    text-align: right;
+    padding-right: 1em;
+    
 }
+
+.game-score {
+    font-size: 2.5em;
+    text-align: center;
+    padding: 0;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    color: whitesmoke;
+    border-radius: 4px;
+}
+
+.high-score {
+    background-color: rgb(59, 223, 59);
+}
+
+.med-score {
+    background-color: rgb(240, 190, 26);
+}
+
+.low-score {
+    background-color: rgb(209, 12, 12);
+}
+
 
 /* vertical space between game-info rows */
-.game-info>.row{
-    /* margin-top: 2em; */
+/* .game-info> .row {
     margin-bottom: 1em;
-}
+} */
 
 /* horizontal space between each game-info tag */
-.game-tag{
+.game-tag {
     margin-left: 1em;
+    margin-bottom: 1em;
     font-size: 1.3em;
+    padding: 0.2em;
 }
 
-.game-summary{
+.game-summary {
     margin-top: 2em;
-    padding-top: 2em;
+    margin-bottom: 4em;
+    padding: 2em;
     border-top: solid 1px #e9ecef;
+    /* border-bottom: solid 1px #e9ecef; */
     font-size: 1.1em;
 }
 
-.media-buttons{
+.media-buttons {
     margin-top: -1em;
+}
+
+.info-padding {
+    padding-left: 2em;
+}
+
+.reviews-header {
+    letter-spacing: 0.05em;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 1em;
+    padding: 0.2em;
+}
+
+.review-tag {
+    font-size: 0.7em;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+.review-card {
+    margin-bottom: 2em;
 }
