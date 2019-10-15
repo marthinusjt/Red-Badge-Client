@@ -115,7 +115,7 @@ public headline1: string;
   }
 
   openModal() {
-    localStorage.setItem('redirect', JSON.stringify({ redirect: `review/${this.gameid}` }));
+    
     this.modalRef = this.modalService.show(AuthComponent);
   }
 
