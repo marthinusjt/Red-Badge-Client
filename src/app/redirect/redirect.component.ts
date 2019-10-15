@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./redirect.component.scss']
 })
 export class RedirectComponent implements OnInit {
-  public direct: string;
+  public direct: any;
 
   constructor(
     private route: ActivatedRoute,
