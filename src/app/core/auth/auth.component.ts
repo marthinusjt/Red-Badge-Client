@@ -15,7 +15,8 @@ export class AuthComponent implements OnInit {
     isLoginPage = true;
     isLoading = false;
     error: string = null;
-    public direct: string;
+    public direct: any;
+    public resData: any;
 
     
 
@@ -68,6 +69,10 @@ export class AuthComponent implements OnInit {
 
     onSubmit () {
         
+
+       
+
+
         if(!this.validatingForm.valid){
             return;
         }
@@ -83,22 +88,28 @@ export class AuthComponent implements OnInit {
                 
                 resData => {
                 console.log(resData);
+                this.resData=resData
+                //console.log(this.resData.user.id);
                 //this.direct = JSON.parse(localStorage.getItem('redirect'))
-                localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                //localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 //this.modalService.hide(1)
                 //location.reload();
+                if(this.resData.user.banned){
+                    return alert('warning this user is banned')
+                }else{
+                    localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
+                }
                 
 
-                if (localStorage.getItem('currentUser') !== null) {
-                    console.log('test');
-                    this.modalService.hide(1)
-                    location.reload();
+                 if (localStorage.getItem('currentUser') !== null) {
+                    //console.log('test');
                     this.authService.isLoggedIn = true;
                 this.modalService.hide(1)
                 
 
                     return of(this.authService.isLoggedIn,
-                        this.router.navigate(['/redirect'])  );
+                        this.router.navigate(['/redirect'],  { relativeTo: this.route, skipLocationChange: true })
+                          );
                 };
 
             }, errorMessage => {
@@ -111,7 +122,7 @@ export class AuthComponent implements OnInit {
                 localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
                 // this.modalService.hide(1)
                 //location.reload();
-                this.router.navigate(['/redirect'])
+                this.router.navigate(['/redirect'],  { relativeTo: this.route, skipLocationChange: true })
             }, errorMessage => {
                 console.log(errorMessage);
                 this.error = errorMessage;

@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<mdb-breadcrumb customClass="black-text blue-grey lighten-4">
+    <mdb-breadcrumb-item>
+        <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>Home
+    </mdb-breadcrumb-item>
+    <mdb-breadcrumb-item>
+        <mdb-icon fas icon="angle-double-right" class="mr-1" ></mdb-icon>Forums
+    </mdb-breadcrumb-item>
+    <mdb-breadcrumb-item>
+        <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>General Discussion
+    </mdb-breadcrumb-item>
+    <mdb-breadcrumb-item>
+        <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>Topic Name
+    </mdb-breadcrumb-item>
+    <mdb-breadcrumb-item class="active">
+        <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>New Reply
+    </mdb-breadcrumb-item>
+</mdb-breadcrumb>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <!-- <form (ngSubmit)="onSubmit()" [formGroup]="createForumPost"> -->
+                <div class="md-form">
+                    <mdb-icon fas icon="pencil-alt" class="prefix"></mdb-icon>
+                    <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
+                    <label for="form7">What is on your mind?</label>
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            <!-- </form> -->
+        </div>
+    </div>    
+</div>
+
