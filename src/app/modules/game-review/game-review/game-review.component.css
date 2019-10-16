@@ -31,6 +31,7 @@
     padding-right: 0.1em;
     color: whitesmoke;
     border-radius: 4px;
+    max-height: 1.2em;
 }
 
 .high-score {
@@ -51,11 +52,15 @@
     margin-bottom: 1em;
 } */
 
+.game-tag-type {
+    font-size: 0.85em;
+}
+
 /* horizontal space between each game-info tag */
 .game-tag {
     margin-left: 1em;
     margin-bottom: 1em;
-    font-size: 1.3em;
+    font-size: 1em;
     padding: 0.2em;
 }
 
@@ -78,9 +83,8 @@
 
 .reviews-header {
     letter-spacing: 0.05em;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
-    margin: 1em;
     padding: 0.2em;
 }
 
@@ -92,4 +96,13 @@
 
 .review-card {
     margin-bottom: 2em;
+}
+
+.game-media, .game-info {
+    margin-bottom: 2em;
+}
+
+.user-review-card {
+    border: solid 1px #4285f4;
+    padding: 1em;
 }
