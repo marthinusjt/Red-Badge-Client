@@ -1,6 +1,9 @@
 .rating-buttons > * {
-    padding:1.8em;
-    margin: 1px;
+    padding: 0;
+    margin: 0.5em;
+    width: 3em;
+    height: 3em;
+    text-align: center;
 }
 
 .modal-body {
@@ -102,7 +105,7 @@
     margin-bottom: 2em;
 }
 
-.user-review-card {
+/* .user-review-card {
     border: solid 1px #4285f4;
     padding: 1em;
-}
+} */

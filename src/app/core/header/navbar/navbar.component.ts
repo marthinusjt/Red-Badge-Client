@@ -6,7 +6,7 @@ import { AuthService } from '../../auth/auth.service';
 
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
     private modalService: MDBModalService,
     private authService: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -48,6 +49,8 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('currentUser');
     this.currentUser = undefined;
     this.authService.isLoggedIn = false;
+    this.router.navigate(['redirect'])
+
 
     
   }
