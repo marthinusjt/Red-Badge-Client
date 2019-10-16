@@ -68,7 +68,6 @@ export class SearchDisplayComponent implements OnInit {
 
   ngOnInit() {
     this.query = this.route.snapshot.paramMap.get('searching');
-    this.search(this.query)
 
 
 

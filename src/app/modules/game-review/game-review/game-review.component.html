@@ -94,15 +94,14 @@
     <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
   </div>
   
-  <div *ngIf="!results2 || currentUser == null">
+  <div *ngIf="userReview.length == 0 || currentUser == null">
     <div *ngIf="currentUser == null">
-      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New
-        POST</button>
+      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>Write a Review</button>
     </div>
   
     <div *ngIf="currentUser != null">
       <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()"
-        mdbWavesEffect>New POST</button>
+        mdbWavesEffect>Write a Review</button>
     </div>
   
     <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
@@ -113,12 +112,14 @@
             <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
               <span aria-hidden="true">×</span>
             </button>
-            <h4 class="modal-title w-100" id="myModalLabel">New Review</h4>
+            <h4 class="modal-title w-100" id="myModalLabel">Write a Review</h4>
           </div>
           <div class="modal-body">
   
-            <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
-              <div class=" btn-group  mr-2" role="group" aria-label="First group">
+            
+            <p>Score:</p>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class=" btn-group mr-2 rating-buttons" role="group" aria-label="First group">
                 <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                   mdbCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(1)'>1</button>
                 <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel"
@@ -143,31 +144,31 @@
             </div>
   
             <div class="md-form mb-5">
-              <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+              <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
               <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate
                 [formControl]="contactFormModalSubject">
-              <label for="form8">headline</label>
+              <label for="form8">Headline</label>
             </div>
   
             <div class="md-form">
-              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+              <mdb-icon fas icon="plus" class="prefix grey-text"></mdb-icon>
               <textarea #pros type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
                 [formControl]="contactFormModalMessage"></textarea>
-              <label for="form8">pros</label>
+              <label for="form8">Pros</label>
             </div>
   
             <div class="md-form">
-              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+              <mdb-icon fas icon="minus" class="prefix grey-text"></mdb-icon>
               <textarea #cons type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
                 [formControl]="contactFormModalMessage"></textarea>
-              <label for="form8">cons</label>
+              <label for="form8">Cons</label>
             </div>
   
             <div class="md-form">
               <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
               <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate
                 [formControl]="contactFormModalMessage"></textarea>
-              <label for="form8">textArea</label>
+              <label for="form8">Thoughts</label>
             </div>
   
           </div>
@@ -176,7 +177,7 @@
               (click)="basicModal.hide()" mdbWavesEffect>Close</button>
             <button type="button" mdbBtn color="primary" class="relative waves-light"
               (click)='searchPost( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)'
-              mdbWavesEffect>POST</button>
+              mdbWavesEffect [disabled]="!(score && headline.value && pros.value && cons.value && textArea.value)">Submit</button>
   
   
           </div>
@@ -186,11 +187,11 @@
   </div>
   
   
-  <div *ngIf="results2 && currentUser != null">
+  <div *ngIf="userReview.length > 0 && currentUser != null">
     <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.show()"
-      mdbWavesEffect>PUT</button>
+      mdbWavesEffect>Edit</button>
     <button type="button" mdbBtn color="primary" class="relative waves-light"
-      (click)='searchDelete( gameid, 1, 1, 2, 2, 2, 2)' mdbWavesEffect>DELETE</button>
+      (click)='searchDelete( gameid, 1, 1, 2, 2, 2, 2)' mdbWavesEffect>Delete</button>
     <div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog"
       aria-labelledby="myBasicModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -203,8 +204,8 @@
           </div>
           <div class="modal-body">
   
-            <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
-              <div class=" btn-group  mr-2" role="group" aria-label="First group">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class=" btn-group mr-2 rating-buttons" role="group" aria-label="First group">
                 <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                   mdbCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(1)'>1</button>
                 <button mdbBtn type="button" color="default" size="sm" autocomplete="off" [(ngModel)]="singleModel"
@@ -274,13 +275,14 @@
   <br/>
   <br/>
 
-  <div class="user-review-card" *ngIf="userReview">
-    <div class="row" style="margin: 1em;">YOUR REVIEW:</div>
+  <div class="user-review-card" *ngIf="userReview.length > 0">
+    <div class="row" style="margin: 1em; background-color:#e9ecef;">YOUR REVIEW:</div>
     <mdb-card class="review-card">
       <mdb-card-body>
         <mdb-card-title>
           <h4>"{{userReview.headline}}"</h4>
         </mdb-card-title>
+        <mdb-card-text>By: {{userReview.userName}}</mdb-card-text>
         <!-- <mdb-card-text>by: {{review.userName}}</mdb-card-text> -->
         <div class="row">
           <p class="review-tag">PROS:</p>
@@ -325,7 +327,7 @@
       <mdb-card-title>
         <h4>"{{review.headline}}"</h4>
       </mdb-card-title>
-      <mdb-card-text>by: {{review.userName}}</mdb-card-text>
+      <mdb-card-text>By: {{review.userName}}</mdb-card-text>
       <div class="row">
         <p class="review-tag">PROS:</p>
         <p>{{review.pros}}</p>
