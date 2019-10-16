@@ -23,10 +23,10 @@ const routes: Routes = [
     { path: 'review/:gameid', component: GameReviewComponent },
     { path: 'admin', component: AdminComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
-    { path: 'forum/:gameid', component: GameForumComponent},
-    { path: 'forum/:gameid/generalDiscussion', component: GeneralDiscussionComponent },
-    { path: 'forum/:gameid/generalDiscussion/topic', component: ForumDisplayComponent },
-    { path: 'forum/:gameid/generalDiscussion/topic/newReply', component: ForumPostComponent },
+    { path: 'forumTopic/:gameid', component: GameForumComponent},
+    { path: 'forumTopic/:gameid/:category', component: GeneralDiscussionComponent },
+    { path: 'forumTopic/:gameid/GeneralDiscussion', component: ForumDisplayComponent },
+    { path: 'forumReply/:gameid/GeneralDiscussion/:topicId', component: ForumPostComponent },
     { path: 'redirect', component: RedirectComponent },
     // place paths above here
     // { path: 'not-found', component: PageNotFoundComponent }, // Static Message
