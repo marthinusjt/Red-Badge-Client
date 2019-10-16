@@ -17,27 +17,37 @@
                  value= {{result.lastName}}>
 </div>   
 <div>
-<label>fiNrstame</label>
+<label>firstName</label>
         <input #firstName type="text"
                          value= {{result.firstName}}>
     </div>                                 
     <div>
 <label >Email</label>
-        <input #Email type="text"
+        <input #email type="text"
                    value= {{result.email}}>
     </div>        
 
 <!-- <mdb-checkbox #banned [default]="true">is banned</mdb-checkbox> -->
 
-<mdb-checkbox #admin  [default]="true">is admin</mdb-checkbox>
+<div *ngIf = "result.admin">
+    <input  type="checkbox"  (click)='setAdmin(false, result.id)' checked/> is admin
+    </div>
+    
+    <div *ngIf = "!result.admin">
+        <input  type="checkbox"  (click)='setAdmin(true, result.id)' /> is admin
+        </div>
+
 
 <div *ngIf = "result.banned">
-<input #banned type="checkbox" value = result.banned checked/> is banned
+<input  type="checkbox"  (click)='setBanned(false, result.id)' checked/> is banned
 </div>
+
 <div *ngIf = "!result.banned">
-        <input #banned type="checkbox" value = result.banned/> is banned
-        </div>
-    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminPut(firstName.value, lastName.value, userName.value, false, banned.value, result.id)' mdbWavesEffect>PUT</button>
+    <input  type="checkbox"  (click)='setBanned(true, result.id)' /> is banned
+    </div>
+
+    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminPut(firstName.value, lastName.value, userName.value, result.admin, result.banned, result.id, email.value)' mdbWavesEffect>PUT</button>
+
 </div>
 
 
