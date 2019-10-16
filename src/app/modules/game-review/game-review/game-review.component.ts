@@ -8,7 +8,7 @@ import { AuthComponent } from '../../../core/auth/auth.component';
 @Component({
   selector: 'app-game-review',
   templateUrl: './game-review.component.html',
-  styleUrls: ['./game-review.component.css']
+  styleUrls: ['./game-review.component.scss']
 })
 export class GameReviewComponent implements OnInit {
 
