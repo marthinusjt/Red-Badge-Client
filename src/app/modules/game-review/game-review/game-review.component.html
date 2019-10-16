@@ -18,7 +18,7 @@
   </div>
   <div class="row">
 
-    <div class="col-6 game-media">
+    <div class="col-12 col-lg-6 game-media">
       <mdb-card class="row">
         <div class="row mx-auto justify-content-center media-buttons">
           <div class="btn-group" role="group" aria-label="Basic example">
@@ -61,7 +61,7 @@
       </mdb-card>
     </div>
 
-    <div class="col-6 game-info">
+    <div class="col-12 col-lg-6 game-info">
       <div class="info-padding">
         <!-- <div *ngIf="results[0].total_rating" class="row">
           <p class="game-tag-type">User Score:</p>
@@ -96,52 +96,7 @@
   <div class="row game-summary">
     <div class="col">{{results[0].storyline ? results[0].storyline : results[0].summary}}</div>
   </div>
-
-  <div class="row">
-    <div class="col-4">
-      <mdb-card class="reviews-header">
-        {{results[0].total_rating_count}} Ratings
-      </mdb-card>
-    </div>
-    <div class="col-4">
-      <mdb-card class="reviews-header">
-        {{allReviews.length}} Reviews
-      </mdb-card>
-    </div>
-    <div class="col-4">
-      <mdb-card class="reviews-header">
-        User Score: {{results[0].total_rating.toFixed(1)}} / 100
-      </mdb-card>
-    </div>
-  </div>
-  <br/>
-  <br/>
-
-  <mdb-card class="review-card" *ngFor="let review of allReviews">
-    <mdb-card-body>
-      <mdb-card-title>
-        <h4>"{{review.headline}}"</h4>
-      </mdb-card-title>
-      <mdb-card-text>by: {{review.userName}}</mdb-card-text>
-      <div class="row">
-        <p class="review-tag">PROS:</p>
-        <p>{{review.pros}}</p>
-      </div>
-      <div class="row">
-        <p class="review-tag">CONS:</p>
-        <p>{{review.cons}}</p>
-      </div>
-      <div class="row">
-        <p class="review-tag">THOUGHTS:</p>
-        <p>{{review.textArea}}</p>
-      </div>
-    </mdb-card-body>
-  </mdb-card>
-
-  <!-- remove <br>s later -->
-  <br/>
-  <br/> 
-
+  
   <div *ngIf="!results2 || currentUser == null">
     <div *ngIf="currentUser == null">
       <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New
@@ -192,8 +147,7 @@
   
             <div class="md-form mb-5">
               <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
-              <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate
-                [formControl]="contactFormModalSubject">
+              <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalSubject">
               <label for="form8">headline</label>
             </div>
   
@@ -318,6 +272,76 @@
       </div>
     </div>
   </div>
+  
+  <br/>
+  <br/>
+
+  <div class="user-review-card" *ngIf="userReview">
+    <div class="row" style="margin: 1em;">YOUR REVIEW:</div>
+    <mdb-card class="review-card">
+      <mdb-card-body>
+        <mdb-card-title>
+          <h4>"{{userReview.headline}}"</h4>
+        </mdb-card-title>
+        <!-- <mdb-card-text>by: {{review.userName}}</mdb-card-text> -->
+        <div class="row">
+          <p class="review-tag">PROS:</p>
+          <p>{{userReview.pros}}</p>
+        </div>
+        <div class="row">
+          <p class="review-tag">CONS:</p>
+          <p>{{userReview.cons}}</p>
+        </div>
+        <div class="row">
+          <p class="review-tag">THOUGHTS:</p>
+          <p>{{userReview.textArea}}</p>
+        </div>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+  <br/>
+  <br/>
+
+  <div class="row">
+    <div class="col-4">
+      <mdb-card class="reviews-header">
+        {{results[0].total_rating_count}} Ratings
+      </mdb-card>
+    </div>
+    <div class="col-4">
+      <mdb-card class="reviews-header">
+        {{allReviews.length}} Reviews
+      </mdb-card>
+    </div>
+    <div class="col-4">
+      <mdb-card class="reviews-header">
+        User Score: {{results[0].total_rating.toFixed(1)}} / 100
+      </mdb-card>
+    </div>
+  </div>
+  <br/>
+  <br/>
+
+  <mdb-card class="review-card" *ngFor="let review of allReviews">
+    <mdb-card-body>
+      <mdb-card-title>
+        <h4>"{{review.headline}}"</h4>
+      </mdb-card-title>
+      <mdb-card-text>by: {{review.userName}}</mdb-card-text>
+      <div class="row">
+        <p class="review-tag">PROS:</p>
+        <p>{{review.pros}}</p>
+      </div>
+      <div class="row">
+        <p class="review-tag">CONS:</p>
+        <p>{{review.cons}}</p>
+      </div>
+      <div class="row">
+        <p class="review-tag">THOUGHTS:</p>
+        <p>{{review.textArea}}</p>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
 
 </div>
 

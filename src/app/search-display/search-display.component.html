@@ -46,13 +46,13 @@
       <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
       <p class='col-4 result-title'>{{ result.name }}</p>
       <div class="col">
-        <div class="row bottom-margin">
+        <div class="row">
           <b>Original Release Date:</b>
           <div class='result-tag'>
             {{ result.release_dates ? result.release_dates[0].human : 'N/A' }}
           </div>
         </div>
-        <div class="row bottom-margin">
+        <div class="row">
           <b>Genres:</b>
           <div class='result-tag' *ngFor='let genre of result.genres'>
             {{ genre.name == 'Platform' ? 'Platformer' : genre.name }}</div>
@@ -67,7 +67,7 @@
           <a routerLink="/review/{{ result.id }}#reviews">
             <button  mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
           </a>
-          <a routerLink="/forum/{{ result.id }}">
+          <a routerLink="/forumTopic/{{ result.id }}">
             <button mdbBtn type="button" color="primary" class="waves-light" outline="true" mdbWavesEffect>Forums</button>
           </a>
         </div>
