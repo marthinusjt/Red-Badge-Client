@@ -111,7 +111,7 @@
         </mdb-card-title> -->
         <mdb-card-text>{{userReview.userName}}</mdb-card-text>
         <div class="row">
-          <h5>{{userReview.score}}</h5><p style="font-size: 0.8em">/10</p><h4 style="margin-left: 1em">"{{userReview.headline}}"</h4>
+          <h4>{{userReview.score}}</h4><p style="font-size: 0.8em">/10</p><h4 style="margin-left: 1em">"{{userReview.headline}}"</h4>
         </div>
         <br/>
         <div class="row">
@@ -243,6 +243,8 @@
           </div>
           <div class="modal-body">
 
+
+            <p>Score:</p>
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
               <div class=" btn-group mr-2 rating-buttons" role="group" aria-label="First group">
                 <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
@@ -270,30 +272,30 @@
             </div>
 
             <div class="md-form mb-5">
-              <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
-              <input #headline2 type="text" id="form32" class="form-control" mdbInput mdbValidate value={{headline1}} maxlength="50">
-              <label for="form8">headline</label>
+              <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
+              <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate>
+              <label for="form8">Headline</label>
+            </div>
+
+            <div class="md-form">
+              <mdb-icon fas icon="plus" class="prefix grey-text"></mdb-icon>
+              <textarea #pros type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                mdbValidate></textarea>
+              <label for="form8">Pros</label>
+            </div>
+
+            <div class="md-form">
+              <mdb-icon fas icon="minus" class="prefix grey-text"></mdb-icon>
+              <textarea #cons type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                mdbValidate></textarea>
+              <label for="form8">Cons</label>
             </div>
 
             <div class="md-form">
               <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-              <textarea #pros2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate maxlength="250"
-                value={{pros1}}></textarea>
-              <label for="form8">pros</label>
-            </div>
-
-            <div class="md-form">
-              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-              <textarea #cons2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate maxlength="250"
-                value={{cons1}}></textarea>
-              <label for="form8">cons</label>
-            </div>
-
-            <div class="md-form">
-              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-              <textarea #textArea2 type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput mdbValidate maxlength="250"
-                value={{textArea1}}></textarea>
-              <label for="form8">textArea</label>
+              <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                mdbValidate></textarea>
+              <label for="form8">Thoughts</label>
             </div>
 
           </div>
@@ -303,7 +305,7 @@
               (click)="basicModal2.hide()" mdbWavesEffect>Close</button>
             <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.hide()"
               (click)='searchPut( gameid, 1, 1, headline2.value, pros2.value, cons2.value, textArea2.value)'
-              mdbWavesEffect>PUT</button>
+              mdbWavesEffect>Submit</button>
           </div>
 
         </div>
@@ -339,7 +341,7 @@
       </mdb-card-title> -->
       <mdb-card-text>{{review.userName}}</mdb-card-text>
       <div class="row">
-        <h5>{{review.score}}</h5><p style="font-size: 0.8em">/10</p><h4 style="margin-left: 1em">"{{review.headline}}"</h4>
+        <h4>{{review.score}}</h4><p style="font-size: 0.8em">/10</p><h4 style="margin-left: 1em">"{{review.headline}}"</h4>
       </div>
       <br/>
       <div class="row">
