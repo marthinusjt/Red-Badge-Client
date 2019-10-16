@@ -28,8 +28,17 @@
 
 <hr>
 
-<h3><a routerLink="/forum/11195/generalDiscussion/topic">Topic Name</a></h3>
-<br>
-<h3>Awesome Topic Name</h3>
+<div class="container">
+  <div *ngFor="let result of results" class="row">
+    {{ result.topic }}
+    {{ result.id }}
+  </div>
+</div>
+
+
+
+<!-- <h3><a routerLink="/forumReply/11195/generalDiscussion/topic">Topic Name</a></h3> -->
+<!-- <br> -->
+<!-- <h3>Awesome Topic Name</h3> -->
 
 <!-- <app-forum-display></app-forum-display> -->
