@@ -1,11 +1,35 @@
+<app-navbar></app-navbar>
+
 <mdb-breadcrumb customClass="black-text blue-grey lighten-4">
-    <mdb-breadcrumb-item>
-      <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon> Home
-    </mdb-breadcrumb-item>
-    <mdb-breadcrumb-item>
-      <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon> Library
-    </mdb-breadcrumb-item>
-    <mdb-breadcrumb-item class="active">
-      <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon> Data
-    </mdb-breadcrumb-item>
-  </mdb-breadcrumb>
+  <mdb-breadcrumb-item class="hide">
+    <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>Home
+  </mdb-breadcrumb-item>
+  <mdb-breadcrumb-item>
+    <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>Forums
+  </mdb-breadcrumb-item>
+  <mdb-breadcrumb-item class="active">
+    <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>General Discussion
+  </mdb-breadcrumb-item>
+</mdb-breadcrumb>
+
+<!-- <h1>{{result.name}}</h1> -->
+<hr>
+<nav aria-label="Page navigation example">
+  <ul class="pagination pg-blue">
+    <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
+    <button>New Topic</button>
+  </ul>
+</nav>
+
+
+<hr>
+
+<h3><a routerLink="/forum/11195/generalDiscussion/topic">Topic Name</a></h3>
+<br>
+<h3>Awesome Topic Name</h3>
+
+<!-- <app-forum-display></app-forum-display> -->

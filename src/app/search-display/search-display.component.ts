@@ -28,9 +28,10 @@ export class SearchDisplayComponent implements OnInit {
     ) {
       route.params.subscribe(val => {
         this.query = this.route.snapshot.paramMap.get('searching');
-        this.search(this.query)
+        this.search2(this.query)
       });
     }
+ 
 
 
     
@@ -68,6 +69,7 @@ export class SearchDisplayComponent implements OnInit {
 
   ngOnInit() {
     this.query = this.route.snapshot.paramMap.get('searching');
+    //this.search(this.query)
 
 
 

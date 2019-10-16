@@ -11,14 +11,21 @@ import { GameForumComponent } from '../modules/game-forum/game-forum/game-forum.
 import { GeneralDiscussionComponent } from '../modules/game-forum/game-forum/general-discussion/general-discussion.component';
 // import { AuthGuard } from '../core/guards/auth-guard.service';
 import { RedirectComponent } from '../redirect/redirect.component';
+import { AuthGuard } from '../core/guards/auth-guard.service';
+import { AdminComponent} from '../admin/admin.component'
+import { ForumDisplayComponent } from '../modules/game-forum/game-forum/forum-display/forum-display.component';
+import { ForumPostComponent } from '../modules/game-forum/game-forum/forum-display/forum-post/forum-post.component';
 
 const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'search/:searching', component: SearchDisplayComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
+    { path: 'admin', component: AdminComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
-    { path: 'forum/11195', component: GameForumComponent},
-    { path: 'forum/11195/generalDiscussion', component: GeneralDiscussionComponent },
+    { path: 'forum/:gameid', component: GameForumComponent},
+    { path: 'forum/:gameid/generalDiscussion', component: GeneralDiscussionComponent },
+    { path: 'forum/:gameid/generalDiscussion/topic', component: ForumDisplayComponent },
+    { path: 'forum/:gameid', component: ForumPostComponent },
     { path: 'redirect', component: RedirectComponent },
     // place paths above here
     { path: 'not-found', component: PageNotFoundComponent }, // Static Message
