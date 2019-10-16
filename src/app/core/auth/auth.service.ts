@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, of } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -11,7 +11,7 @@ export class AuthService {
     constructor(
         private http: HttpClient,
         ) {
-
+        this.isLoggedIn = false;
     }
 
     isAuthenticated() {
@@ -49,11 +49,12 @@ export class AuthService {
                 password: password
             },
         ).pipe(catchError(this.handleError));
+        
     }
 
-    isUserLoggedIn(): boolean {
-        return this.isLoggedIn;
-    }
+    // isUserLoggedIn(): boolean {
+    //     return this.isLoggedIn;
+    // }
 
     logout() {
         this.isLoggedIn = false;

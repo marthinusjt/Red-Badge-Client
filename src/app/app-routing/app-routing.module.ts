@@ -9,12 +9,13 @@ import { GameReviewComponent } from '../modules/game-review/game-review/game-rev
 import { SearchDisplayComponent } from './../search-display/search-display.component';
 import { GameForumComponent } from '../modules/game-forum/game-forum/game-forum.component';
 import { GeneralDiscussionComponent } from '../modules/game-forum/game-forum/general-discussion/general-discussion.component';
+import { AuthGuard } from '../core/guards/auth-guard.service';
 // import { AuthGuard } from '../core/guards/auth-guard.service';
 import { RedirectComponent } from '../redirect/redirect.component';
-import { AuthGuard } from '../core/guards/auth-guard.service';
 import { AdminComponent} from '../admin/admin.component'
 import { ForumDisplayComponent } from '../modules/game-forum/game-forum/forum-display/forum-display.component';
 import { ForumPostComponent } from '../modules/game-forum/game-forum/forum-display/forum-post/forum-post.component';
+
 
 const routes: Routes = [
     { path: '', component: SplashComponent },
@@ -22,15 +23,15 @@ const routes: Routes = [
     { path: 'review/:gameid', component: GameReviewComponent },
     { path: 'admin', component: AdminComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
-    { path: 'forum/:gameid', component: GameForumComponent},
-    { path: 'forum/:gameid/generalDiscussion', component: GeneralDiscussionComponent },
-    { path: 'forum/:gameid/generalDiscussion/topic', component: ForumDisplayComponent },
-    { path: 'forum/:gameid', component: ForumPostComponent },
+    { path: 'forumTopic/:gameid', component: GameForumComponent},
+    { path: 'forumTopic/:gameid/:category', component: GeneralDiscussionComponent },
+    { path: 'forumTopic/:gameid/GeneralDiscussion', component: ForumDisplayComponent },
+    { path: 'forumReply/:gameid/GeneralDiscussion/:topicId', component: ForumPostComponent },
     { path: 'redirect', component: RedirectComponent },
     // place paths above here
-    { path: 'not-found', component: PageNotFoundComponent }, // Static Message
+    // { path: 'not-found', component: PageNotFoundComponent }, // Static Message
     // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} }, // Dynamic Messagae
-    { path: '**', redirectTo: '/not-found' }, // ** - Wildcart Route !Has to be last in the routes!
+    // { path: '**', redirectTo: '/not-found' }, // ** - Wildcart Route !Has to be last in the routes!
 ];
 
 @NgModule({
