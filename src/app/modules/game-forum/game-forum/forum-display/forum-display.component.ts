@@ -13,11 +13,12 @@ export class ForumDisplayComponent implements OnInit {
 
   public topicResults: any = [];
   public replyResults: any = [];
-  public userTopic: any;
+  public userReply: any;
   public gameid: any;
   public category: string;
   // public id: any;
   public topicId: any;
+  public topic: {} = {};
 
   modalRef: MDBModalRef;
 
@@ -52,6 +53,8 @@ export class ForumDisplayComponent implements OnInit {
       .subscribe(data => {
         this.topicResults = data; 
         console.log(this.topicResults);
+        this.topic = this.topicResults.filter(e => {return e.id == this.topicId})[0];
+        console.log("Topic: ", this.topic);
       })
   }
 
@@ -60,8 +63,22 @@ export class ForumDisplayComponent implements OnInit {
       .subscribe(data => {
         this.replyResults = data; 
         console.log(this.replyResults);
+
       })
   }
+
+  createReply(query, category, topicId, textArea) {
+
+    this._topicSearch.forumReplyPost(this.gameid, this.category, this.topicId, textArea)
+      .subscribe(data => {
+        this.userReply = data;
+        console.log(this.userReply);
+        this.getAllReplies(this.gameid, this.category, this.topicId);
+      })
+
+  }
+
+  
 
 
 
