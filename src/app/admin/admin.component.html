@@ -1,28 +1,56 @@
 <app-navbar></app-navbar>
 
+<input   [(ngModel)]="value1"  name="value1" type="text" (ngModelChange)="searchPerson(value1)" placeholder="Search for names..">
 
-<div *ngFor="let result of results">
+
+<div class="container">
+    
+<div class= "row">
+
+<div  class="col-md-4" *ngFor="let result of results">
+
+        <div>
+            <div><b>User Name:</b> {{result.userName}}</div>
+            <div><b>First Name:</b> {{result.firstName}}</div>
+            <div><b>Last Name:</b> {{result.lastName}}</div>
+                <div> <b>Email:</b> {{result.email}}</div>
+
+        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()"
+        mdbWavesEffect>Edit User</button>
+
+        <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+              <p class="modal-title w-100" id="myModalLabel">Edit User
+            </div>
+            <div class="modal-body">
+
+
     <div>
-    {{ result.userName }}
-    {{result.email}}
+
 </div>
 <div>
- <label>userName</label>
+ <label>User Name: </label>
         <input #userName type="text" 
                 value= {{result.userName}}>
 </div>              
 <div>
-<label>lastName</label>
+<label>Last Name: </label>
       <input #lastName type="text"
                  value= {{result.lastName}}>
 </div>   
 <div>
-<label>firstName</label>
+<label>First Name: </label>
         <input #firstName type="text"
                          value= {{result.firstName}}>
     </div>                                 
     <div>
-<label >Email</label>
+<label >Email: </label>
         <input #email type="text"
                    value= {{result.email}}>
     </div>        
@@ -46,11 +74,15 @@
     <input  type="checkbox"  (click)='setBanned(true, result.id)' /> is banned
     </div>
 
-    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminPut(firstName.value, lastName.value, userName.value, result.admin, result.banned, result.id, email.value)' mdbWavesEffect>PUT</button>
+    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminPut(firstName.value, lastName.value, userName.value, result.admin, result.banned, result.id, email.value)' mdbWavesEffect (click)="basicModal.hide()">PUT</button>
 
+    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminDelete(result.id)' mdbWavesEffect (click)="basicModal.hide()">DELETE</button>
 </div>
-
-
-
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 

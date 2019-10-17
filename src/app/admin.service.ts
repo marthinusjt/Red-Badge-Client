@@ -120,4 +120,31 @@ export class AdminService {
 
   }
 
+
+  adminSDelete(id) {
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+    
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.delete(this._url+ id, parseHeaders2)    //data,this._proxy + 
+
+
+  }
 }
