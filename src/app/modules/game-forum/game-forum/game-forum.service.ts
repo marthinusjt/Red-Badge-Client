@@ -13,7 +13,6 @@ export class GameForumService {
 
     private _url: string = `https://api-v3.igdb.com/games`;
     private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
-    
     private _url2: string = 'http://localhost:3343/forumTopic/';
     
     // public query: string;
