@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   public email: string;
   public admin: boolean;
   private banned: boolean= false;
+  public person: string;
   
 
   constructor(
@@ -165,6 +166,41 @@ export class AdminComponent implements OnInit {
       
   }
 
+  searchPerson(person){
+    this._adminService.adminSGetAll()
+      .subscribe(data => {this.results = data;
+      
+        this.person=person.toLowerCase()
+
+        for(let i=0; i<this.results.length+1;i++){
+          console.log('hit', i)
+          
+          for(let j=0; j<this.person.length;j++){
+    
+            if(this.results[i].userName.charAt(j).toLowerCase() != this.person.charAt(j)){
+    
+              console.log(this.results[i].userName.charAt(j).toLowerCase())
+              console.log(this.person.charAt(j))
+              // console.log(this.results)
+              // this.results[i]=null
+               this.results.splice (i,1)
+
+               j=j-1
+
+              
+              
+
+          } 
+    }
+    
+      }
+
+
+      })
+  
+
+}
+
   
   adminPut(firstName, lastName, userName, admin, banned, id, email){
 
@@ -177,6 +213,14 @@ export class AdminComponent implements OnInit {
       
   }
 
+  adminDelete(id){
+    this._adminService.adminSDelete(id)
+    .subscribe(data => {this.results = data; console.log(data)
+    this.adminGetAll()
+    })
+
+
+  }
   ngOnInit() {
 
     this.adminLogIn()
