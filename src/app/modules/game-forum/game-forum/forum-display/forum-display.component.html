@@ -3,6 +3,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Forum</li>
+        <li class="breadcrumb-item">{{ value }}</li>
         <li class="breadcrumb-item">General Discussion</li>
         <li class="breadcrumb-item active" aria-current="page">Replies</li>
     </ol>
@@ -59,7 +60,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createReply(query, category, topicId, textArea.value); basicModal.hide()" mdbWavesEffect>Submit</button>
+                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createReply(query, category, topicId, textArea.value); basicModal.hide()" mdbWavesEffect>Create Reply</button>
                         </div>
                     </div>
                 </div>
@@ -92,7 +93,7 @@
 
                         <div class="modal-footer">
                             <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="editModal.hide()" mdbWavesEffect>Close</button>
-                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createReply(query, category, topicId, textArea.value); basicModal.hide()" mdbWavesEffect>Submit</button>
+                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createReply(query, category, topicId, textArea.value); basicModal.hide()" mdbWavesEffect>Reply</button>
                         </div>
                     </div>
                 </div>
@@ -104,19 +105,23 @@
         <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Reply</button>
     </div>
     
+    <!-- ORIGINAL USER -->
     <mdb-card class="op">
         <mdb-card-body>
             <mdb-card-text>
                 <div class="row">
                     <p class="col-6 text-left">{{topic.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p>
+                    <p class="col-6 text-left">{{topic.updatedAt | date:'short' }}</p>
+                    <p class="col-6 text-left">{{topic.updatedAt | date:'medium' }}</p>
+                    <p class="col-6 text-left">{{topic.updatedAt | date:'long' }}</p>
                     <p class="col-6 text-right">Original Post</p>
                 </div>
                 <div class="row">
                     <p class="post-user col-6">{{topic.userName}}</p>
-                    <!-- <div *ngIf="topic.ownerId == userId" class="col-6 text-right">
-                        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Edit</button>
-                        <button type="button" mdbBtn color="secondary" class="relative waves-light" mdbWavesEffect>Delete</button>
-                    </div> -->
+                    <div *ngIf="topic.ownerId == userId" class="col-6 text-right">
+                        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="editModal.show()">Edit</button>
+                        <!-- <button type="button" mdbBtn color="secondary" class="relative waves-light" mdbWavesEffect>Delete</button> -->
+                    </div>
                 </div>
             </mdb-card-text>
             <mdb-card-title>

@@ -26,7 +26,7 @@ const routes: Routes = [
     { path: 'forumTopic/:gameid/:value', component: GameForumComponent},
     { path: 'forumTopic/:gameid/:value/:category', component: GeneralDiscussionComponent },
     { path: 'forumTopic/:gameid/:value/:category/:topicId', component: ForumDisplayComponent },
-    { path: 'forumReply/:gameid/:value/:category/:topicId', component: ForumPostComponent },
+    // { path: 'forumReply/:gameid/:value/:category/:topicId', component: ForumPostComponent },
     { path: 'redirect', component: RedirectComponent },
     // { path: 'donate', component: StripeComponent },
     // place paths above here
