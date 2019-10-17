@@ -14,8 +14,12 @@
         <mdb-icon fas icon="angle-double-right" class="mr-1"></mdb-icon>Topic Name
     </mdb-breadcrumb-item>
 </mdb-breadcrumb>
-    
-<h1>Topic Name</h1>
+
+<div class="container" *ngFor="let topicResult of topicResults">
+    <div class="row" *ngIf="topicResult.id == topicId">
+        <h1>{{ topicResult.topic }}</h1>
+    </div>
+</div>
 <hr>
 <nav aria-label="Page navigation example">
 <ul class="pagination pg-blue">
@@ -24,24 +28,26 @@
     <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
     <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
     <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
-    <button><a routerLink="/forum/:gameid/generalDiscussion/topic/newReply">New Reply</a></button>
+    
+    <!-- Modal -->
+    <button>New Reply</button>
 </ul>
 </nav>
     
 <hr>
 
-<div class="container">
-    <div class="row">
+<div class="container" *ngFor="let topicResult of topicResults">
+    <div class="row" *ngIf="topicResult.id == topicId">
         <!-- COL ADD UP TO 12 -->
         <div id="aboutMe" class="col-sm-12">
-            <h3>Rick</h3>
+            <h3>{{ topicResult.userName }}</h3>
         </div>
         <!-- <div class="col-sm-4" id="picOfMe">
             <p>Side Info (stretch goal)</p>
         </div> -->
         <div class="aboutSection col-sm-8">
             <div class="row-sm">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p>{{ topicResult.textArea }}</p>
             </div> 
         </div>
     </div>
@@ -49,18 +55,19 @@
 
 <hr>
 
-<div class="container">
+<div class="container" *ngFor="let replyResult of replyResults">
     <div class="row">
         <!-- COL ADD UP TO 12 -->
         <div id="aboutMe" class="col-sm-12">
-            <h3>Morty</h3>
+            <h3>{{ replyResult.userName}}</h3>
         </div>
         <!-- <div class="col-sm-4" id="picOfMe">
             <p>Side Info (stretch goal)</p>
         </div> -->
         <div class="aboutSection col-sm-8">
             <div class="row-sm">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p>{{ replyResult.textArea }}</p>
+                <hr>
             </div> 
         </div>
     </div>
