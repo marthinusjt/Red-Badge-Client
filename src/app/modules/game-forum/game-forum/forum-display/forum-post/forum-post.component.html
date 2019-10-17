@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Forum</li>
+        <li class="breadcrumb-item">General Discussion</li>
+        <li class="breadcrumb-item">Topics</li>
+        <li class="breadcrumb-item active" aria-current="page">Post</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <!-- <form (ngSubmit)="onSubmit()" [formGroup]="createForumPost"> -->
+                <div class="md-form">
+                    <mdb-icon fas icon="pencil-alt" class="prefix"></mdb-icon>
+                    <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
+                    <label for="form7">What is on your mind?</label>
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            <!-- </form> -->
+        </div>
+    </div>    
+</div>

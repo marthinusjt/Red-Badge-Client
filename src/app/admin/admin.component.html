@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+
+<div *ngFor="let result of results">
+    <div>
+    {{ result.userName }}
+    {{result.email}}
+</div>
+<div>
+ <label>userName</label>
+        <input #userName type="text" 
+                value= {{result.userName}}>
+</div>              
+<div>
+<label>lastName</label>
+      <input #lastName type="text"
+                 value= {{result.lastName}}>
+</div>   
+<div>
+<label>firstName</label>
+        <input #firstName type="text"
+                         value= {{result.firstName}}>
+    </div>                                 
+    <div>
+<label >Email</label>
+        <input #email type="text"
+                   value= {{result.email}}>
+    </div>        
+
+<!-- <mdb-checkbox #banned [default]="true">is banned</mdb-checkbox> -->
+
+<div *ngIf = "result.admin">
+    <input  type="checkbox"  (click)='setAdmin(false, result.id)' checked/> is admin
+    </div>
+    
+    <div *ngIf = "!result.admin">
+        <input  type="checkbox"  (click)='setAdmin(true, result.id)' /> is admin
+        </div>
+
+
+<div *ngIf = "result.banned">
+<input  type="checkbox"  (click)='setBanned(false, result.id)' checked/> is banned
+</div>
+
+<div *ngIf = "!result.banned">
+    <input  type="checkbox"  (click)='setBanned(true, result.id)' /> is banned
+    </div>
+
+    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminPut(firstName.value, lastName.value, userName.value, result.admin, result.banned, result.id, email.value)' mdbWavesEffect>PUT</button>
+
+</div>
+
+
+
+
+

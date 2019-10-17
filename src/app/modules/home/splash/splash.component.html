@@ -1,4 +1,5 @@
-<h1 class="splash jumbotron">GAMES THING</h1>
+<app-navbar></app-navbar>
+<h1 class="splash jumbotron">CRITICAL HITS</h1>
 
 <!-- <div class="search input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
   <input [(ngModel)]="query" type="text" class="form-control" placeholder="ex: Super Metroid"
@@ -9,8 +10,9 @@
   </div>
 </div> -->
 <div class='container'>
-  <form class="form-inline md-form mr-auto mb-4 row col-10 col-md-8 mx-auto">
+  <form class="form-inline md-form mr-auto mb-4 row col-12 col-md-8 mx-auto">
     <input [ngModelOptions]="{standalone: true}" [(ngModel)]="query" class="form-control mr-sm-2 col" type="text" placeholder="ex: Super Metroid" aria-label="ex: Super Metroid">
-    <button routerLink="/search/{{query}}" routerLinkActive="active" mdbBtn size="md" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search Games</button>
+    <button routerLink="/search/{{query}}" routerLinkActive="active" mdbBtn size="md" color="primary" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search Games</button>
+    <!-- gradient="aqua" -->
   </form>
 </div>

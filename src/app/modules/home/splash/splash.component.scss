@@ -5,9 +5,11 @@ a {
 
 .splash {
     text-align: center;
-    font-size: 6em;
+    font-size: 6vmax;
     font-weight: 100;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.12em;
+    font-style: italic;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .result {
@@ -15,6 +17,7 @@ a {
     border-top: solid 1px lightgray;
     font-weight: 100;
 }
+
 .result-title {
     font-size: 1.4em;
     letter-spacing: 0.05em;

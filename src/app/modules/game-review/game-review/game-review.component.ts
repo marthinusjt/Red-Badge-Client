@@ -8,16 +8,20 @@ import { AuthComponent } from '../../../core/auth/auth.component';
 @Component({
   selector: 'app-game-review',
   templateUrl: './game-review.component.html',
-  styleUrls: ['./game-review.component.css']
+  styleUrls: ['./game-review.component.scss']
 })
 export class GameReviewComponent implements OnInit {
 
-  public results: any = [];
-  public results2: any = [];
+  public results: any;
+  public userReview: any;
+  public allReviews: any;
+  public avgScore: any = 0;
+
 
   public searching: any = false;
   public gameid: string;
   public score: string;
+  public carousel: string;
 
 public headline1: string;
   public score1: string;
@@ -47,21 +51,29 @@ public headline1: string;
     gameFetch(query){
       
       this._gameSearch.reviewFetch(query)
-        .subscribe(data => {this.results = data; console.log(data)})
+        .subscribe(data => {
+          this.results = data;
+          console.log('IGDB data:', data);
+          this.results[0].videos ? this.carousel = 'video' :
+          this.results[0].screenshots ? this.carousel = 'screenshots' :
+          this.results[0].artworks ? this.carousel = 'artwork' : null;
+          this.changeAvgScore();
+        })
     }
 
   searchGet(query){
     
     this._gameSearch.reviewGet(query)
       .subscribe(data => { 
-        this.results2 = data; console.log(data);
-        this.setScore(this.results2.score)
-        this.headline1=this.results2.headline
-        this.textArea1=this.results2.textArea
-       this.pros1=this.results2.pros
-       this.cons1=this.results2.cons
-      //  console.log(this.pros1)
-
+        if(data){
+          this.userReview = data; console.log("userReview: ", this.userReview);
+          this.setScore(this.userReview.score)
+          this.headline1=this.userReview.headline
+          this.textArea1=this.userReview.textArea
+          this.pros1=this.userReview.pros
+          this.cons1=this.userReview.cons
+          //  console.log(this.pros1)
+        } else {console.log("data not found, refused to fetch")}
       }
       
       )
@@ -71,14 +83,24 @@ public headline1: string;
   searchGetAll(gameid){
     
     this._gameSearch.reviewGetAll(gameid)
-      .subscribe(data => {this.results2 = data; console.log(data)})
+      .subscribe(data => {
+        this.allReviews = data;
+        this.allReviews.reverse();
+        console.log("allReviews: ", this.allReviews);
+        this.changeAvgScore()
+      })
       
   }
+
   searchPost(gameid, score, userName, headline, pros, cons, textArea){
     
     this._gameSearch.reviewPost(gameid, this.score, userName, headline, pros, cons, textArea)
-      .subscribe(data => {this.results2 = data; console.log(data)
-        this.searchGet(this.gameid)
+      .subscribe(data => {
+        this.userReview = data;
+        console.log("userReview: ",
+        this.userReview)
+        this.searchGet(this.gameid);
+        this.searchGetAll(this.gameid);
       })
      
       // this.searchGet(this.gameid)
@@ -88,8 +110,11 @@ public headline1: string;
   searchPut(gameid, score, userName, headline, pros, cons, textArea){
     
     this._gameSearch.reviewPut(gameid,  this.score, userName, headline, pros, cons, textArea)
-      .subscribe(data => {this.results2 = data; console.log(data)
-      this.searchGet(this.gameid)
+      .subscribe(data => {
+        this.userReview = data;
+        console.log("userReview: ", this.userReview);
+        this.searchGet(this.gameid);
+        this.searchGetAll(this.gameid);
       })
       
   }
@@ -97,8 +122,10 @@ public headline1: string;
   searchDelete(gameid, score, userName, headline, pros, cons, textArea){
     
     this._gameSearch.reviewDelete(gameid, score, userName, headline, pros, cons, textArea)
-      .subscribe(data => {this.results2 = data; console.log(data)
-      this.searchGet(this.gameid)
+      .subscribe(data => {
+        this.userReview = undefined;
+        console.log("userReview deleted: ", this.userReview);
+        this.searchGetAll(this.gameid);
       })
       
       
@@ -106,18 +133,35 @@ public headline1: string;
   }
 
   openModal() {
+    
     this.modalRef = this.modalService.show(AuthComponent);
+  }
+
+  youTube(id){
+    return "https://www.youtube.com/embed/" + id
+  }
+
+  changeCarousel(type){
+    this.carousel = type;
+  }
+
+  changeAvgScore(){
+    if(this.results && this.allReviews.length > 0){
+      // this.avgScore = (this.allReviews.reduce((a,b) => a + b.score, 0) + this.results[0].total_rating / 10) / (this.results[0].total_rating_count + this.allReviews.length );
+      this.avgScore = ((this.results[0].total_rating / 10 * this.results[0].total_rating_count + (this.allReviews.reduce((a,b) => a + b.score, 0))) / (this.allReviews.length + this.results[0].total_rating_count));
+      console.log("avgScore: ", this.avgScore);
+    }
   }
 
 
   ngOnInit() {
-    this.gameid = this.route.snapshot.paramMap.get('gameid');
+    this.gameid = this.route.snapshot.paramMap.get('gameid').split('#')[0];
     this.gameFetch(this.gameid)
     this.searchGetAll(this.gameid)
 
   
 
-    // console.log(currentUser)
+    console.log(this.currentUser)
     this.currentUser ? this.searchGet(this.gameid) : null;
     
   }
