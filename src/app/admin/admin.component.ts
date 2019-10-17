@@ -12,6 +12,8 @@ export class AdminComponent implements OnInit {
   public results: any = [];
   public results2: any = [];
   public results3: any = [];
+  public results4: any = [];
+  public results5: any = [];
   public userName: string;
   public firstName: string;
   public lastName: string;
@@ -214,6 +216,22 @@ export class AdminComponent implements OnInit {
   }
 
   adminDelete(id){
+
+    this._adminService.adminGetForm(id)
+    .subscribe(data => {this.results5 = data; console.log(data)
+    
+    for(let i = 0; i<this.results5.length; i++){
+
+
+      this._adminService.adminFormPut(this.results5[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)
+      
+      })
+
+    }
+
+    })
+
     this._adminService.adminSDelete(id)
     .subscribe(data => {this.results = data; console.log(data)
     this.adminGetAll()
