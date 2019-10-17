@@ -18,6 +18,7 @@ export class ForumDisplayComponent implements OnInit {
   public category: string;
   // public id: any;
   public topicId: any;
+  public topic: {} = {};
 
   modalRef: MDBModalRef;
 
@@ -52,6 +53,8 @@ export class ForumDisplayComponent implements OnInit {
       .subscribe(data => {
         this.topicResults = data; 
         console.log(this.topicResults);
+        this.topic = this.topicResults.filter(e => {return e.id == this.topicId})[0];
+        console.log("Topic: ", this.topic);
       })
   }
 
@@ -60,6 +63,7 @@ export class ForumDisplayComponent implements OnInit {
       .subscribe(data => {
         this.replyResults = data; 
         console.log(this.replyResults);
+
       })
   }
 

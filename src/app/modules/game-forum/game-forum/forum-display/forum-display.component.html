@@ -54,18 +54,18 @@
     
 <hr>
 
-<div class="container" *ngFor="let topicResult of topicResults">
-    <div class="row" *ngIf="topicResult.id == topicId">
+<div class="container">
+    <div class="row">
         <!-- COL ADD UP TO 12 -->
         <div id="aboutMe" class="col-sm-12">
-            <h3>{{ topicResult.userName }}</h3>
+            <h3>{{ topic.userName }}</h3>
         </div>
         <!-- <div class="col-sm-4" id="picOfMe">
             <p>Side Info (stretch goal)</p>
         </div> -->
         <div class="aboutSection col-sm-8">
             <div class="row-sm">
-                <p>{{ topicResult.textArea }}</p>
+                <p>{{ topic.textArea }}</p>
             </div> 
         </div>
     </div>
