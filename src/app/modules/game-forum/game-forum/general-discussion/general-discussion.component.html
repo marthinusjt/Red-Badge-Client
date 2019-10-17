@@ -3,12 +3,12 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Forum</li>
+        <li class="breadcrumb-item">{{ value }}</li>
         <li class="breadcrumb-item active" aria-current="page">General Discussion</li>
     </ol>
 </nav>
 
-<h1>GAME TITLE</h1>
-<!-- <h1>{{result.name}}</h1> -->
+<h1>{{ value }}</h1>
 <hr>
 <nav aria-label="Page navigation example">
   <ul class="pagination pg-blue">
@@ -18,16 +18,15 @@
     <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
     <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
     
-    <div *ngIf="!userTopic || currentUser == null">
+    
       <div *ngIf="currentUser == null">
         <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
         mdbWavesEffect>New Topic</button>
       </div>
-      
+
       <div *ngIf="currentUser != null">
         <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
       </div>
-    
 
       <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -62,7 +61,6 @@
           </div>
         </div>
       </div>
-    </div>
 
 
   </ul>

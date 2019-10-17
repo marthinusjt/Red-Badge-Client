@@ -14,7 +14,7 @@ export class GameForumComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.value = this.route.snapshot.paramMap.get('gameid')
+    this.value = this.route.snapshot.paramMap.get('value')
 
   }
 
