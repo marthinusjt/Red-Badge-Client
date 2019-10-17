@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { AuthComponent } from 'src/app/core/auth/auth.component';
 
 import { GameForumService } from '../game-forum.service';
-import { ActivatedRoute } from '@angular/router';
+
+import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-general-discussion',
@@ -10,14 +14,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GeneralDiscussionComponent implements OnInit {
 
-  public results: any = []
-  public gameid: string;
+  public results: any = [];
+  public userTopic: any;
+  public gameid: any;
   public category: string;
+
+  modalRef: MDBModalRef;
 
 
   constructor(
     private _topicSearch: GameForumService,
     private route: ActivatedRoute,
+    private modalService: MDBModalService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +42,23 @@ export class GeneralDiscussionComponent implements OnInit {
         this.results.reverse();
         console.log(this.results);
       })
+  }
+
+  createTopic(query, category, pinned, textArea, topic) {
+
+    this._topicSearch.forumTopicPost(this.gameid, this.category, pinned, textArea, topic)
+      .subscribe(data => {
+        this.userTopic = data;
+        console.log(this.userTopic);
+        this.getAllTopics(this.gameid, this.category);
+      })
+
+  }
+
+
+
+  openModal() { 
+    this.modalRef = this.modalService.show(AuthComponent);
   }
 
 }

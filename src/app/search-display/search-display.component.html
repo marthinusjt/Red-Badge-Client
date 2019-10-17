@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<h1 class="splash jumbotron">GAMES THING</h1>
+<h1 class="splash jumbotron">CRITICAL HITS</h1>
 
 <!-- <div class="SEARCH input-group mb-3 row col-xl-5 col-lg-6 col-md-7 col-sm-8 col-10 mx-auto">
   <input [(ngModel)]="query" type="text" class="form-control" placeholder="ex: Super Metroid"
@@ -8,16 +8,16 @@
       <button routerLink="/search/{{query}}" (click)='search2(query)' type="button" mdbBtn color="primary" mdbWavesEffect>Primary</button>
   </div>
 </div> -->
-<div class="container">
-  <form class="form-inline md-form mr-auto mb-4 row col-10 col-md-8 mx-auto">
+<div class="container col-12 col-sm-8 col-md-7 col-lg-6 col-xl-5">
+  <form class="form-inline md-form mr-auto mb-4 row mx-auto">
     <input [ngModelOptions]="{standalone: true}" [(ngModel)]="query" class="form-control mr-sm-2 col" type="text" placeholder="ex: Super Metroid" aria-label="ex: Super Metroid">
-    <button routerLink="/search/{{query}}"  routerLinkActive="active" mdbBtn size="md" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search Games</button>
+    <button routerLink="/search/{{query}}"  routerLinkActive="active" mdbBtn size="md" color="primary" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search Games</button>
   </form>
 </div>
 
 
 
-<div *ngIf="searching" class="row mx-auto col-1 justify-content-center">
+<div *ngIf="searching" class="text-center">
   <div class="spinner-border search-spinner" role="status">
     <span class="sr-only">Loading...</span>
   </div>
@@ -41,40 +41,43 @@
 
   <p class="justify-content-center col">Displaying results {{offset + 1}}-{{offset + results.length}}</p>
 
-  <div *ngFor="let result of results">
-    <a routerLink="/review/{{ result.id }}" routerLinkActive="active" class="row result">
-      <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
-      <p class='col-4 result-title'>{{ result.name }}</p>
-      <div class="col">
-        <div class="row">
-          <b>Original Release Date:</b>
-          <div class='result-tag'>
-            {{ result.release_dates ? result.release_dates[0].human : 'N/A' }}
+  <a routerLink="/review/{{ result.id }}" routerLinkActive="active"  class="row result" *ngFor="let result of results">
+    <div class="col">
+      <div class="row"><p class="col-12 result-title">{{ result.name.toUpperCase() }}</p></div>
+      <div class="row">
+        <div class="col-4 col-md-2">
+          <img class='img-thumbnail result-image' src='{{result.cover ? result.cover.url : "no-image.png"}}' />
+        </div>
+        <div class="col-8">
+          <div class="row result-text">
+            <b>Original Release Date:</b>
+            <div class='result-tag'>
+              {{ result.release_dates ? result.release_dates[0].human : 'N/A' }}
+            </div>
+          </div>
+          <div class="row result-text">
+            <b>Genres:</b>
+            <div class='result-tag' *ngFor='let genre of result.genres'>
+              {{ genre.name == 'Platform' ? 'Platformer' : genre.name }}</div>
+          </div>
+          <div class="row result-text">
+            <b>Platforms:</b>
+            <div class='result-tag' *ngFor='let platform of result.platforms'>{{ platform.abbreviation }}</div>
           </div>
         </div>
-        <div class="row">
-          <b>Genres:</b>
-          <div class='result-tag' *ngFor='let genre of result.genres'>
-            {{ genre.name == 'Platform' ? 'Platformer' : genre.name }}</div>
-        </div>
-        <div class="row">
-          <b>Platforms:</b>
-          <div class='result-tag' *ngFor='let platform of result.platforms'>{{ platform.abbreviation }}</div>
-        </div>
-      </div>
-      <div class="col-2 text-right">
-        <div style="z-index: 1300" class="btn-group-vertical" role="group" aria-label="Vertical button group">
-          <a routerLink="/review/{{ result.id }}#reviews">
-            <button  mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
-          </a>
-          <a routerLink="/forumTopic/{{ result.id }}">
-            <button mdbBtn type="button" color="primary" class="waves-light" outline="true" mdbWavesEffect>Forums</button>
-          </a>
+        <div class="col-12 col-md-2">
+          <div class="row">
+            <a class="col-6 col-md-12" routerLink="/review/{{ result.id }}#reviews">
+              <button  mdbBtn type="button" size="sm" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
+            </a>
+            <a class="col-6 col-md-12" routerLink="/forumTopic/{{ result.id }}">
+              <button mdbBtn type="button" size="sm" color="primary" class="waves-light" outline="true" mdbWavesEffect>Forums</button>
+            </a>
+          </div>
         </div>
       </div>
-    </a>
-  </div>
-
+    </div>
+  </a>
   <!-- <p class="justify-content-center col">Displaying results {{offset + 1}}-{{offset + results.length}}</p> -->
 
   <br/>

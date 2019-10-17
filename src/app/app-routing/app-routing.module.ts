@@ -25,8 +25,8 @@ const routes: Routes = [
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
     { path: 'forumTopic/:gameid', component: GameForumComponent},
     { path: 'forumTopic/:gameid/:category', component: GeneralDiscussionComponent },
-    { path: 'forumTopic/:gameid/GeneralDiscussion', component: ForumDisplayComponent },
-    { path: 'forumReply/:gameid/GeneralDiscussion/:topicId', component: ForumPostComponent },
+    { path: 'forumTopic/:gameid/:category/:topicId', component: ForumDisplayComponent },
+    { path: 'forumReply/:gameid/:category/:topicId', component: ForumPostComponent },
     { path: 'redirect', component: RedirectComponent },
     // place paths above here
     // { path: 'not-found', component: PageNotFoundComponent }, // Static Message
