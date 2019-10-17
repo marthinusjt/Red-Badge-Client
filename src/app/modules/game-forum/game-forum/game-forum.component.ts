@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game-forum',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-forum.component.scss']
 })
 export class GameForumComponent implements OnInit {
+  public value: string;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+    this.value = this.route.snapshot.paramMap.get('gameid')
+
   }
 
 }
