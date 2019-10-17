@@ -18,6 +18,7 @@ export class GeneralDiscussionComponent implements OnInit {
   public userTopic: any;
   public gameid: any;
   public category: string;
+  public value: string;
 
   modalRef: MDBModalRef;
 
@@ -32,6 +33,7 @@ export class GeneralDiscussionComponent implements OnInit {
     this.gameid = this.route.snapshot.paramMap.get('gameid')
     console.log(this.route.snapshot)
     this.category = this.route.snapshot.paramMap.get('category')
+    this.value = this.route.snapshot.paramMap.get('value')
     this.getAllTopics(this.gameid, this.category)
   }
 

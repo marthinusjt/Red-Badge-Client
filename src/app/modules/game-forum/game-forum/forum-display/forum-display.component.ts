@@ -19,6 +19,9 @@ export class ForumDisplayComponent implements OnInit {
   // public id: any;
   public topicId: any;
   public topic: {} = {};
+  public userId: number;
+
+  public value: string;
 
   modalRef: MDBModalRef;
 
@@ -29,9 +32,12 @@ export class ForumDisplayComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    JSON.parse(localStorage.getItem('currentUser')) ? this.userId = JSON.parse(localStorage.getItem('currentUser')).token.user.id : this.userId = undefined;
+    console.log("userid:", JSON.parse(localStorage.getItem('currentUser')))
     this.gameid = this.route.snapshot.paramMap.get('gameid')
     this.category = this.route.snapshot.paramMap.get('category')
     this.topicId = this.route.snapshot.paramMap.get('topicId')
+    this.value = this.route.snapshot.paramMap.get('value')
     console.log(this.route.snapshot)
     // SINGULAR
     // this.getTopic(this.gameid, this.category, this.topicId)
