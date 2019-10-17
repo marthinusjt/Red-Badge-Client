@@ -5,9 +5,22 @@
         <li class="breadcrumb-item">Forum</li>
         <li class="breadcrumb-item">{{ value }}</li>
         <li class="breadcrumb-item">General Discussion</li>
-        <li class="breadcrumb-item active" aria-current="page">Topics</li>
+        <li class="breadcrumb-item active" aria-current="page">Replies</li>
     </ol>
 </nav>
+    
+<h1>{{topic.topic}}</h1>
+<hr>
+<nav aria-label="Page navigation example">
+<ul class="pagination pg-blue">
+    <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+    <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
+    
+    <!-- Modal -->
+    <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Reply</button>
 
 <div class="container">
     <br/>
