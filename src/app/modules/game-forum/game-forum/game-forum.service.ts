@@ -23,9 +23,35 @@ export class GameForumService {
         private http: HttpClient,
     ) { }
 
+    // FORUM REPLIES
+
     forumReplyGetAll(query, category, topicId) {
         return this.http.get(this._url3 + `all/${query}/${category}/${topicId}`)
     }
+
+    forumReplyPost(query, category, topicId, textArea) {
+
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let token = currentUser.token;
+
+        let body = {
+
+            textArea: textArea
+            
+        }
+
+        const parseHeaders = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': token.sessionToken
+            })
+        };
+
+        return this.http.post(this._url3 +`${query}/${category}/${topicId}`, body, parseHeaders)
+        
+    }
+
+    // FORUM TOPICS
 
     // SINGULAR
     // forumTopicGet(query, category, topicId) {
@@ -39,7 +65,7 @@ export class GameForumService {
         //data,this._proxy +     
     }
 
-    forumTopicPost(query: number, category: string, pinned: boolean, textArea: string, topic: string) {
+    forumTopicPost(query, category, pinned, textArea, topic) {
 
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         let token = currentUser.token;

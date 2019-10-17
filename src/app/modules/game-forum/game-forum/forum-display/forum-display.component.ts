@@ -13,7 +13,7 @@ export class ForumDisplayComponent implements OnInit {
 
   public topicResults: any = [];
   public replyResults: any = [];
-  public userTopic: any;
+  public userReply: any;
   public gameid: any;
   public category: string;
   // public id: any;
@@ -62,6 +62,19 @@ export class ForumDisplayComponent implements OnInit {
         console.log(this.replyResults);
       })
   }
+
+  createReply(query, category, topicId, textArea) {
+
+    this._topicSearch.forumReplyPost(this.gameid, this.category, this.topicId, textArea)
+      .subscribe(data => {
+        this.userReply = data;
+        console.log(this.userReply);
+        this.getAllReplies(this.gameid, this.category, this.topicId);
+      })
+
+  }
+
+  
 
 
 
