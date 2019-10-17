@@ -19,6 +19,7 @@ export class ForumDisplayComponent implements OnInit {
   // public id: any;
   public topicId: any;
   public topic: {} = {};
+  public value: string;
 
   modalRef: MDBModalRef;
 
@@ -32,6 +33,7 @@ export class ForumDisplayComponent implements OnInit {
     this.gameid = this.route.snapshot.paramMap.get('gameid')
     this.category = this.route.snapshot.paramMap.get('category')
     this.topicId = this.route.snapshot.paramMap.get('topicId')
+    this.value = this.route.snapshot.paramMap.get('gameid')
     console.log(this.route.snapshot)
     // SINGULAR
     // this.getTopic(this.gameid, this.category, this.topicId)
