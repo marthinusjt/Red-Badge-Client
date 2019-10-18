@@ -7,6 +7,16 @@
 </nav>
 
 <div class="container">
+    <div class="row game-header">
+        <h1 class="game-name col">{{value.toUpperCase()}}</h1>
+    </div>
+
+    <div class="row" style="margin-bottom: 4rem">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect routerLink="/review/{{gameid}}/{{value}}">Reviews</button>
+            <button mdbBtn type="button" [disabled]="true" color="primary" class="waves-light" mdbWavesEffect>Forums</button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <h1>Dev Announcements</h1>

@@ -21,7 +21,7 @@ import { AuthGuard } from '../core/guards/auth-guard.service';
 const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'search/:searching', component: SearchDisplayComponent },
-    { path: 'review/:gameid', component: GameReviewComponent },
+    { path: 'review/:gameid/:value', component: GameReviewComponent },
     { path: 'admin', component: AdminComponent },
     { path: 'forumTopic/:gameid/:value', component: GameForumComponent},
     { path: 'forumTopic/:gameid/:value/:category', component: GeneralDiscussionComponent },
