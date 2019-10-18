@@ -1,6 +1,7 @@
 // @angular imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; // <-- NgModel lives here
+import { Module as StripeModule } from "stripe-angular";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -44,6 +45,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ForumPostComponent } from './modules/game-forum/game-forum/forum-display/forum-post/forum-post.component';
 import { ForumDisplayComponent } from './modules/game-forum/game-forum/forum-display/forum-display.component';
 import { GeneralTopicComponent } from './modules/game-forum/game-forum/general-discussion/general-topic/general-topic.component';
+import { StripeComponent } from './stripe/stripe.component';
 // import { StripeComponent } from './stripe/stripe.component';
 
 // NEW IMPORTS TESTING
@@ -80,6 +82,7 @@ import { GeneralTopicComponent } from './modules/game-forum/game-forum/general-d
     ForumPostComponent,
     ForumDisplayComponent,
     GeneralTopicComponent,
+    StripeComponent,
     // StripeComponent,
     
   ],
@@ -94,6 +97,7 @@ import { GeneralTopicComponent } from './modules/game-forum/game-forum/general-d
     HttpClientModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
+    [ StripeModule.forRoot() ]
   ],
   exports: [
     GameReviewComponent,
