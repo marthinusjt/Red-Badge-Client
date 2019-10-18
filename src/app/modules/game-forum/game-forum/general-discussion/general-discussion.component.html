@@ -3,76 +3,89 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Forum</li>
-        <li class="breadcrumb-item active" aria-current="page">General Discussion</li>
+        <li class="breadcrumb-item">{{ value }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
     </ol>
 </nav>
 
-<!-- <h1>{{result.name}}</h1> -->
-<hr>
-<nav aria-label="Page navigation example">
-  <ul class="pagination pg-blue">
-    <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
-    
-    
-    <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+<div class="container">
 
-    <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-              <span aria-hidden="true">×</span>
-            </button>
-            <h4 class="modal-title w-100" id="myModalLabel">Forum Topic</h4>
-          </div>
-          <div class="modal-body">
-            <!-- INPUT HERE -->
-            <div class="md-form mb-5">
-              <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
-              <input #topic type="text" id="form32" class="form-control" mdbInput mdbValidate>
-              <label for="form8">Topic Title</label>
+  <div class="row game-header">
+      <h1 class="game-name col">{{value.toUpperCase()}}</h1>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pg-blue">
+      <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
+      <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
+      <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
+      <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+      <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
+      
+      
+        <div *ngIf="currentUser == null">
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
+          mdbWavesEffect>New Topic</button>
+        </div>
+  
+        <div *ngIf="currentUser != null">
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+        </div>
+  
+        <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Forum Topic</h4>
+              </div>
+              <div class="modal-body">
+                <!-- INPUT HERE -->
+                <div class="md-form mb-5">
+                  <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
+                  <input #topic type="text" id="form32" class="form-control" mdbInput mdbValidate>
+                  <label for="form8">Topic Title</label>
+                </div>
+  
+                <div class="md-form">
+                  <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                  <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                    mdbValidate></textarea>
+                  <label for="form8">Topic Text Area</label>
+                </div>
+  
+                <!-- INPUT HERE -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+                <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
+              </div>
             </div>
-
-            <div class="md-form">
-              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-              <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
-                mdbValidate></textarea>
-              <label for="form8">Topic Text Area</label>
-            </div>
-
-            <!-- INPUT HERE -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
           </div>
         </div>
+  
+  
+    </ul>
+  </nav>
+  
+  
+  <hr>
+  
+
+    <div *ngFor="let result of results" class="col-12">
+      <div>
+        <a routerLink="{{ result.id }}" class="row result">{{ result.topic }}</a>
       </div>
     </div>
 
-
-  </ul>
-</nav>
-
-
-<hr>
-
-<div class="container">
-  <div *ngFor="let result of results" class="row">
-    <div>
-      <a routerLink="{{ result.id }}" class="row result">{{ result.topic }}</a>
-    </div>
-  </div>
+  
+  
+  
+  <!-- <h3><a routerLink="/forumReply/11195/generalDiscussion/topic">Topic Name</a></h3> -->
+  <!-- <br> -->
+  <!-- <h3>Awesome Topic Name</h3> -->
+  
+  <!-- <app-forum-display></app-forum-display> -->
 </div>
 
-
-
-<!-- <h3><a routerLink="/forumReply/11195/generalDiscussion/topic">Topic Name</a></h3> -->
-<!-- <br> -->
-<!-- <h3>Awesome Topic Name</h3> -->
-
-<!-- <app-forum-display></app-forum-display> -->

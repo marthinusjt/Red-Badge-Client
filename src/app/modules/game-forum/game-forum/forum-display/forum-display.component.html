@@ -3,92 +3,190 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Forum</li>
-        <li class="breadcrumb-item">General Discussion</li>
-        <li class="breadcrumb-item active" aria-current="page">Topics</li>
+        <li class="breadcrumb-item">{{ value }}</li>
+        <li class="breadcrumb-item">{{ category }}</li>
+        <li class="breadcrumb-item active" aria-current="page">Replies</li>
     </ol>
 </nav>
-    
-<h1>Topic Name</h1>
-<hr>
-<nav aria-label="Page navigation example">
-<ul class="pagination pg-blue">
-    <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
-    <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
-    
-    <!-- Modal -->
-    <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Reply</button>
 
-    <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-              <span aria-hidden="true">×</span>
-            </button>
-            <h4 class="modal-title w-100" id="myModalLabel">Forum Reply</h4>
-          </div>
-          <div class="modal-body">
-            <!-- INPUT HERE -->
-
-            <div class="md-form">
-              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-              <textarea #textArea type="text" id="form8" class="md-textarea md-textarea-auto form-control" rows="3" mdbInput
-                mdbValidate></textarea>
-              <label for="form8">Reply Text Area</label>
+<div class="container">
+    <br/>
+    <br/>
+    <h1>{{topic.topic}}</h1>
+    <hr>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pg-blue">
+            <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
+            <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
+            <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
+            <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+            <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
+            
+            <!-- NEW REPLY MODAL -->
+            <div mdbModal #replyModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myReplyModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="replyModal.hide()">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title w-100" id="myModalLabel">Post Reply</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- INPUT HERE -->
+                            
+                            <div class="md-form">
+                                <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                                <textarea #newTextArea type="text" id="form8" class="md-textarea md-textarea-auto form-control" rows="3" mdbInput
+                                mdbValidate></textarea>
+                                <label for="form8">Reply Text Area</label>
+                            </div>
+                            
+                            <!-- INPUT HERE -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="replyModal.hide()" mdbWavesEffect>Close</button>
+                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createReply(query, category, topicId, newTextArea.value); replyModal.hide()" mdbWavesEffect>BUTTON Create Reply</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- INPUT HERE -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createReply(query, category, topicId, textArea.value); basicModal.hide()" mdbWavesEffect>Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-</ul>
-</nav>
+            <!-- EDIT MODAL -->
+            <div mdbModal #editModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myEditModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document" >
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="editModal.hide()">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title w-100" id="myModalLabel">Edit Reply</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <!-- INPUT HERE -->
+                            
+                            <div class="md-form">
+                                <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                                <textarea #editTextArea type="text" id="form8" class="md-textarea md-textarea-auto form-control" rows="3" mdbInput
+                                mdbValidate></textarea>
+                                <label for="form8">Reply Text Area</label>
+                            </div>
+                            
+                            <!-- INPUT HERE -->
+                        </div>
+
+                        <div class="modal-footer"> 
+                            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="editModal.hide()" mdbWavesEffect>Close</button>
+                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="editReply(query, category, topicId, replyId, editTextArea.value); editModal.hide()" mdbWavesEffect>Edit Reply</button>
+                            <!-- FIX THIS CLICK -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ORIGINAL POSTER EDIT MODAL -->
+            <div mdbModal #originalPostModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myOriginalPostModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="originalPostModal.hide()">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title w-100" id="myModalLabel">Edit Original Post</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="md-form">
+                        <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                        <textarea #textArea type="text" id="form8" class="md-textarea md-textarea-auto form-control" rows="3" mdbInput
+                          mdbValidate></textarea>
+                        <label for="form8">{{ topic.textArea }}</label>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="originalPostModal.hide()" mdbWavesEffect>Close</button>
+                    <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="editOriginal(query, category, topic.id, textArea.value); originalPostModal.hide()">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </ul>
+    </nav>
     
-<hr>
+    <div class="text-center">
+        <div *ngIf="currentUser == null">
+            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New Reply</button>
+        </div>
+        
+        <div *ngIf="currentUser !== null">
+            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="replyModal.show()" mdbWavesEffect>New Reply</button>
+        </div>
+    </div>
+    
+    <!-- ORIGINAL USER -->
+    <mdb-card class="op">
+        <mdb-card-body>
+            <mdb-card-text>
+                <div class="row">
+                    <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p> -->
+                    <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'short' }}</p> -->
+                    <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'medium' }}</p> -->
+                    <p class="col-6 text-left">{{(topic.createdAt != topic.updatedAt ? 'Edited: ' : '') + (topic.updatedAt | date:'long') }}</p>
+                    <p class="col-6 text-right">Original Post</p>
+                </div>
+                <div class="row">
+                    <p class="post-user col-6">{{topic.userName}}</p>
+                    <div *ngIf="topic.ownerId === userId" class="col-6 text-right">
+                        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="originalPostModal.show()">Original Edit</button>
+                    </div>
+                </div>
+            </mdb-card-text>
+            <mdb-card-title>
+                {{topic.textArea}}
+            </mdb-card-title>
+        </mdb-card-body>
+    </mdb-card>
+        
+    <mdb-card class="reply" *ngFor="let reply of replyResults; let i = index" [attr.data-index]="i">
+            <mdb-card-body>
+                    <mdb-card-text>
+                        <div class="row">
+                            <p class="col-6 text-left">{{reply.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p>
+                            <p class="col-6 text-right">{{i + 1}}</p>
+                        </div>
+                        <div class="row">
+                            <p class="post-user col-6">{{reply.userName}}</p>
+                            <div *ngIf="reply.ownerId == userId && !currentUser.token.user.admin" class="col-6 text-right">
+                                <!-- add (click)="editfunction" -->
+                                <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Reply Edit</button>
+                                <!-- add (click)="deletefunction" -->
+                                <button type="button" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(query, category, topicId, reply.id); editModal.hide()" mdbWavesEffect>Reply Delete</button>
+                            </div>
+                            <div *ngIf="currentUser.token.user.admin" class="col-6 text-right">
+                                <!-- add (click)="editfunction" -->
+                                <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Admin Edit</button>
+                                <!-- add (click)="deletefunction" -->
+                                <button type="button" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(query, category, topicId, reply.id); editModal.hide()" mdbWavesEffect>Admin Delete</button>
+                            </div>
+                        </div>
+                    </mdb-card-text>
+                    <mdb-card-title>
+                        {{reply.textArea}}
+                    </mdb-card-title>
+                </mdb-card-body>
+            </mdb-card>
+</div>
 
-<div class="container" *ngFor="let topicResult of topicResults">
-    <div class="row" *ngIf="topicResult.id == topicId">
-        <!-- COL ADD UP TO 12 -->
-        <div id="aboutMe" class="col-sm-12">
-            <h3>{{ topicResult.userName }}</h3>
-        </div>
-        <!-- <div class="col-sm-4" id="picOfMe">
-            <p>Side Info (stretch goal)</p>
-        </div> -->
-        <div class="aboutSection col-sm-8">
-            <div class="row-sm">
-                <p>{{ topicResult.textArea }}</p>
-            </div> 
-        </div>
+<div class="text-center">
+    <div *ngIf="currentUser == null">
+        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New Reply</button>
+    </div>
+    
+    <div *ngIf="currentUser !== null">
+        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="replyModal.show()" mdbWavesEffect>New Reply</button>
     </div>
 </div>
 
-<hr>
-
-<div class="container" *ngFor="let replyResult of replyResults">
-    <div class="row">
-        <!-- COL ADD UP TO 12 -->
-        <div id="aboutMe" class="col-sm-12">
-            <h3>{{ replyResult.userName}}</h3>
-        </div>
-        <!-- <div class="col-sm-4" id="picOfMe">
-            <p>Side Info (stretch goal)</p>
-        </div> -->
-        <div class="aboutSection col-sm-8">
-            <div class="row-sm">
-                <p>{{ replyResult.textArea }}</p>
-                <hr>
-            </div> 
-        </div>
-    </div>
-</div>
-
-<!-- <app-forum-post></app-forum-post> -->
+<br/>
+<br/>

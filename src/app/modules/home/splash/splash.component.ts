@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GameSearch } from 'src/app/services/game-search.service';
 
-import { GameSearch } from '../../../game-search.service'
+
 
 @Component({
   selector: 'app-splash',

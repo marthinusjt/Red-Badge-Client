@@ -51,13 +51,47 @@ export class GameForumService {
         
     }
 
-    // FORUM TOPICS
+    forumReplyEdit(query, category, topicId, id, textArea) {
 
-    // SINGULAR
-    // forumTopicGet(query, category, topicId) {
-    //     return this.http.get(this._url2 + `${query}/${category}/${topicId}`)
-    //     //data,this._proxy +     
-    // }
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let token = currentUser.token;
+
+        let body = {
+
+            textArea: textArea
+            
+        }
+
+        const parseHeaders = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': token.sessionToken
+            })
+        };
+
+        return this.http.put(this._url3 +`/${id}`, body, parseHeaders)
+        
+    }
+
+    forumReplyDelete(query, category, topicId, id) {
+
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let token = currentUser.token;
+
+        const parseHeaders = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': token.sessionToken
+            })
+        };
+
+        return this.http.delete(this._url3 +`/${id}`, parseHeaders)
+        
+    }
+
+
+
+    // FORUM TOPICS
 
     // ALL
     forumTopicGetAll(query, category) {
@@ -86,6 +120,28 @@ export class GameForumService {
         };
 
         return this.http.post(this._url2 +`${query}/${category}`, body, parseHeaders)
+        
+    }
+
+    forumOriginalEdit(query, category, id, textArea) {
+
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let token = currentUser.token;
+
+        let body = {
+
+            textArea: textArea
+            
+        }
+
+        const parseHeaders = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': token.sessionToken
+            })
+        };
+
+        return this.http.put(this._url2 +`${query}/${category}/${id}`, body, parseHeaders)
         
     }
     

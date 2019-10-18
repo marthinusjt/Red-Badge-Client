@@ -5,12 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
 
-  constructor() {}
+export class AppComponent {
   
 }
-
 
 // import { Component } from '@angular/core';
 // import { Router } from '@angular/router';

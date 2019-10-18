@@ -12,12 +12,17 @@ export class AdminComponent implements OnInit {
   public results: any = [];
   public results2: any = [];
   public results3: any = [];
+  public results4: any = [];
+  public results5: any = [];
+  public results6: any = [];
+  public results7: any = [];
   public userName: string;
   public firstName: string;
   public lastName: string;
   public email: string;
   public admin: boolean;
   private banned: boolean= false;
+  public person: string;
   
 
   constructor(
@@ -165,6 +170,41 @@ export class AdminComponent implements OnInit {
       
   }
 
+  searchPerson(person){
+    this._adminService.adminSGetAll()
+      .subscribe(data => {this.results = data;
+      
+        this.person=person.toLowerCase()
+
+        for(let i=0; i<this.results.length+1;i++){
+          console.log('hit', i)
+          
+          for(let j=0; j<this.person.length;j++){
+    
+            if(this.results[i].userName.charAt(j).toLowerCase() != this.person.charAt(j)){
+    
+              console.log(this.results[i].userName.charAt(j).toLowerCase())
+              console.log(this.person.charAt(j))
+              // console.log(this.results)
+              // this.results[i]=null
+               this.results.splice (i,1)
+
+               j=j-1
+
+              
+              
+
+          } 
+    }
+    
+      }
+
+
+      })
+  
+
+}
+
   
   adminPut(firstName, lastName, userName, admin, banned, id, email){
 
@@ -177,6 +217,104 @@ export class AdminComponent implements OnInit {
       
   }
 
+  adminDelete(id){
+
+    this._adminService.adminGetForm(id)
+    .subscribe(data => {this.results5 = data; console.log(data)
+    
+    for(let i = 0; i<this.results5.length; i++){
+
+
+      this._adminService.adminFormPut(this.results5[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)   
+      })
+    }
+    })
+
+    this._adminService.adminGetReply(id)
+    .subscribe(data => {this.results6 = data; console.log(data)
+    
+    for(let j = 0; j<this.results6.length; j++){
+
+
+      this._adminService.adminReplyPut(this.results6[j].id)
+      .subscribe(data => {this.results4 = data; console.log(data)
+      
+      })
+
+    }
+
+    })
+
+    this._adminService.adminGetReview(id)
+    .subscribe(data => {this.results7 = data; console.log(data)
+    
+    for(let i = 0; i<this.results7.length; i++){
+
+
+      this._adminService.adminReviewDelete(this.results7[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)   
+      })
+    }
+    })
+
+    this._adminService.adminSDelete(id)
+    .subscribe(data => {this.results = data; console.log(data)
+    this.adminGetAll()
+    })
+
+
+  }
+
+  adminExpunge(id){
+
+    this._adminService.adminGetForm(id)
+    .subscribe(data => {this.results5 = data; console.log(data)
+    
+    for(let i = 0; i<this.results5.length; i++){
+
+
+      this._adminService.adminFormDelete(this.results5[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)   
+      })
+    }
+    })
+
+    this._adminService.adminGetReply(id)
+    .subscribe(data => {this.results6 = data; console.log(data)
+    
+    for(let j = 0; j<this.results6.length; j++){
+
+
+      this._adminService.adminReplyDelete(this.results6[j].id)
+      .subscribe(data => {this.results4 = data; console.log(data)
+      
+      })
+
+    }
+
+    })
+
+
+    this._adminService.adminGetReview(id)
+    .subscribe(data => {this.results7 = data; console.log(data)
+    
+    for(let i = 0; i<this.results7.length; i++){
+
+
+      this._adminService.adminReviewDelete(this.results7[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)   
+      })
+    }
+    })
+
+    this._adminService.adminSDelete(id)
+    .subscribe(data => {this.results = data; console.log(data)
+    this.adminGetAll()
+    })
+
+
+  }
   ngOnInit() {
 
     this.adminLogIn()

@@ -120,4 +120,299 @@ export class AdminService {
 
   }
 
+
+  adminSDelete(id) {
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+    
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.delete(this._url+ id, parseHeaders2)    //data,this._proxy + 
+
+
+  }
+
+  adminFormPut(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+     let body = {
+      
+      pinned: false,
+      ownerId: 0,
+ 
+    
+        userName: "[User Deleted]",
+
+       // textArea: "[User Deleted]",
+
+    }
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+
+
+  }
+
+  adminDesPut(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+     let body = {
+      
+      pinned: false,
+      ownerId: 0,
+ 
+    
+        userName: "[User Deleted]",
+
+        // textArea: "[User Deleted]",
+
+    }
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+
+  }
+
+  adminGetForm(id) {
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.get('http://localhost:3343/forumTopic/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+
+
+  }
+
+  adminGetReply(id) {
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.get('http://localhost:3343/forumReply/all/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+
+
+  }
+
+  adminReplyPut(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+     let body = {
+      
+      
+      ownerId: 0,
+ 
+    
+        userName: "[User Deleted]",
+
+        // textArea: "[User Deleted]",
+
+    }
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put('http://localhost:3343/forumReply/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+
+  }
+
+  adminFormDelete(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+     let body = {
+      
+      pinned: false,
+      ownerId: 0,
+ 
+    
+        userName: "[User Deleted]",
+
+        textArea: "[User Deleted]",
+
+    }
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+
+
+  }
+  adminReplyDelete(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+    // console.log(token.user.userName)
+
+    return this.http.delete('http://localhost:3343/forumReply/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+
+  }
+
+  adminReviewDelete(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+    // console.log(token.user.userName)
+
+    return this.http.delete('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+
+  }
+
+  adminGetReview(id) {
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.get('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+
+
+  }
+
+  
 }
