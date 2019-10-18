@@ -97,6 +97,17 @@ export class ForumDisplayComponent implements OnInit {
 
   }
 
+  deleteReply(query, category, topicId, id) {
+
+    this._topicSearch.forumReplyDelete(this.gameid, this.category, this.topicId, id)
+      .subscribe(data => {
+        this.userReply = data;
+        console.log("User Edit: ", this.userReply);
+        this.getAllReplies(this.gameid, this.category, this.topicId);
+      })
+
+  }
+
   editOriginal(query, category, id, textArea) {
 
     this._topicSearch.forumOriginalEdit(this.gameid, this.category, id, textArea)
