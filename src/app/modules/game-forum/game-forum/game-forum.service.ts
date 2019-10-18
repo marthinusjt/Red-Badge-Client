@@ -69,7 +69,7 @@ export class GameForumService {
             })
         };
 
-        return this.http.put(this._url3 +`${query}/${category}/${topicId}/${id}`, body, parseHeaders)
+        return this.http.put(this._url3 +`/${id}`, body, parseHeaders)
         
     }
 
@@ -85,7 +85,7 @@ export class GameForumService {
             })
         };
 
-        return this.http.delete(this._url3 +`${query}/${category}/${topicId}/${id}`, parseHeaders)
+        return this.http.delete(this._url3 +`/${id}`, parseHeaders)
         
     }
 
