@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GameReview } from '../../../game-review.service'
+
 // import { ɵHttpInterceptingHandler } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { AuthComponent } from '../../../core/auth/auth.component';
+import { GameReview } from 'src/app/services/game-review.service';
 
 @Component({
   selector: 'app-game-review',

@@ -161,7 +161,7 @@
                                 <!-- add (click)="editfunction" -->
                                 <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Reply Edit</button>
                                 <!-- add (click)="deletefunction" -->
-                                <button type="button" mdbBtn color="secondary" class="relative waves-light" mdbWavesEffect>Delete</button>
+                                <button type="button" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(query, category, topicId, reply.id); editModal.hide()" mdbWavesEffect>Reply Delete</button>
                             </div>
                         </div>
                     </mdb-card-text>
