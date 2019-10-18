@@ -41,7 +41,7 @@
 
   <p class="justify-content-center col">Displaying results {{offset + 1}}-{{offset + results.length}}</p>
 
-  <a routerLink="/review/{{ result.id }}" routerLinkActive="active"  class="row result" *ngFor="let result of results">
+  <a routerLink="/review/{{result.id}}/{{result.name}}" routerLinkActive="active"  class="row result" *ngFor="let result of results">
     <div class="col">
       <div class="row"><p class="col-12 result-title">{{ result.name.toUpperCase() }}</p></div>
       <div class="row">
@@ -67,7 +67,9 @@
         </div>
         <div class="col-12 col-md-2">
           <div class="row">
+
             <a class="col-6 col-md-12" routerLink="/review/{{ result.id }}">
+
               <button  mdbBtn type="button" size="sm" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
             </a>
             <a class="col-6 col-md-12" routerLink="/forumTopic/{{ result.id }}/{{result.name}}">
