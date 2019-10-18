@@ -3,11 +3,12 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Forum</li>
+        <li class="breadcrumb-item">{{ value }}</li>
         <li class="breadcrumb-item active" aria-current="page">General Discussion</li>
     </ol>
 </nav>
 
-<!-- <h1>{{result.name}}</h1> -->
+<h1>{{ value }}</h1>
 <hr>
 <nav aria-label="Page navigation example">
   <ul class="pagination pg-blue">
@@ -18,41 +19,48 @@
     <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
     
     
-    <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+      <div *ngIf="currentUser == null">
+        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
+        mdbWavesEffect>New Topic</button>
+      </div>
 
-    <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-              <span aria-hidden="true">×</span>
-            </button>
-            <h4 class="modal-title w-100" id="myModalLabel">Forum Topic</h4>
-          </div>
-          <div class="modal-body">
-            <!-- INPUT HERE -->
-            <div class="md-form mb-5">
-              <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
-              <input #topic type="text" id="form32" class="form-control" mdbInput mdbValidate>
-              <label for="form8">Topic Title</label>
+      <div *ngIf="currentUser != null">
+        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+      </div>
+
+      <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title w-100" id="myModalLabel">Forum Topic</h4>
             </div>
+            <div class="modal-body">
+              <!-- INPUT HERE -->
+              <div class="md-form mb-5">
+                <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
+                <input #topic type="text" id="form32" class="form-control" mdbInput mdbValidate>
+                <label for="form8">Topic Title</label>
+              </div>
 
-            <div class="md-form">
-              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-              <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
-                mdbValidate></textarea>
-              <label for="form8">Topic Text Area</label>
+              <div class="md-form">
+                <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                  mdbValidate></textarea>
+                <label for="form8">Topic Text Area</label>
+              </div>
+
+              <!-- INPUT HERE -->
             </div>
-
-            <!-- INPUT HERE -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
+            <div class="modal-footer">
+              <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+              <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
 
   </ul>
