@@ -253,6 +253,43 @@ export class AdminComponent implements OnInit {
 
 
   }
+
+  adminExpunge(id){
+
+    this._adminService.adminGetForm(id)
+    .subscribe(data => {this.results5 = data; console.log(data)
+    
+    for(let i = 0; i<this.results5.length; i++){
+
+
+      this._adminService.adminFormDelete(this.results5[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)   
+      })
+    }
+    })
+
+    this._adminService.adminGetReply(id)
+    .subscribe(data => {this.results6 = data; console.log(data)
+    
+    for(let j = 0; j<this.results6.length; j++){
+
+
+      this._adminService.adminReplyDelete(this.results6[j].id)
+      .subscribe(data => {this.results4 = data; console.log(data)
+      
+      })
+
+    }
+
+    })
+
+    this._adminService.adminSDelete(id)
+    .subscribe(data => {this.results = data; console.log(data)
+    this.adminGetAll()
+    })
+
+
+  }
   ngOnInit() {
 
     this.adminLogIn()
