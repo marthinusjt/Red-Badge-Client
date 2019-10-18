@@ -18,6 +18,8 @@ export class AuthComponent implements OnInit {
     public direct: any;
     public resData: any;
 
+    forbiddenUsernames = ['Aaron', 'Josh']
+
     
 
     // mdbCode
@@ -36,9 +38,9 @@ export class AuthComponent implements OnInit {
         this.validatingForm = new FormGroup({
             'firstName': new FormControl(null),
             'lastName': new FormControl(null),
-            'userName': new FormControl(null),
-            'email': new FormControl(null, Validators.email),
-            'password': new FormControl(null, Validators.required)
+            'userName': new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25), this.forbiddenNames.bind(this)]),
+            'email': new FormControl(null, [Validators.required, Validators.email]),
+            'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
         });
     }
 
@@ -69,10 +71,6 @@ export class AuthComponent implements OnInit {
 
     onSubmit () {
         
-
-       
-
-
         if(!this.validatingForm.valid){
             return;
         }
@@ -130,5 +128,12 @@ export class AuthComponent implements OnInit {
         }
 
         this.validatingForm.reset();
+    }
+
+    forbiddenNames(control: FormControl): {[s: string]: boolean} {
+        if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
+          return {'nameIsForbidden': true};
+        }
+        return null;
     }
 }

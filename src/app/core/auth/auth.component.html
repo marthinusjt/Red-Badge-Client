@@ -48,16 +48,23 @@
                     </div>
 
                     <div class="md-form mb-5">
-
                         <div class="form-group">
-                            <label for="username"><i class="fas fa-user mr-2"></i>Username</label>
                             <input 
-                                type="text" 
-                                id="username" 
-                                class="form-control" 
-                                mdbInput 
-                                mdbValidate
-                                [formControl]="userName">
+                            type="text" 
+                            id="defaultForm-username" 
+                            [formControl]="userName"
+                            class="form-control" 
+                            mdbInput 
+                            mdbValidate>
+                            <label for="defaultForm-username"><mdb-icon fas icon="user-alt mr-2"></mdb-icon>Username</label>
+                            <!-- <mdb-error
+                                *ngIf="!username.valid && (username.dirty || username.touched)">
+                                Input invalid
+                            </mdb-error>
+                            <mdb-success
+                                *ngIf="username.valid && (username.dirty || username.touched)">Input
+                                valid
+                            </mdb-success> -->
                         </div>
                     </div>
                 </div>    
@@ -67,7 +74,6 @@
                 
                 <div class="md-form mb-5">
                     <div class="form-group">
-                    <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
                         <input 
                             type="email" 
                             id="defaultForm-email" 
@@ -90,7 +96,6 @@
             
                 <div class="form-group">
                 <div class="md-form mb-4">
-                    <!-- <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon> -->
                     <input 
                         type="password" 
                         id="defaultForm-pass" 
@@ -110,13 +115,13 @@
                     </mdb-success>
                 </div>
             </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        
-            <button mdbBtn gradient="blue" type="submit" [disabled]="!validatingForm.valid" outline="true" mdbWavesEffect>{{ isLoginPage ? 'Login' : 'Sign Up' }}</button>
-                    
-      </div>
-      </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            
+                <button mdbBtn gradient="blue" type="submit" [disabled]="!validatingForm.valid" outline="true" mdbWavesEffect>{{ isLoginPage ? 'Login' : 'Sign Up' }}</button>
+                        
+        </div>
+        </form>
     </div>
   <!-- </div> -->
 <!-- </div> -->
