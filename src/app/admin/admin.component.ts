@@ -246,6 +246,18 @@ export class AdminComponent implements OnInit {
 
     })
 
+    this._adminService.adminGetReview(id)
+    .subscribe(data => {this.results7 = data; console.log(data)
+    
+    for(let i = 0; i<this.results7.length; i++){
+
+
+      this._adminService.adminReviewDelete(this.results7[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)   
+      })
+    }
+    })
+
     this._adminService.adminSDelete(id)
     .subscribe(data => {this.results = data; console.log(data)
     this.adminGetAll()
@@ -281,6 +293,19 @@ export class AdminComponent implements OnInit {
 
     }
 
+    })
+
+
+    this._adminService.adminGetReview(id)
+    .subscribe(data => {this.results7 = data; console.log(data)
+    
+    for(let i = 0; i<this.results7.length; i++){
+
+
+      this._adminService.adminReviewDelete(this.results7[i].id)
+      .subscribe(data => {this.results4 = data; console.log(data)   
+      })
+    }
     })
 
     this._adminService.adminSDelete(id)
