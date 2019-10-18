@@ -187,6 +187,44 @@ export class AdminService {
 
   }
 
+  adminDesPut(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+     let body = {
+      
+      pinned: false,
+      ownerId: 0,
+ 
+    
+        userName: "[User Deleted]",
+
+        textArea: "[User Deleted]",
+
+    }
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+
+  }
+
   adminGetForm(id) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
