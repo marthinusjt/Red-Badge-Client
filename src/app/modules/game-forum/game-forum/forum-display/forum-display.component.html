@@ -129,10 +129,10 @@
         <mdb-card-body>
             <mdb-card-text>
                 <div class="row">
-                    <p class="col-6 text-left">{{topic.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p>
-                    <p class="col-6 text-left">{{topic.updatedAt | date:'short' }}</p>
-                    <p class="col-6 text-left">{{topic.updatedAt | date:'medium' }}</p>
-                    <p class="col-6 text-left">{{topic.updatedAt | date:'long' }}</p>
+                    <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p> -->
+                    <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'short' }}</p> -->
+                    <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'medium' }}</p> -->
+                    <p class="col-6 text-left">{{(topic.createdAt != topic.updatedAt ? 'Edited: ' : '') + (topic.updatedAt | date:'long') }}</p>
                     <p class="col-6 text-right">Original Post</p>
                 </div>
                 <div class="row">
