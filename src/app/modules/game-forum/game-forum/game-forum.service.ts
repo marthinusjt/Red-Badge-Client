@@ -73,6 +73,24 @@ export class GameForumService {
         
     }
 
+    forumReplyDelete(query, category, topicId, id) {
+
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let token = currentUser.token;
+
+        const parseHeaders = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': token.sessionToken
+            })
+        };
+
+        return this.http.delete(this._url3 +`${query}/${category}/${topicId}/${id}`, parseHeaders)
+        
+    }
+
+
+
     // FORUM TOPICS
 
     // ALL
