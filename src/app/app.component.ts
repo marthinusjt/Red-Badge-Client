@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   handler:any = null;
   ngOnInit() {
  
-    this.loadStripe();
+    // this.loadStripe();
   }
  
   pay(amount) {    
