@@ -9,8 +9,10 @@ import { RouterModule, Routes } from '@angular/router';
 // MDB Imports
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
+
 // Stipe Imports
 import { Module as StripeModule } from "stripe-angular";
+
 
 // component imports
 import { AppComponent } from './app.component';
@@ -27,6 +29,7 @@ import { ForumDisplayComponent } from './modules/game-forum/game-forum/forum-dis
 import { RedirectComponent } from './redirect/redirect.component';
 import { AdminComponent } from './admin/admin.component';
 import { StripeComponent } from './stripe/stripe.component';
+import { FooterComponent } from './core/footer/footer.component';
 
 
 // service imports
@@ -65,6 +68,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     AdminComponent,
     ForumDisplayComponent,
     StripeComponent,
+    FooterComponent,
     
   ],
   entryComponents:[
