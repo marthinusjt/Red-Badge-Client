@@ -368,4 +368,51 @@ export class AdminService {
 
   }
 
+  adminReviewDelete(id) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+    // console.log(token.user.userName)
+
+    return this.http.delete('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+
+  }
+
+  adminGetReview(id) {
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.get('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+
+
+  }
+
+  
 }
