@@ -9,6 +9,8 @@ import { RouterModule, Routes } from '@angular/router';
 // MDB Imports
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
+// Stipe Imports
+import { Module as StripeModule } from "stripe-angular";
 
 // component imports
 import { AppComponent } from './app.component';
@@ -24,7 +26,7 @@ import { GeneralDiscussionComponent } from './modules/game-forum/game-forum/gene
 import { ForumDisplayComponent } from './modules/game-forum/game-forum/forum-display/forum-display.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { AdminComponent } from './admin/admin.component';
-// import { StripeComponent } from './stripe/stripe.component';
+import { StripeComponent } from './stripe/stripe.component';
 
 
 // service imports
@@ -41,7 +43,6 @@ import { SafePipe } from './shared/safe.pipe';
 
 // Modules
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
 
 // directive imports
 
@@ -63,7 +64,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     RedirectComponent,
     AdminComponent,
     ForumDisplayComponent,
-    // StripeComponent,
+    StripeComponent,
     
   ],
   entryComponents:[
@@ -77,6 +78,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     HttpClientModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
+    [ StripeModule.forRoot() ]
   ],
   exports: [
     GameReviewComponent,

@@ -12,7 +12,7 @@ import { GeneralDiscussionComponent } from '../modules/game-forum/game-forum/gen
 import { RedirectComponent } from '../redirect/redirect.component';
 import { AdminComponent} from '../admin/admin.component'
 import { ForumDisplayComponent } from '../modules/game-forum/game-forum/forum-display/forum-display.component';
-// import { StripeComponent } from '../stripe/stripe.component';
+import { StripeComponent } from '../stripe/stripe.component';
 
 // Services
 import { AuthGuard } from '../core/guards/auth-guard.service';
@@ -23,13 +23,12 @@ const routes: Routes = [
     { path: 'search/:searching', component: SearchDisplayComponent },
     { path: 'review/:gameid', component: GameReviewComponent },
     { path: 'admin', component: AdminComponent },
-    // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
     { path: 'forumTopic/:gameid/:value', component: GameForumComponent},
     { path: 'forumTopic/:gameid/:value/:category', component: GeneralDiscussionComponent },
     { path: 'forumTopic/:gameid/:value/:category/:topicId', component: ForumDisplayComponent },
     { path: 'redirect', component: RedirectComponent },
     // { path: 'donate', component: StripeComponent },
-
+    { path: 'donate', canActivate: [AuthGuard], component: StripeComponent },
 
     // place paths above here
     { path: 'not-found', component: PageNotFoundComponent }, // Static Message
