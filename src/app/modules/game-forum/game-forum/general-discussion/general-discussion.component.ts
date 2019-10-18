@@ -20,6 +20,8 @@ export class GeneralDiscussionComponent implements OnInit {
   public category: string;
   public value: string;
 
+  public currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
   modalRef: MDBModalRef;
 
 

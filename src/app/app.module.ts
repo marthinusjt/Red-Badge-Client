@@ -44,6 +44,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ForumPostComponent } from './modules/game-forum/game-forum/forum-display/forum-post/forum-post.component';
 import { ForumDisplayComponent } from './modules/game-forum/game-forum/forum-display/forum-display.component';
 import { GeneralTopicComponent } from './modules/game-forum/game-forum/general-discussion/general-topic/general-topic.component';
+// import { StripeComponent } from './stripe/stripe.component';
 
 // NEW IMPORTS TESTING
 // import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -79,6 +80,7 @@ import { GeneralTopicComponent } from './modules/game-forum/game-forum/general-d
     ForumPostComponent,
     ForumDisplayComponent,
     GeneralTopicComponent,
+    // StripeComponent,
     
   ],
   entryComponents:[
