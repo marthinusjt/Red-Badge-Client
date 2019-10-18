@@ -111,6 +111,12 @@
   <div class="user-review-card" *ngIf="userReview">
     <mdb-card class="review-card">
       <div class="row" style="margin: 1em; background-color:#e9ecef;">YOUR REVIEW:</div>
+      <div class="text-right" style="margin-right: 2rem" *ngIf="userReview && currentUser != null">
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.show()"
+            mdbWavesEffect>Edit</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light"
+            (click)='searchDelete( gameid, 1, 1, 2, 2, 2, 2)' mdbWavesEffect>Delete</button>
+      </div>
       <mdb-card-body>
         <!-- <mdb-card-title>
           <h4 style="margin-bottom: 1em">{{userReview.score}} "{{userReview.headline}}"</h4>
@@ -138,28 +144,29 @@
 
   <br />
 
-  <div *ngIf="!userReview || currentUser == null">
+  <div class="row" style="margin-top: 5em">
+    <div class="col-4">
+      <mdb-card class="reviews-header">
+        {{results[0].total_rating_count}} Ratings
+      </mdb-card>
+    </div>
+    <div class="col-4">
+      <mdb-card class="reviews-header">
+        {{allReviews.length}} Reviews
+      </mdb-card>
+    </div>
+    <div class="col-4">
+      <mdb-card class="reviews-header">
+        <!-- User Score: {{(results[0].total_rating / 10).toFixed(1)}} / 100 -->
+        User Score: {{avgScore.toFixed(2)}} / 10
+      </mdb-card>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div *ngIf="!userReview || currentUser == null" style="margin-bottom: 4rem;">
     
-    <div class="row" style="margin-top: 5em">
-        <div class="col-4">
-          <mdb-card class="reviews-header">
-            {{results[0].total_rating_count}} Ratings
-          </mdb-card>
-        </div>
-        <div class="col-4">
-          <mdb-card class="reviews-header">
-            {{allReviews.length}} Reviews
-          </mdb-card>
-        </div>
-        <div class="col-4">
-          <mdb-card class="reviews-header">
-            <!-- User Score: {{(results[0].total_rating / 10).toFixed(1)}} / 100 -->
-            User Score: {{avgScore.toFixed(2)}} / 10
-          </mdb-card>
-        </div>
-      </div>
-      <br />
-      <br />
       
       <div *ngIf="currentUser == null">
         <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
@@ -251,14 +258,9 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
   
-  
-    <div *ngIf="userReview && currentUser != null">
-      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.show()"
-        mdbWavesEffect>Edit</button>
-      <button type="button" mdbBtn color="primary" class="relative waves-light"
-        (click)='searchDelete( gameid, 1, 1, 2, 2, 2, 2)' mdbWavesEffect>Delete</button>
+    <div>
       <div mdbModal #basicModal2="mdbModal" class="modal fade" tabindex="-1" role="dialog"
         aria-labelledby="myBasicModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -340,7 +342,7 @@
         </div>
       </div>
     </div>
-    
+
   <mdb-card class="review-card" *ngFor="let review of allReviews">
     <mdb-card-body>
       <!-- <mdb-card-title>
