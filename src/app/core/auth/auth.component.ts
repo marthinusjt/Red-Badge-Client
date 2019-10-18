@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
         this.validatingForm = new FormGroup({
             'firstName': new FormControl(null),
             'lastName': new FormControl(null),
-            'userName': new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25), this.forbiddenNames.bind(this)]),
+            'userName': new FormControl('', [Validators.minLength(3), Validators.maxLength(25), this.forbiddenNames.bind(this)]),
             'email': new FormControl(null, [Validators.required, Validators.email]),
             'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
         });
