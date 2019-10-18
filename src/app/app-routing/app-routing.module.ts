@@ -14,8 +14,7 @@ import { RedirectComponent } from '../redirect/redirect.component';
 import { AdminComponent} from '../admin/admin.component'
 import { ForumDisplayComponent } from '../modules/game-forum/game-forum/forum-display/forum-display.component';
 import { ForumPostComponent } from '../modules/game-forum/game-forum/forum-display/forum-post/forum-post.component';
-// import { StripeComponent } from '../stripe/stripe.component';
-
+import { StripeComponent } from '../stripe/stripe.component';
 
 const routes: Routes = [
     { path: '', component: SplashComponent },
@@ -28,7 +27,7 @@ const routes: Routes = [
     { path: 'forumTopic/:gameid/:value/:category/:topicId', component: ForumDisplayComponent },
     { path: 'forumReply/:gameid/:value/:category/:topicId', component: ForumPostComponent },
     { path: 'redirect', component: RedirectComponent },
-    // { path: 'donate', component: StripeComponent },
+    { path: 'donate', component: StripeComponent },
     // place paths above here
     // { path: 'not-found', component: PageNotFoundComponent }, // Static Message
     // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} }, // Dynamic Messagae
