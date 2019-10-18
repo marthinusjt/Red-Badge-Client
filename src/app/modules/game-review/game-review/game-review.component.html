@@ -18,6 +18,12 @@
       [className]="avgScore > 7.5 ? 'game-score high-score' : avgScore > 5 ? 'game-score med-score' : 'game-score low-score'">
       {{avgScore.toFixed(1)}}</h1>
   </div>
+  <div class="row" style="margin-bottom: 4rem">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button mdbBtn type="button" [disabled]="true" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
+      <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect routerLink="/forumTopic/{{gameid}}/{{gameName}}">Forums</button>
+    </div>
+  </div>
   <div class="row">
 
     <div class="col-12 col-lg-6 game-media">
@@ -25,13 +31,13 @@
         <div class="row mx-auto justify-content-center media-buttons">
           <div class="btn-group" role="group" aria-label="Basic example">
             <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].videos"
-              (click)="changeCarousel('video')">Video</button>
+              (click)="changeCarousel('video')" size="sm">Video</button>
 
             <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect
-              *ngIf="results[0].screenshots" (click)="changeCarousel('screenshots')">Screenshots</button>
+              *ngIf="results[0].screenshots" (click)="changeCarousel('screenshots')" size="sm">Screenshots</button>
 
             <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].artworks"
-              (click)="changeCarousel('artwork')">Artwork</button>
+              (click)="changeCarousel('artwork')" size="sm">Artwork</button>
           </div>
         </div>
         <mdb-card-body>
@@ -133,7 +139,7 @@
   <br />
 
   <div *ngIf="!userReview || currentUser == null">
-    <div *ngIf="currentUser == null">
+    <div class="text-center" *ngIf="currentUser == null">
       <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
         mdbWavesEffect>Write a Review</button>
     </div>

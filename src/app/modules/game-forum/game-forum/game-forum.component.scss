@@ -5,3 +5,18 @@
 mdb-breadcrumb-item.breadcrumb-item::before {
     color: transparent;
 }
+
+.game-name {
+    letter-spacing: 0.1em;
+    font-size: 2.6em;
+    /* margin: 1em; */
+    text-align: right;
+    padding-right: 1em;
+    
+}
+
+.game-header {
+    border-bottom: solid 1px #e9ecef;
+    margin-bottom: 4em;
+    margin-top: 2em;
+}

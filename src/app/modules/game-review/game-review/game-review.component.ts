@@ -14,12 +14,13 @@ export class GameReviewComponent implements OnInit {
 
   public results: any;
   public userReview: any;
-  public allReviews: any;
-  public avgScore: any = 0;
+  public allReviews: any = [];
+  public avgScore: any;
 
 
   public searching: any = false;
   public gameid: string;
+  public gameName: string;
   public score: string;
   public carousel: string;
 
@@ -146,16 +147,20 @@ public headline1: string;
   }
 
   changeAvgScore(){
-    if(this.results && this.allReviews.length > 0){
+    if(this.results && this.allReviews){
       // this.avgScore = (this.allReviews.reduce((a,b) => a + b.score, 0) + this.results[0].total_rating / 10) / (this.results[0].total_rating_count + this.allReviews.length );
       this.avgScore = ((this.results[0].total_rating / 10 * this.results[0].total_rating_count + (this.allReviews.reduce((a,b) => a + b.score, 0))) / (this.allReviews.length + this.results[0].total_rating_count));
       console.log("avgScore: ", this.avgScore);
+    } else if(this.results) {
+      this.avgScore = this.results[0].total_rating / 10;
     }
   }
 
 
   ngOnInit() {
-    this.gameid = this.route.snapshot.paramMap.get('gameid').split('#')[0];
+    // this.gameid = this.route.snapshot.paramMap.get('gameid').split('#')[0];
+    this.gameid = this.route.snapshot.paramMap.get('gameid');
+    this.gameName = this.route.snapshot.paramMap.get('value');
     this.gameFetch(this.gameid)
     this.searchGetAll(this.gameid)
 

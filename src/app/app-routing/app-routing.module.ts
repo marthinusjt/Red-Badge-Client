@@ -20,7 +20,7 @@ import { ForumPostComponent } from '../modules/game-forum/game-forum/forum-displ
 const routes: Routes = [
     { path: '', component: SplashComponent },
     { path: 'search/:searching', component: SearchDisplayComponent },
-    { path: 'review/:gameid', component: GameReviewComponent },
+    { path: 'review/:gameid/:value', component: GameReviewComponent },
     { path: 'admin', component: AdminComponent },
     // { path: 'review/:gameid', canActivate: [AuthGuard], component: GameReviewComponent },
     { path: 'forumTopic/:gameid/:value', component: GameForumComponent},

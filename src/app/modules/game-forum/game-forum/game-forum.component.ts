@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GameForumComponent implements OnInit {
   public value: string;
+  public gameid: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -15,7 +16,7 @@ export class GameForumComponent implements OnInit {
 
   ngOnInit() {
     this.value = this.route.snapshot.paramMap.get('value')
-
+    this.gameid = this.route.snapshot.paramMap.get('gameid')
   }
 
 }
