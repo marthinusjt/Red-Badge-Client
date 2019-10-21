@@ -1,9 +1,13 @@
 <app-navbar></app-navbar>
 
+
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Forum</li>
-        <li class="breadcrumb-item">{{ value }}</li>
+        <li class="breadcrumb-item">                
+          <a routerLink="/forumTopic/{{gameid}}/{{value}}" routerLinkActive="active">
+          {{ value }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
     </ol>
 </nav>
@@ -74,11 +78,27 @@
   
 
     <div *ngFor="let result of results" class="col-12">
-      <div>
+      <div *ngIf="result.pinned == true">
+        <div>
         <a routerLink="{{ result.id }}" class="row result">{{ result.topic }}</a>
+        <div *ngIf="currentUser">
+        <button *ngIf="currentUser.token.user.admin" type="button" mdbBtn color="primary" class="relative waves-light" (click)="isPinned(result.id, false)"
+        mdbWavesEffect>Admin, UnPin</button></div>
       </div>
     </div>
 
+</div>
+<div *ngFor="let result of results" class="col-12">
+
+  <div *ngIf="result.pinned == false">
+      <div>
+      <a routerLink="{{ result.id }}" class="row result">{{ result.topic }}</a>
+      <div *ngIf="currentUser">
+      <button *ngIf="currentUser.token.user.admin" type="button" mdbBtn color="primary" class="relative waves-light" (click)="isPinned(result.id, true)"
+      mdbWavesEffect>Admin, Pin it</button></div>
+    </div>
+  </div>
+</div>
   
   
   
