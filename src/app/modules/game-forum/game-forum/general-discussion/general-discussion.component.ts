@@ -44,6 +44,12 @@ export class GeneralDiscussionComponent implements OnInit {
       .subscribe(data => {
         this.results = data; 
         this.results.reverse();
+        this.results.forEach((e, i) => {
+          if(e.pinned){
+            this.results.splice(i, 1);
+            this.results.unshift(e);
+          }
+        })
         console.log(this.results);
       })
   }

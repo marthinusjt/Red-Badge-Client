@@ -20,16 +20,7 @@
       <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
       <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
       <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
-      
-      
-        <div *ngIf="currentUser == null">
-          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
-          mdbWavesEffect>New Topic</button>
-        </div>
-  
-        <div *ngIf="currentUser != null">
-          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
-        </div>
+    </ul>
   
         <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -66,26 +57,48 @@
         </div>
   
   
-    </ul>
+
   </nav>
+  <div class="row mx-auto text-center">
+
+    <div *ngIf="currentUser == null" class="text-center">
+      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
+      mdbWavesEffect>New Topic</button>
+    </div>
+
+    <div *ngIf="currentUser != null">
+      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+    </div>
+  </div>
   
   
   <hr>
   
-
+<!-- 
     <div *ngFor="let result of results" class="col-12">
       <div>
         <a routerLink="{{ result.id }}" class="row result">{{ result.topic }}</a>
       </div>
-    </div>
+    </div> -->
 
-  
-  
-  
-  <!-- <h3><a routerLink="/forumReply/11195/generalDiscussion/topic">Topic Name</a></h3> -->
-  <!-- <br> -->
-  <!-- <h3>Awesome Topic Name</h3> -->
-  
-  <!-- <app-forum-display></app-forum-display> -->
+    <table mdbTable hover="true">
+      <thead>
+        <tr>
+          <th scope="col">Pinned</th>
+          <th scope="col">Topic</th>
+          <th scope="col">Date Created</th>
+          <th scope="col">Original Poster</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mdbTableCol *ngFor="let result of results" routerLink="{{ result.id }}" class="topic-link">
+          <th scope="row"><i *ngIf="result.pinned" class="fas fa-thumbtack"></i></th>
+          <td>{{result.topic}}</td>
+          <td>{{result.updatedAt | date:'short'}}</td>
+          <td>{{result.userName}}</td>
+        </tr>
+      </tbody>
+    </table>  
+
 </div>
 
