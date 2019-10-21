@@ -17,7 +17,7 @@ export class GameReviewComponent implements OnInit {
   public userReview: any;
   public allReviews: any = [];
   public avgScore: any;
-  public singleModel: number;
+  public singleModel: any;
 
   public searching: any = false;
   public gameid: string;
