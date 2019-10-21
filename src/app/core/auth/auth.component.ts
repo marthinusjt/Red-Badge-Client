@@ -14,9 +14,9 @@ import { of } from 'rxjs';
 export class AuthComponent implements OnInit { 
     isLoginPage: boolean = true;
     error: string = null;
-    public resData: any;
+    public resData: any; //???
 
-    forbiddenUsernames = ['Aaron']
+    forbiddenUsernames = ['noobmaster69']
 
     validatingForm: FormGroup;
 
@@ -57,7 +57,6 @@ export class AuthComponent implements OnInit {
         return this.validatingForm.get('password');
     }
 
-    // ourCode
     onSwitchMode () {
         this.isLoginPage = !this.isLoginPage;
     }
@@ -73,18 +72,12 @@ export class AuthComponent implements OnInit {
         const email = this.validatingForm.value.email;
         const password = this.validatingForm.value.password;
 
-        // this.isLoading = true;
         if (this.isLoginPage) {
             this.authService.login(email, password).subscribe(
                 
                 resData => {
                 console.log(resData);
-                this.resData=resData
-                //console.log(this.resData.user.id);
-                //this.direct = JSON.parse(localStorage.getItem('redirect'))
-                //localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-                //this.modalService.hide(1)
-                //location.reload();
+                this.resData = resData
                 if(this.resData.user.banned){
                     return alert('warning this user is banned')
                 }else{
@@ -122,9 +115,9 @@ export class AuthComponent implements OnInit {
 
         this.validatingForm.reset();
     }
-
+    
     forbiddenNames(control: FormControl): {[s: string]: boolean} {
-        if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
+        if (this.forbiddenUsernames.indexOf(control.value.toLowerCase()) !== -1) {
           return {'nameIsForbidden': true};
         }
         return null;

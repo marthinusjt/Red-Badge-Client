@@ -17,7 +17,7 @@ export class GameReviewComponent implements OnInit {
   public userReview: any;
   public allReviews: any = [];
   public avgScore: any;
-
+  public singleModel: number;
 
   public searching: any = false;
   public gameid: string;
@@ -25,7 +25,7 @@ export class GameReviewComponent implements OnInit {
   public score: string;
   public carousel: string;
 
-public headline1: string;
+  public headline1: string;
   public score1: string;
   public textArea1: string;
   public pros1: string;

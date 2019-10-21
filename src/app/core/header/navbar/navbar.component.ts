@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
   modalRef: MDBModalRef;
 
-  public currentUser: string = JSON.parse(localStorage.getItem('currentUser'));
+  public currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
   public direct: {} = [];
 
   constructor(
