@@ -15,7 +15,7 @@ export class GameSearch {
   constructor(private http: HttpClient) {}
 
   
-  fetch(query, offset) {
+  fetch(query: string, offset: number) {
     const parseHeaders = {
       headers: new HttpHeaders({
             // 'user-key':'cc5441053548ed186c2e6a3add7af2f1', // Aaron's Key

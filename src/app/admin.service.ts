@@ -36,7 +36,7 @@ export class AdminService {
 
   
 
-  adminSPut(firstName, lastName, userName, admin, banned, id, email) {
+  adminSPut(firstName: any, lastName: any, userName: any, admin: any, banned: any, id: any, email: any) {
 
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -125,7 +125,7 @@ export class AdminService {
   }
 
 
-  adminSDelete(id) {
+  adminSDelete(id: string) {
 
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -152,7 +152,7 @@ export class AdminService {
 
   }
 
-  adminFormPut(id) {
+  adminFormPut(id: any) {
 
     
 
@@ -191,7 +191,7 @@ export class AdminService {
 
   }
 
-  adminDesPut(id) {
+  adminDesPut(id: any) {
 
     
 
@@ -229,7 +229,7 @@ export class AdminService {
 
   }
 
-  adminGetForm(id) {
+  adminGetForm(id: any) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let token = currentUser.token; // your token
@@ -250,7 +250,7 @@ export class AdminService {
 
   }
 
-  adminGetReply(id) {
+  adminGetReply(id: any) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let token = currentUser.token; // your token
@@ -271,7 +271,7 @@ export class AdminService {
 
   }
 
-  adminReplyPut(id) {
+  adminReplyPut(id: any) {
 
     
 
@@ -309,7 +309,7 @@ export class AdminService {
 
   }
 
-  adminFormDelete(id) {
+  adminFormDelete(id: any) {
 
     
 
@@ -347,7 +347,7 @@ export class AdminService {
 
 
   }
-  adminReplyDelete(id) {
+  adminReplyDelete(id: any) {
 
     
 
@@ -372,7 +372,7 @@ export class AdminService {
 
   }
 
-  adminReviewDelete(id) {
+  adminReviewDelete(id: any) {
 
     
 
@@ -397,7 +397,7 @@ export class AdminService {
 
   }
 
-  adminGetReview(id) {
+  adminGetReview(id: any) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let token = currentUser.token; // your token
@@ -418,7 +418,7 @@ export class AdminService {
 
   }
 
-  adminPinned(id, pinned) {
+  adminPinned(id: any, pinned: any) {
 
     
 
