@@ -26,9 +26,9 @@ const routes: Routes = [
     { path: 'forumTopic/:gameid/:value', component: GameForumComponent},
     { path: 'forumTopic/:gameid/:value/:category', component: GeneralDiscussionComponent },
     { path: 'forumTopic/:gameid/:value/:category/:topicId', component: ForumDisplayComponent },
-    { path: 'redirect', component: RedirectComponent },
     // { path: 'donate', component: StripeComponent },
     { path: 'donate', canActivate: [AuthGuard], component: StripeComponent },
+    { path: 'redirect', component: RedirectComponent },
 
     // place paths above here
     { path: 'not-found', component: PageNotFoundComponent }, // Static Message
