@@ -418,5 +418,36 @@ export class AdminService {
 
   }
 
+  adminPinned(id, pinned) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
   
-}
+     let body = {
+      
+      pinned: pinned,
+
+
+    }
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+
+  }
+  }

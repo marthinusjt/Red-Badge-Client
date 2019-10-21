@@ -49,7 +49,10 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('currentUser');
     this.currentUser = undefined;
     this.authService.isLoggedIn = false;
-    this.router.navigate(['redirect'],  { relativeTo: this.route, skipLocationChange: true })
+    this.router.navigate(['/redirect'],  { relativeTo: this.route, skipLocationChange: true })
+
+
+    
   }
 
 }
