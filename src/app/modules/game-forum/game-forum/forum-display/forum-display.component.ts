@@ -20,7 +20,7 @@ export class ForumDisplayComponent implements OnInit {
   public category: string;
   public topicId: any;
   public id: any;
-  public topic: {} | [] = {};
+  public topic: any = {};
   public userId: number;
   public replyId: any;
 
