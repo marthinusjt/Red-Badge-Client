@@ -20,7 +20,7 @@ export class ForumDisplayComponent implements OnInit {
   public category: string;
   public topicId: any;
   public id: any;
-  public topic: {} = {};
+  public topic: {} | [] = {};
   public userId: number;
   public replyId: any;
 
@@ -78,7 +78,7 @@ export class ForumDisplayComponent implements OnInit {
       })
   }
 
-  createReply(query: any, category: any, topicId: any, textArea: any) {
+  createReply(textArea: any) {
 
     this._topicSearch.forumReplyPost(this.gameid, this.category, this.topicId, textArea)
       .subscribe(data => {
@@ -89,7 +89,7 @@ export class ForumDisplayComponent implements OnInit {
 
   }
 
-  editReply(query: any, category: any, topicId: any, id: any, textArea: any) {
+  editReply(id: any, textArea: any) {
 
     this._topicSearch.forumReplyEdit(this.gameid, this.category, this.topicId, id, textArea)
       .subscribe(data => {
@@ -100,7 +100,7 @@ export class ForumDisplayComponent implements OnInit {
 
   }
 
-  deleteReply(query: any, category: any, topicId: any, id: any) {
+  deleteReply(id: any) {
 
     this._topicSearch.forumReplyDelete(this.gameid, this.category, this.topicId, id)
       .subscribe(data => {
@@ -111,7 +111,7 @@ export class ForumDisplayComponent implements OnInit {
 
   }
 
-  editOriginal(query: any, category: any, id: any, textArea: any) {
+  editOriginal(id: any, textArea: any) {
 
     this._topicSearch.forumOriginalEdit(this.gameid, this.category, id, textArea)
       .subscribe(data => {
