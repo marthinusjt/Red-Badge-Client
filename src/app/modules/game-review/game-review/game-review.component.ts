@@ -22,7 +22,7 @@ export class GameReviewComponent implements OnInit {
   public searching: any = false;
   public gameid: string;
   public gameName: string;
-  public score: string;
+  public score: any;
   public carousel: string;
 
   public headline1: string;
@@ -44,7 +44,7 @@ export class GameReviewComponent implements OnInit {
     private modalService: MDBModalService,
     ) {}
 
-  setScore(insertscore: string){
+  setScore(insertscore: any){
     this.score=insertscore
   }
 
