@@ -23,7 +23,9 @@ export class AdminComponent implements OnInit {
   public admin: boolean;
   private banned: boolean= false;
   public person: string;
+  public currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
   public value1: any;
+
   
 
   constructor(
@@ -317,6 +319,15 @@ export class AdminComponent implements OnInit {
 
   }
   ngOnInit() {
+    if(this.currentUser){
+      if (this.currentUser.token.user.admin == true) {
+        this.adminLogIn()
+  
+      }
+    }else{
+      this.router.navigate(['/'])
+    }
+    
 
     this.adminLogIn()
     

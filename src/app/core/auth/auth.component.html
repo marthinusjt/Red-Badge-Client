@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header" id="center">
 
-        <button  mdbBtn type="button" gradient="blue" outline="true" mdbWavesEffect (click)="onSwitchMode()">
+        <button  mdbBtn type="button" color="danger" outline="true" mdbWavesEffect (click)="onSwitchMode()">
             <h4 class="modal-title w-100 font-weight-bold">Switch to {{ isLoginPage ? 'Sign Up' : 'Login' }}</h4><i *ngIf="isLoginPage" class="fas fa-address-card ml-1"></i><i *ngIf="!isLoginPage" class="fas fa-sign-in-alt"></i>
         </button>
 
@@ -104,7 +104,7 @@
     </div>
     <div class="modal-footer d-flex justify-content-center">
         
-            <button mdbBtn gradient="blue" type="submit" [disabled]="!validatingForm.valid" outline="true" mdbWavesEffect>{{ isLoginPage ? 'Login' : 'Sign Up' }}</button>
+            <button mdbBtn color="danger" type="submit" [disabled]="!validatingForm.valid" outline="true" mdbWavesEffect>{{ isLoginPage ? 'Login' : 'Sign Up' }}</button>
                     
     </div>
     </form>

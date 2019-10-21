@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
             'lastName': new FormControl(null),
             'userName': new FormControl('', [Validators.minLength(3), Validators.maxLength(25), this.forbiddenNames.bind(this)]),
             'email': new FormControl(null, [Validators.required, Validators.email]),
-            'password': new FormControl(null, [Validators.required, Validators.minLength(1)])
+            'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
         });
     }
 

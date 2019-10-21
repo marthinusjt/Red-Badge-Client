@@ -129,9 +129,6 @@ export class GameReviewComponent implements OnInit {
         console.log("userReview deleted: ", this.userReview);
         this.searchGetAll(this.gameid);
       })
-      
-      
-      
   }
 
   openModal() {

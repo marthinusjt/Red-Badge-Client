@@ -28,7 +28,7 @@ export class ForumDisplayComponent implements OnInit {
 
   public currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  public results3: any = []; //admin
+  public results3: any = []; // admin
 
   modalRef: MDBModalRef;
 
@@ -223,6 +223,20 @@ export class ForumDisplayComponent implements OnInit {
 
     
   }
+
+  isPinned(id, pinned){
+
+    this._adminService.adminPinned(id, pinned)
+      .subscribe(data => {
+        this.getAllTopics(this.gameid, this.category);
+      })
+
+
+  }
+
+
+
+
 
   openModal() { 
     this.modalRef = this.modalService.show(AuthComponent);
