@@ -13,10 +13,10 @@ import { AdminService } from 'src/app/admin.service';
 })
 export class ForumDisplayComponent implements OnInit {
 
-  public topicResults: any = [];
+  public topicResults: any = [];  //???
   public replyResults: any = [];
-  public userReply: any;
-  public gameid: any;
+  public userReply: {};
+  public gameid: string;
   public category: string;
   public topicId: any;
   public id: any;
@@ -59,7 +59,7 @@ export class ForumDisplayComponent implements OnInit {
     }
   }
 
-  getAllTopics(query, category) {
+  getAllTopics(query, category: string) {
     this._topicSearch.forumTopicGetAll(query, category)
       .subscribe(data => {
         this.topicResults = data; 
@@ -223,10 +223,6 @@ export class ForumDisplayComponent implements OnInit {
 
     
   }
-
-
-
-
 
   openModal() { 
     this.modalRef = this.modalService.show(AuthComponent);
