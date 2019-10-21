@@ -2,7 +2,8 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Forum</li>
+        <li class="breadcrumb-item">Forum</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ value }}</li>
     </ol>
 </nav>
 
@@ -17,69 +18,99 @@
             <button mdbBtn type="button" [disabled]="true" color="primary" class="waves-light" mdbWavesEffect>Forums</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <h1>Dev Announcements</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2">
-            <h1>Picture</h1>
-        </div>
-        <div class="col-10">
-            <div class="row">
-                <h5>News and Info</h5>
-            </div>
-            <div class="row">
-                <p>Blurb about Announcements</p>
-            </div>
-        </div>
-    </div>
+
+    <mdb-card>
+        <!--Card image-->
+        <mdb-card-img src="" alt=""></mdb-card-img>
+        <!--Card content-->
+        <mdb-card-body>
+      
+            <!--Title-->
+            <mdb-card-title>
+                <h1>Dev Announcements</h1>
+            </mdb-card-title>
+        
+            <!--Text-->
+            <p>News and Info.</p>
+            
+            <p>Blurb about Announcements.</p>
+        
+        </mdb-card-body>
+    </mdb-card>
+
     <hr>
-    <div class="row">
-        <div class="col-12">
-            <h1>Community</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2">
-            <h1>Picture</h1>
-        </div>
 
-        <div class="col-10">
-            <div class="row">
-                <h5><a routerLink="GeneralDiscussion">General Discussion</a></h5>
+    <mdb-card routerLink="GeneralDiscussion">
+        <div class="row">
+            <div class="col-2">
+                <!--Card image-->
+                <mdb-card-img src="../../../../assets/GameController.png" alt="game controller"></mdb-card-img>
             </div>
-            <div class="row">
-                <p>Discuss {{ value }} with other gamers!</p>
-            </div>
-        </div>
+            <!--Card content-->
+            <mdb-card-body>
+          
+              <!--Title-->
+                <mdb-card-title>
+                    <h1>General Discussion</h1>
+                </mdb-card-title>
+          
+              <!--Text-->
+              <p class="font-size"> Discuss {{ value }} with other gamers!</p>
 
-        <div class="col-2">
-            <h1>Picture</h1>
+            </mdb-card-body>
         </div>
-        <div class="col-10">
-            <div class="row">
-                <h5><a routerLink="Walkthroughs">Walkthroughs</a></h5>
-            </div>
-            <div class="row">
-                <p>Discuss walkthroughs about {{ value }}!</p>
-            </div>
-        </div>
+    </mdb-card>
 
-        <div class="col-2">
-            <h1>Picture</h1>
-        </div>
-        <div class="col-10">
-            <div class="row">
-                <h5><a routerLink="Bugs&Glitches">Bugs and Glitches</a></h5>
-            </div>
-            <div class="row">
-                <p>Found a bug? Report it here!</p>
-            </div>
-        </div>
+    <hr>
 
-    </div>
+    <mdb-card routerLink="Walkthroughs">
+        <div class="row">
+            <div class="col-2">
+                <!--Card image-->
+                <mdb-card-img src="../../../../assets/Walkthrough.jpg" alt="Walkthrough"></mdb-card-img>
+            </div>
+            <!--Card content-->
+            <mdb-card-body>
+          
+              <!--Title-->
+              <mdb-card-title>
+                <h1>Walkthroughs & Guides</h1>
+              </mdb-card-title>
+          
+              <!--Text-->
+              <p>Discuss Walkthroughs & Guides about {{ value }}!</p>
+
+            </mdb-card-body>
+        </div>
+    </mdb-card>
+
+    <hr>
+
+    <mdb-card routerLink="Bugs&Glitches">
+        <div class="row">
+            <div class="col-2">
+                <!--Card image-->
+                <mdb-card-img src="../../../../assets/bug.png" alt="Bugs"></mdb-card-img>
+            </div>
+            <!--Card content-->
+            <mdb-card-body>
+          
+              <!--Title-->
+              <mdb-card-title>
+                <h1>Bugs and Glitches</h1>
+              </mdb-card-title>
+          
+              <!--Text-->
+              <p>Found a bug relating to {{ value }}? Report it here!!</p>
+              
+              <p></p>
+
+            </mdb-card-body>
+        </div>
+    </mdb-card>
+
+    <hr>
+        
 </div>
 
 <router-outlet></router-outlet>
