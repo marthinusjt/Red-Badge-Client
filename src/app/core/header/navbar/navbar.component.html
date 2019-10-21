@@ -2,7 +2,9 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark red accent-3" [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" routerLink="/">CRITICAL HITS</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="/">
+    <img src="../../../../assets/video-game bw.png" height="30" class="d-inline-block align-top" alt="">
+    CRITICAL HITS</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -25,9 +27,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">
+        <!-- <a class="nav-link">
           <mdb-icon fab icon="google-plus"></mdb-icon>
-        </a>
+        </a> -->
       </li>
       <!-- Dropdown -->
       <li *ngIf="currentUser" class="nav-item dropdown" dropdown>
