@@ -23,7 +23,9 @@ export class AdminComponent implements OnInit {
   public admin: boolean;
   private banned: boolean= false;
   public person: string;
-  public currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  public currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
+  public value1: any;
+
   
 
   constructor(
@@ -33,7 +35,7 @@ export class AdminComponent implements OnInit {
 
   ) { }
 
-  setBanned(setbanned, getId){
+  setBanned(setbanned: any, getId: any){
 
     for(let i=0; i<this.results.length;i++){
       if(this.results[i].id == getId) {
@@ -47,7 +49,7 @@ export class AdminComponent implements OnInit {
     
   }
 
-  setAdmin(setbanned, getId){
+  setAdmin(setbanned: any, getId: any){
 
     for(let i=0; i<this.results.length;i++){
       if(this.results[i].id == getId) {
@@ -171,7 +173,7 @@ export class AdminComponent implements OnInit {
       
   }
 
-  searchPerson(person){
+  searchPerson(person: { toLowerCase: () => string; }){
     this._adminService.adminSGetAll()
       .subscribe(data => {this.results = data;
       
@@ -207,7 +209,7 @@ export class AdminComponent implements OnInit {
 }
 
   
-  adminPut(firstName, lastName, userName, admin, banned, id, email){
+  adminPut(firstName: any, lastName: any, userName: any, admin: any, banned: any, id: any, email: any){
 
     //console.log('banned', banned)
     
@@ -218,7 +220,7 @@ export class AdminComponent implements OnInit {
       
   }
 
-  adminDelete(id){
+  adminDelete(id: any){
 
     this._adminService.adminGetForm(id)
     .subscribe(data => {this.results5 = data; console.log(data)
@@ -267,7 +269,7 @@ export class AdminComponent implements OnInit {
 
   }
 
-  adminExpunge(id){
+  adminExpunge(id: any){
 
     this._adminService.adminGetForm(id)
     .subscribe(data => {this.results5 = data; console.log(data)

@@ -6,7 +6,13 @@ import { throwError, of } from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-    isLoggedIn = false;
+    public isLoggedIn: boolean = false;
+
+    // HEROKU URL
+    public url: string = `https://criticalhitsserver.herokuapp.com`;
+
+    // LOCALHOST
+    // public url: string = `http://localhost:3343`;
 
     constructor(
         private http: HttpClient,
@@ -29,7 +35,7 @@ export class AuthService {
 
     signup(firstName: string, lastName: string, userName: string, email: string, password: string) {
         return this.http.post(
-            'http://localhost:3343/auth/signup',
+            (this.url + '/auth/signup'),
             {
                 firstName: firstName,
                 lastName: lastName,
@@ -43,7 +49,7 @@ export class AuthService {
 
     login(email: string, password: string) {
         return this.http.post(
-            'http://localhost:3343/auth/login',
+            (this.url + '/auth/login'),
             {
                 email: email,
                 password: password
@@ -51,10 +57,6 @@ export class AuthService {
         ).pipe(catchError(this.handleError));
         
     }
-
-    // isUserLoggedIn(): boolean {
-    //     return this.isLoggedIn;
-    // }
 
     logout() {
         this.isLoggedIn = false;
