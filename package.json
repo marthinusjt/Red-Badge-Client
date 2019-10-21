@@ -1,5 +1,5 @@
 {
-  "name": "RedBadgeClient",
+  "name": "red-badge-client",
   "version": "0.0.0",
   "engines": {
     "node": "10.16.0"
@@ -11,8 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "preinstall": "npm install -g angular-cli",
-    "postinstall": "ng build --prod",
-    "start": "serve -s dist/RedBadgeClient"
+    "postinstall": "ng build --aot --prod",
+    "start": "serve -s dist/red-badge-client"
   },
   "types": "./typings.d.ts",
   "private": true,
