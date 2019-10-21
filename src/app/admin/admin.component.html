@@ -15,7 +15,7 @@
             <div><b>Last Name:</b> {{result.lastName}}</div>
                 <div> <b>Email:</b> {{result.email}}</div>
 
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()"
+        <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="basicModal.show()"
         mdbWavesEffect>Edit User</button>
 
         <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
@@ -74,11 +74,11 @@
     <input  type="checkbox"  (click)='setBanned(true, result.id)' /> is banned
     </div>
 
-    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminPut(firstName.value, lastName.value, userName.value, result.admin, result.banned, result.id, email.value)' mdbWavesEffect (click)="basicModal.hide()">PUT</button>
+    <button type="button" mdbBtn color="danger" class="relative waves-light"    (click)='adminPut(firstName.value, lastName.value, userName.value, result.admin, result.banned, result.id, email.value)' mdbWavesEffect (click)="basicModal.hide()">PUT</button>
 
-    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminDelete(result.id)' mdbWavesEffect (click)="basicModal.hide()">DELETE</button>
+    <button type="button" mdbBtn color="danger" class="relative waves-light"    (click)='adminDelete(result.id)' mdbWavesEffect (click)="basicModal.hide()">DELETE</button>
 
-    <button type="button" mdbBtn color="primary" class="relative waves-light"    (click)='adminExpunge(result.id)' mdbWavesEffect (click)="basicModal.hide()">EXPUNGE</button>
+    <button type="button" mdbBtn color="danger" class="relative waves-light"    (click)='adminExpunge(result.id)' mdbWavesEffect (click)="basicModal.hide()">EXPUNGE</button>
 </div>
 </div>
 </div>

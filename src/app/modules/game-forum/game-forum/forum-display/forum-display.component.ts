@@ -224,6 +224,20 @@ export class ForumDisplayComponent implements OnInit {
     
   }
 
+  isPinned(id, pinned){
+
+    this._adminService.adminPinned(id, pinned)
+      .subscribe(data => {
+        this.getAllTopics(this.gameid, this.category);
+      })
+
+
+  }
+
+
+
+
+
   openModal() { 
     this.modalRef = this.modalService.show(AuthComponent);
   }

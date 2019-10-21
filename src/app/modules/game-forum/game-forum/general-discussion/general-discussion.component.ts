@@ -185,7 +185,7 @@ export class GeneralDiscussionComponent implements OnInit {
       .subscribe(data => {
         this.results = data;
         console.log("pinned", this.results);
-        this.getAllTopics(this.gameid, this.category)
+        this.getAllTopics(this.gameid, this.category);
       })
 
 
@@ -193,7 +193,6 @@ export class GeneralDiscussionComponent implements OnInit {
 
   openModal() { 
     this.modalRef = this.modalService.show(AuthComponent);
-
   }
 
 }

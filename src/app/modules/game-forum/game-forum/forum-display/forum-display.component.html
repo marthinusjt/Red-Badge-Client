@@ -49,7 +49,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="replyModal.hide()" mdbWavesEffect>Close</button>
-                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createReply(newTextArea.value); replyModal.hide()" mdbWavesEffect>BUTTON Create Reply</button>
+                            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="createReply(query, category, topicId, newTextArea.value); replyModal.hide()" mdbWavesEffect>BUTTON Create Reply</button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
 
                         <div class="modal-footer"> 
                             <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="editModal.hide()" mdbWavesEffect>Close</button>
-                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="editReply(replyId, editTextArea.value); editModal.hide()" mdbWavesEffect>Edit Reply</button>
+                            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="editReply(query, category, topicId, replyId, editTextArea.value); editModal.hide()" mdbWavesEffect>Edit Reply</button>
                             <!-- FIX THIS CLICK -->
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="originalPostModal.hide()" mdbWavesEffect>Close</button>
-                    <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="editOriginal(topic.id, textArea.value); originalPostModal.hide()">Save changes</button>
+                    <button type="button" mdbBtn color="danger" class="relative waves-light" mdbWavesEffect (click)="editOriginal(query, category, topic.id, textArea.value); originalPostModal.hide()">Save changes</button>
                   </div>
                 </div>
               </div>
@@ -119,11 +119,11 @@
     
     <div class="text-center">
         <div *ngIf="currentUser == null">
-            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New Reply</button>
+            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New Reply</button>
         </div>
         
         <div *ngIf="currentUser !== null">
-            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="replyModal.show()" mdbWavesEffect>New Reply</button>
+            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="replyModal.show()" mdbWavesEffect>New Reply</button>
         </div>
     </div>
     
@@ -131,6 +131,7 @@
     <mdb-card class="op">
         <mdb-card-body>
             <mdb-card-text>
+                <div *ngIf="topic.pinned" class="row"><i class="col fas fa-thumbtack" style="margin-bottom: 1rem"></i></div>
                 <div class="row">
                     <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p> -->
                     <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'short' }}</p> -->
@@ -140,8 +141,10 @@
                 </div>
                 <div class="row">
                     <p class="post-user col-6">{{topic.userName}}</p>
-                    <div *ngIf="topic.ownerId === userId" class="col-6 text-right">
-                        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="originalPostModal.show()">Original Edit</button>
+                    <div *ngIf="currentUser" class="col-6 text-right">
+                        <button *ngIf="topic.ownerId === userId && currentUser" type="button" size="sm" mdbBtn color="danger" class="relative waves-light" mdbWavesEffect (click)="originalPostModal.show()">Edit</button>
+                        <button *ngIf="currentUser.token.user.admin && !topic.pinned" type="button" size="sm" mdbBtn color="danger" class="relative waves-light" (click)="isPinned(topic.id, true)" mdbWavesEffect>Pin</button>
+                        <button *ngIf="currentUser.token.user.admin && topic.pinned" type="button" size="sm" mdbBtn color="danger" class="relative waves-light" (click)="isPinned(topic.id, false)" mdbWavesEffect>Unpin</button>
                     </div>
                 </div>
             </mdb-card-text>
@@ -155,32 +158,31 @@
             <mdb-card-body>
                     <mdb-card-text>
                         <div class="row">
-                            <p class="col-6 text-left">{{reply.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p>
+                            <p class="col-6 text-left">{{reply.updatedAt | date:'long'}}</p>
                             <p class="col-6 text-right">{{i + 1}}</p>
                         </div>
                         <div class="row">
                             <p class="post-user col-4">{{reply.userName}}</p>
                             <div class="col-8 text-right">
-                            <div *ngIf="!currentUser"  >
-                                <!-- add (click)="editfunction" -->
-                                <button *ngIf="reply.ownerId == userId " type="button" mdbBtn color="primary" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Reply Edit</button>
-                                <!-- add (click)="deletefunction" -->
-                                <button *ngIf="reply.ownerId == userId " type="button" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(reply.id); editModal.hide()" mdbWavesEffect>Reply Delete</button>
-                            </div>
+
+                            <!-- <div *ngIf="!currentUser"  >
+                                <button *ngIf="reply.ownerId == userId " type="button" mdbBtn color="danger" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Edit</button>
+                                <button *ngIf="reply.ownerId == userId " type="button" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(query, category, topicId, reply.id); editModal.hide()" mdbWavesEffect>Delete</button>
+                            </div> -->
                             
                             <div *ngIf="currentUser">
-                                    <!-- add (click)="editfunction" -->
-                                    <button  *ngIf="reply.ownerId == userId && !currentUser.token.user.admin " type="button" mdbBtn color="primary" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Reply Edit</button>
-                                    <!-- add (click)="deletefunction" -->
-                                    <button  *ngIf="reply.ownerId == userId && !currentUser.token.user.admin " type="button" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(reply.id); editModal.hide()" mdbWavesEffect>Reply Delete</button>
-                                </div>
+                                <!-- USER EDIT REPLY -->
+                                <button  *ngIf="reply.ownerId == userId && !currentUser.token.user.admin " type="button" size="sm" mdbBtn color="danger" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Edit</button>
+                                <!-- USER DELETE REPLY -->
+                                <button  *ngIf="reply.ownerId == userId && !currentUser.token.user.admin " type="button" size="sm" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(query, category, topicId, reply.id); editModal.hide()" mdbWavesEffect>Delete</button>
+                            </div>
 
                             
                             <div *ngIf="currentUser" >
-                                <!-- add (click)="editfunction" -->
-                                <button *ngIf="currentUser.token.user.admin" type="button" mdbBtn color="primary" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Admin Edit</button>
-                                <!-- add (click)="deletefunction" -->
-                                <button *ngIf="currentUser.token.user.admin" type="button" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(reply.id); editModal.hide()" mdbWavesEffect>Admin Delete</button>
+                                <!-- ADMIN EDIT REPLY -->
+                                <button *ngIf="currentUser.token.user.admin" type="button" size="sm" mdbBtn color="danger" class="relative waves-light" (click)="editModal.show(); replyId = reply.id" mdbWavesEffect>Edit</button>
+                                <!-- ADMIN DELETE REPLY -->
+                                <button *ngIf="currentUser.token.user.admin" type="button" size="sm" mdbBtn color="secondary" class="relative waves-light" (click)="deleteReply(query, category, topicId, reply.id); editModal.hide()" mdbWavesEffect>Delete</button>
                             </div>
                         </div>
                         </div>
@@ -194,11 +196,11 @@
 
 <div class="text-center">
     <div *ngIf="currentUser == null">
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New Reply</button>
+        <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="openModal()" mdbWavesEffect>New Reply</button>
     </div>
     
     <div *ngIf="currentUser !== null">
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="replyModal.show()" mdbWavesEffect>New Reply</button>
+        <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="replyModal.show()" mdbWavesEffect>New Reply</button>
     </div>
 </div>
 
