@@ -11,8 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "preinstall": "npm install -g angular-cli",
-    "postinstall": "ng build --prod",
-    "start": "serve -s dist/RedBadgeClient"
+    "postinstall": "ng build --aot --prod",
+    "start": "serve -s dist/red-badge-client"
   },
   "types": "./typings.d.ts",
   "private": true,

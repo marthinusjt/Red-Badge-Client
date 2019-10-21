@@ -212,9 +212,14 @@
                     mdbCheckbox btnCheckboxTrue="8" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(8)'>8</button>
                   <button mdbBtn type="button" color="danger" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="9" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(9)'>9</button>
+<<<<<<< HEAD
                   <button mdbBtn type="button" color="danger" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="10" btnCheckboxFalse="0" mdbWavesEffect
                     (click)='setScore(10)'>10</button>
+=======
+                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                    mdbCheckbox btnCheckboxTrue="10" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(10)'>10</button>
+>>>>>>> 0e676fb16419479aed332f9ea93d77826835a12a
                 </div>
               </div>
   
@@ -249,15 +254,9 @@
             <div class="modal-footer  ">
               <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
                 (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-<<<<<<< HEAD
               <button type="button" mdbBtn color="danger" class="relative waves-light"
                 (click)='searchPost( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect
                 [disabled]="!(score && headline.value && pros.value && cons.value && textArea.value)">Submit</button>
-=======
-              <button type="button" mdbBtn color="primary" class="relative waves-light"
-                (click)='searchPost( gameid, 1, 1, headlinePost.value, prosPost.value, consPost.value, textAreaPost.value)' mdbWavesEffect
-                [disabled]="!(score && headlinePost.value && prosPost.value && consPost.value && textAreaPost.value)">Submit</button>
->>>>>>> 73f65e3522b485f6b6e830fee3f7be84d21b536c
   
   
             </div>

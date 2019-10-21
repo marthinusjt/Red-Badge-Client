@@ -20,7 +20,7 @@ export class ForumDisplayComponent implements OnInit {
   public category: string;
   public topicId: any;
   public id: any;
-  public topic: {} | [] = {};
+  public topic: any = {};
   public userId: number;
   public replyId: any;
 
@@ -28,7 +28,7 @@ export class ForumDisplayComponent implements OnInit {
 
   public currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  public results3: any = []; //admin
+  public results3: any = []; // admin
 
   modalRef: MDBModalRef;
 
