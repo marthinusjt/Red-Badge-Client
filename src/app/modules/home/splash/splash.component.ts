@@ -17,6 +17,7 @@ export class SplashComponent implements OnInit {
   public results: any = [];
   public searching: any = false;
   public searchError: any = '';
+  public query: any;
 
   constructor(
     private _gameSearch: GameSearch,
