@@ -150,7 +150,7 @@ export class GameReviewComponent implements OnInit {
   changeAvgScore(){
     if(this.results && this.allReviews){
       // this.avgScore = (this.allReviews.reduce((a,b) => a + b.score, 0) + this.results[0].total_rating / 10) / (this.results[0].total_rating_count + this.allReviews.length );
-      this.avgScore = ((this.results[0].total_rating / 10 * this.results[0].total_rating_count + (this.allReviews.reduce((a: string | number, b: { score: string | number; }) => a + b.score, 0))) / (this.allReviews.length + this.results[0].total_rating_count));
+      this.avgScore = ((this.results[0].total_rating / 10 * this.results[0].total_rating_count + (this.allReviews.reduce((a: string, b: { score: string | number; }) => a + b.score, 0))) / (this.allReviews.length + this.results[0].total_rating_count));
       console.log("avgScore: ", this.avgScore);
     } else if(this.results) {
       this.avgScore = this.results[0].total_rating / 10;
