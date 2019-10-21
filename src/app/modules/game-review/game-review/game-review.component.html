@@ -220,27 +220,27 @@
   
               <div class="md-form mb-5">
                 <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
-                <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate>
+                <input #headlinePost type="text" id="form32" class="form-control" mdbInput mdbValidate>
                 <label for="form8">Headline</label>
               </div>
   
               <div class="md-form">
                 <mdb-icon fas icon="plus" class="prefix grey-text"></mdb-icon>
-                <textarea #pros type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                <textarea #prosPost type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
                   mdbValidate></textarea>
                 <label for="form8">Pros</label>
               </div>
   
               <div class="md-form">
                 <mdb-icon fas icon="minus" class="prefix grey-text"></mdb-icon>
-                <textarea #cons type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                <textarea #consPost type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
                   mdbValidate></textarea>
                 <label for="form8">Cons</label>
               </div>
   
               <div class="md-form">
                 <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-                <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                <textarea #textAreaPost type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
                   mdbValidate></textarea>
                 <label for="form8">Thoughts</label>
               </div>
@@ -250,8 +250,8 @@
               <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
                 (click)="basicModal.hide()" mdbWavesEffect>Close</button>
               <button type="button" mdbBtn color="primary" class="relative waves-light"
-                (click)='searchPost( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect
-                [disabled]="!(score && headline.value && pros.value && cons.value && textArea.value)">Submit</button>
+                (click)='searchPost( gameid, 1, 1, headlinePost.value, prosPost.value, consPost.value, textAreaPost.value)' mdbWavesEffect
+                [disabled]="!(score && headlinePost.value && prosPost.value && consPost.value && textAreaPost.value)">Submit</button>
   
   
             </div>
@@ -303,27 +303,27 @@
   
               <div class="md-form mb-5">
                 <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
-                <input #headline type="text" id="form32" class="form-control" mdbInput mdbValidate>
+                <input #headlineEdit type="text" id="form32" class="form-control" mdbInput mdbValidate>
                 <label for="form8">Headline</label>
               </div>
   
               <div class="md-form">
                 <mdb-icon fas icon="plus" class="prefix grey-text"></mdb-icon>
-                <textarea #pros type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                <textarea #prosEdit type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
                   mdbValidate></textarea>
                 <label for="form8">Pros</label>
               </div>
   
               <div class="md-form">
                 <mdb-icon fas icon="minus" class="prefix grey-text"></mdb-icon>
-                <textarea #cons type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                <textarea #consEdit type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
                   mdbValidate></textarea>
                 <label for="form8">Cons</label>
               </div>
   
               <div class="md-form">
                 <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-                <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+                <textarea #textAreaEdit type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
                   mdbValidate></textarea>
                 <label for="form8">Thoughts</label>
               </div>
@@ -334,7 +334,7 @@
               <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
                 (click)="basicModal2.hide()" mdbWavesEffect>Close</button>
               <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.hide()"
-                (click)='searchPut( gameid, 1, 1, headline2.value, pros2.value, cons2.value, textArea2.value)'
+                (click)='searchPut( gameid, 1, 1, headlineEdit.value, prosEdit.value, consEdit.value, textAreaEdit.value)'
                 mdbWavesEffect>Submit</button>
             </div>
   
