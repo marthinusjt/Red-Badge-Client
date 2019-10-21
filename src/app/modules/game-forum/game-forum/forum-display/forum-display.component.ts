@@ -28,7 +28,7 @@ export class ForumDisplayComponent implements OnInit {
 
   public currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  public results3: any = []; //admin
+  public results3: any = []; // admin
 
   modalRef: MDBModalRef;
 
