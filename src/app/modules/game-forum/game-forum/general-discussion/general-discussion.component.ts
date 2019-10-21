@@ -65,7 +65,7 @@ export class GeneralDiscussionComponent implements OnInit {
       })
   }
 
-  createTopic(query: any, category: any, pinned: any, textArea: any, topic: any) {
+  createTopic(pinned: any, textArea: any, topic: any) {
 
     this._topicSearch.forumTopicPost(this.gameid, this.category, pinned, textArea, topic)
       .subscribe(data => {

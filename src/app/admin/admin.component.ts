@@ -23,6 +23,7 @@ export class AdminComponent implements OnInit {
   public admin: boolean;
   private banned: boolean= false;
   public person: string;
+  public value1: any;
   
 
   constructor(
