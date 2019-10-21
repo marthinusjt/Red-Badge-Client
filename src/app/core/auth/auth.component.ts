@@ -12,20 +12,14 @@ import { of } from 'rxjs';
     styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit { 
-    isLoginPage = true;
-    isLoading = false;
+    isLoginPage: boolean = true;
     error: string = null;
-    public direct: any;
-    public resData: any;
+    public resData: any; //???
 
-    forbiddenUsernames = ['Aaron', 'Josh']
+    forbiddenUsernames = ['noobmaster69']
 
-    
-
-    // mdbCode
     validatingForm: FormGroup;
 
-    // ourCode
     constructor(
         private authService: AuthService,
         private router: Router,
@@ -33,14 +27,13 @@ export class AuthComponent implements OnInit {
         private route: ActivatedRoute,
         ) {}
 
-    // mdbCode
     ngOnInit() {
         this.validatingForm = new FormGroup({
             'firstName': new FormControl(null),
             'lastName': new FormControl(null),
             'userName': new FormControl('', [Validators.minLength(3), Validators.maxLength(25), this.forbiddenNames.bind(this)]),
             'email': new FormControl(null, [Validators.required, Validators.email]),
-            'password': new FormControl(null, [Validators.required, Validators.minLength(1)])
+            'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
         });
     }
 
@@ -64,7 +57,6 @@ export class AuthComponent implements OnInit {
         return this.validatingForm.get('password');
     }
 
-    // ourCode
     onSwitchMode () {
         this.isLoginPage = !this.isLoginPage;
     }
@@ -80,18 +72,12 @@ export class AuthComponent implements OnInit {
         const email = this.validatingForm.value.email;
         const password = this.validatingForm.value.password;
 
-        // this.isLoading = true;
         if (this.isLoginPage) {
             this.authService.login(email, password).subscribe(
                 
                 resData => {
                 console.log(resData);
-                this.resData=resData
-                //console.log(this.resData.user.id);
-                //this.direct = JSON.parse(localStorage.getItem('redirect'))
-                //localStorage.setItem('currentUser', JSON.stringify({ token: resData }));
-                //this.modalService.hide(1)
-                //location.reload();
+                this.resData = resData
                 if(this.resData.user.banned){
                     return alert('warning this user is banned')
                 }else{
@@ -129,9 +115,9 @@ export class AuthComponent implements OnInit {
 
         this.validatingForm.reset();
     }
-
+    
     forbiddenNames(control: FormControl): {[s: string]: boolean} {
-        if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
+        if (this.forbiddenUsernames.indexOf(control.value.toLowerCase()) !== -1) {
           return {'nameIsForbidden': true};
         }
         return null;

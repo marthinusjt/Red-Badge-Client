@@ -16,7 +16,7 @@ export class StripeComponent implements OnInit {
     this.loadStripe();
   }
  
-  pay(amount) {    
+  pay(amount: number) {    
  
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',

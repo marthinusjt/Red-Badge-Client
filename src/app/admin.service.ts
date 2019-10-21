@@ -7,7 +7,11 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 })
 export class AdminService {
 
-  private _url: string = `http://localhost:3343/admin/admin/`
+  // HEROKU
+  private _url: string = `https://criticalhitsserver.herokuapp.com`
+
+  // LOCALHOST
+  // private _url: string = `http://localhost:3343`
 
   constructor(private http: HttpClient) { }
 
@@ -25,14 +29,14 @@ export class AdminService {
      };
 
     
-    return this.http.get(this._url+ 'all/',  parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url+ '/admin/admin/all/',  parseHeaders2)    //data,this._proxy + 
 
 
   }
 
   
 
-  adminSPut(firstName, lastName, userName, admin, banned, id, email) {
+  adminSPut(firstName: any, lastName: any, userName: any, admin: any, banned: any, id: any, email: any) {
 
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -61,7 +65,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put( this._url + 'delete/', body,  parseHeaders2)    //data,this._proxy + 
+    return this.http.put( this._url + '/admin/admin/delete/', body,  parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -93,7 +97,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.post( this._url+'login', body,  parseHeaders2)    //data,this._proxy + 
+    return this.http.post( this._url+'/admin/admin/login', body,  parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -115,13 +119,13 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.post('http://localhost:3343/auth/login2', body)    //data,this._proxy + 
+    return this.http.post(this._url + '/auth/login2', body)    //data,this._proxy + 
 
 
   }
 
 
-  adminSDelete(id) {
+  adminSDelete(id: string) {
 
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -148,7 +152,7 @@ export class AdminService {
 
   }
 
-  adminFormPut(id) {
+  adminFormPut(id: any) {
 
     
 
@@ -182,12 +186,12 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
 
   }
 
-  adminDesPut(id) {
+  adminDesPut(id: any) {
 
     
 
@@ -221,11 +225,11 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
   }
 
-  adminGetForm(id) {
+  adminGetForm(id: any) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let token = currentUser.token; // your token
@@ -241,12 +245,12 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.get('http://localhost:3343/forumTopic/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url + '/forumTopic/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
 
   }
 
-  adminGetReply(id) {
+  adminGetReply(id: any) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let token = currentUser.token; // your token
@@ -262,12 +266,12 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.get('http://localhost:3343/forumReply/all/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url + '/forumReply/all/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
 
   }
 
-  adminReplyPut(id) {
+  adminReplyPut(id: any) {
 
     
 
@@ -301,11 +305,11 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumReply/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumReply/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
   }
 
-  adminFormDelete(id) {
+  adminFormDelete(id: any) {
 
     
 
@@ -339,11 +343,11 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
 
   }
-  adminReplyDelete(id) {
+  adminReplyDelete(id: any) {
 
     
 
@@ -364,11 +368,11 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.delete('http://localhost:3343/forumReply/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.delete(this._url + '/forumReply/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
   }
 
-  adminReviewDelete(id) {
+  adminReviewDelete(id: any) {
 
     
 
@@ -389,11 +393,11 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.delete('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.delete(this._url + '/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
   }
 
-  adminGetReview(id) {
+  adminGetReview(id: any) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let token = currentUser.token; // your token
@@ -409,12 +413,12 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.get('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url + '/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
 
   }
 
-  adminPinned(id, pinned) {
+  adminPinned(id: any, pinned: any) {
 
     
 

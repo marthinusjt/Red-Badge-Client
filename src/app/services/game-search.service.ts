@@ -7,14 +7,15 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 @Injectable()
 export class GameSearch {
 
-  private _url: string = `https://api-v3.igdb.com/games`
+  private _url: string = `https://api-v3.igdb.com/games`;
+  
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
 
 
   constructor(private http: HttpClient) {}
 
   
-  fetch(query, offset) {
+  fetch(query: string, offset: number) {
     const parseHeaders = {
       headers: new HttpHeaders({
             // 'user-key':'cc5441053548ed186c2e6a3add7af2f1', // Aaron's Key
@@ -27,10 +28,10 @@ export class GameSearch {
       search "${query}";
       offset ${offset};
       limit 50;
-      fields name;
+      fields name, release_dates.human, cover.url, genres.*, platforms.*;
       where themes != 42;
       `
-      // fields name, release_dates.human, cover.url, genres.*, platforms.*;
+      // fields name;
     
     return this.http.post(this._proxy + this._url, data, parseHeaders)
   }

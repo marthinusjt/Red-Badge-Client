@@ -13,14 +13,14 @@ import { AdminService } from 'src/app/admin.service';
 })
 export class ForumDisplayComponent implements OnInit {
 
-  public topicResults: any = [];
+  public topicResults: any = [];  //???
   public replyResults: any = [];
-  public userReply: any;
-  public gameid: any;
+  public userReply: {};
+  public gameid: string;
   public category: string;
   public topicId: any;
   public id: any;
-  public topic: {} = {};
+  public topic: {} | [] = {};
   public userId: number;
   public replyId: any;
 
@@ -59,17 +59,17 @@ export class ForumDisplayComponent implements OnInit {
     }
   }
 
-  getAllTopics(query, category) {
+  getAllTopics(query: string, category: string) {
     this._topicSearch.forumTopicGetAll(query, category)
       .subscribe(data => {
         this.topicResults = data; 
         console.log(this.topicResults);
-        this.topic = this.topicResults.filter(e => {return e.id == this.topicId})[0];
+        this.topic = this.topicResults.filter((e: { id: any; }) => {return e.id == this.topicId})[0];
         console.log("Topic: ", this.topic);
       })
   }
 
-  getAllReplies(query, category, topicId) {
+  getAllReplies(query: string, category: string, topicId: any) {
     this._topicSearch.forumReplyGetAll(query, category, topicId)
       .subscribe(data => {
         this.replyResults = data; 
@@ -78,7 +78,7 @@ export class ForumDisplayComponent implements OnInit {
       })
   }
 
-  createReply(query, category, topicId, textArea) {
+  createReply(textArea: any) {
 
     this._topicSearch.forumReplyPost(this.gameid, this.category, this.topicId, textArea)
       .subscribe(data => {
@@ -89,7 +89,7 @@ export class ForumDisplayComponent implements OnInit {
 
   }
 
-  editReply(query, category, topicId, id, textArea) {
+  editReply(id: any, textArea: any) {
 
     this._topicSearch.forumReplyEdit(this.gameid, this.category, this.topicId, id, textArea)
       .subscribe(data => {
@@ -100,7 +100,7 @@ export class ForumDisplayComponent implements OnInit {
 
   }
 
-  deleteReply(query, category, topicId, id) {
+  deleteReply(id: any) {
 
     this._topicSearch.forumReplyDelete(this.gameid, this.category, this.topicId, id)
       .subscribe(data => {
@@ -111,7 +111,7 @@ export class ForumDisplayComponent implements OnInit {
 
   }
 
-  editOriginal(query, category, id, textArea) {
+  editOriginal(id: any, textArea: any) {
 
     this._topicSearch.forumOriginalEdit(this.gameid, this.category, id, textArea)
       .subscribe(data => {

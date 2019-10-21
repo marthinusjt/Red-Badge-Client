@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header" id="center">
 
-        <button  mdbBtn type="button" color="deep-orange" outline="true" mdbWavesEffect (click)="onSwitchMode()">
+        <button  mdbBtn type="button" color="danger" outline="true" mdbWavesEffect (click)="onSwitchMode()">
             <h4 class="modal-title w-100 font-weight-bold">Switch to {{ isLoginPage ? 'Sign Up' : 'Login' }}</h4><i *ngIf="isLoginPage" class="fas fa-address-card ml-1"></i><i *ngIf="!isLoginPage" class="fas fa-sign-in-alt"></i>
         </button>
 
@@ -51,14 +51,6 @@
                         mdbInput 
                         mdbValidate>
                         <label for="defaultForm-username"><mdb-icon fas icon="user-alt mr-2"></mdb-icon>Username</label>
-                        <!-- <mdb-error
-                            *ngIf="!username.valid && (username.dirty || username.touched)">
-                            Input invalid
-                        </mdb-error>
-                        <mdb-success
-                            *ngIf="username.valid && (username.dirty || username.touched)">Input
-                            valid
-                        </mdb-success> -->
                     </div>
                 </div>
             </div>    
@@ -112,7 +104,7 @@
     </div>
     <div class="modal-footer d-flex justify-content-center">
         
-            <button mdbBtn color="deep-orange" type="submit" [disabled]="!validatingForm.valid" outline="true" mdbWavesEffect>{{ isLoginPage ? 'Login' : 'Sign Up' }}</button>
+            <button mdbBtn color="danger" type="submit" [disabled]="!validatingForm.valid" outline="true" mdbWavesEffect>{{ isLoginPage ? 'Login' : 'Sign Up' }}</button>
                     
     </div>
     </form>

@@ -10,16 +10,21 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 @Injectable()
 export class GameReview {
 
-  private _url2: string = `http://localhost:3343/review/`
   private _url: string = `https://api-v3.igdb.com/games`
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
+  
+  // HEROKU URL
+  private _url2: string = `'https://criticalhitsserver.herokuapp.com/review/`
+
+  // LOCALHOST URL
+  // private _url2: string = `http://localhost:3343/review/`
 
   public query: string;
 
 
   constructor(private http: HttpClient) {}
 
-  reviewFetch(query) {
+  reviewFetch(query: string) {
     const parseHeaders = {
       headers: new HttpHeaders({
             'user-key':'5a82182a64789d3546faae4b10160803',    // Phil's API key
@@ -45,7 +50,7 @@ export class GameReview {
 
 
   
-  reviewPost(gameid, score, userName, headline, pros, cons, textArea) {
+  reviewPost(gameid: any, score: string, userName: any, headline: any, pros: any, cons: any, textArea: any) {
 
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -79,7 +84,7 @@ export class GameReview {
 
   }
 
-  reviewGet(query) {
+  reviewGet(query: string) {
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let token = currentUser.token; // your token
@@ -105,7 +110,7 @@ export class GameReview {
 
   }
 
-  reviewGetAll(query) {
+  reviewGetAll(query: string) {
     return this.http.get(this._url2 +`all/${query}`)    //data,this._proxy + 
 
 
@@ -113,7 +118,7 @@ export class GameReview {
 
   
 
-  reviewPut(gameid, score, userName, headline, pros, cons, textArea) {
+  reviewPut(gameid: any, score: string, userName: any, headline: any, pros: any, cons: any, textArea: any) {
 
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -147,7 +152,7 @@ export class GameReview {
 
   }
 
-  reviewDelete(gameid, score, userName, headline, pros, cons, textArea) {
+  reviewDelete(gameid: string, score: any, userName: any, headline: any, pros: any, cons: any, textArea: any) {
 
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));

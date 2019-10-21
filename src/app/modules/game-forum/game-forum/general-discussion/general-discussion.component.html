@@ -58,7 +58,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-          <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
+          <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
         </div>
       </div>
     </div>
@@ -67,12 +67,12 @@
   <div class="row mx-auto text-center">
 
     <div *ngIf="currentUser == null" class="col">
-      <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="openModal()"
+      <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="openModal()"
       mdbWavesEffect>New Topic</button>
     </div>
 
     <div *ngIf="currentUser != null" class="col">
-      <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+      <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
     </div>
   </div>
   
@@ -94,8 +94,8 @@
           <td>{{result.updatedAt | date:'short'}}</td>
           <td>{{result.userName}}</td>
           <!-- <td *ngIf="currentUser">
-            <button *ngIf="currentUser.token.user.admin && !result.pinned" type="button" size="sm" mdbBtn color="deep-orange" class="relative waves-light" (click)="isPinned(result.id, true)" mdbWavesEffect>Pin</button>
-            <button *ngIf="currentUser.token.user.admin && result.pinned" type="button" size="sm" mdbBtn color="deep-orange" class="relative waves-light" (click)="isPinned(result.id, false)" mdbWavesEffect>Unpin</button>
+            <button *ngIf="currentUser.token.user.admin && !result.pinned" type="button" size="sm" mdbBtn color="danger" class="relative waves-light" (click)="isPinned(result.id, true)" mdbWavesEffect>Pin</button>
+            <button *ngIf="currentUser.token.user.admin && result.pinned" type="button" size="sm" mdbBtn color="danger" class="relative waves-light" (click)="isPinned(result.id, false)" mdbWavesEffect>Unpin</button>
           </td> -->
         </tr>
       </tbody>
