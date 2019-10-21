@@ -6,7 +6,7 @@ import { throwError, of } from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-    isLoggedIn = false;
+    isLoggedIn: boolean = false;
 
     constructor(
         private http: HttpClient,
@@ -61,7 +61,7 @@ export class AuthService {
     }
 
     private handleError(errorRes: HttpErrorResponse) {
-        let errorMessage = 'An unknown error occurred';
+        let errorMessage: string = 'An unknown error occurred';
         if (!errorRes.error) {
             return throwError(errorMessage);
         }

@@ -31,9 +31,9 @@ const routes: Routes = [
     { path: 'redirect', component: RedirectComponent },
 
     // place paths above here
-    { path: 'not-found', component: PageNotFoundComponent }, // Static Message
+    // { path: 'not-found', component: PageNotFoundComponent }, // Static Message
     // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} }, // Dynamic Messagae
-    { path: '**', redirectTo: '/not-found' }, // ** - Wildcart Route !Has to be last in the routes!
+    // { path: '**', redirectTo: '/not-found' }, // ** - Wildcart Route !Has to be last in the routes!
 ];
 
 @NgModule({

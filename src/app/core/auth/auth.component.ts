@@ -12,20 +12,14 @@ import { of } from 'rxjs';
     styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit { 
-    isLoginPage = true;
-    isLoading = false;
+    isLoginPage: boolean = true;
     error: string = null;
-    public direct: any;
     public resData: any;
 
-    forbiddenUsernames = ['Aaron', 'Josh']
+    forbiddenUsernames = ['Aaron']
 
-    
-
-    // mdbCode
     validatingForm: FormGroup;
 
-    // ourCode
     constructor(
         private authService: AuthService,
         private router: Router,
@@ -33,7 +27,6 @@ export class AuthComponent implements OnInit {
         private route: ActivatedRoute,
         ) {}
 
-    // mdbCode
     ngOnInit() {
         this.validatingForm = new FormGroup({
             'firstName': new FormControl(null),
