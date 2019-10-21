@@ -44,13 +44,13 @@ public headline1: string;
     private modalService: MDBModalService,
     ) {}
 
-  setScore(insertscore){
+  setScore(insertscore: string){
     this.score=insertscore
   }
 
 
 
-    gameFetch(query){
+    gameFetch(query: string){
       
       this._gameSearch.reviewFetch(query)
         .subscribe(data => {
@@ -63,7 +63,7 @@ public headline1: string;
         })
     }
 
-  searchGet(query){
+  searchGet(query: string){
     
     this._gameSearch.reviewGet(query)
       .subscribe(data => { 
@@ -82,7 +82,7 @@ public headline1: string;
 
   }
 
-  searchGetAll(gameid){
+  searchGetAll(gameid: string){
     
     this._gameSearch.reviewGetAll(gameid)
       .subscribe(data => {
@@ -94,7 +94,7 @@ public headline1: string;
       
   }
 
-  searchPost(gameid, score, userName, headline, pros, cons, textArea){
+  searchPost(gameid: any, score: any, userName: any, headline: any, pros: any, cons: any, textArea: any){
     
     this._gameSearch.reviewPost(gameid, this.score, userName, headline, pros, cons, textArea)
       .subscribe(data => {
@@ -109,7 +109,7 @@ public headline1: string;
 
   }
 
-  searchPut(gameid, score, userName, headline, pros, cons, textArea){
+  searchPut(gameid: any, score: any, userName: any, headline: any, pros: any, cons: any, textArea: any){
     
     this._gameSearch.reviewPut(gameid,  this.score, userName, headline, pros, cons, textArea)
       .subscribe(data => {
@@ -121,7 +121,7 @@ public headline1: string;
       
   }
 
-  searchDelete(gameid, score, userName, headline, pros, cons, textArea){
+  searchDelete(gameid: any, score: any, userName: any, headline: any, pros: any, cons: any, textArea: any){
     
     this._gameSearch.reviewDelete(gameid, score, userName, headline, pros, cons, textArea)
       .subscribe(data => {
@@ -129,9 +129,6 @@ public headline1: string;
         console.log("userReview deleted: ", this.userReview);
         this.searchGetAll(this.gameid);
       })
-      
-      
-      
   }
 
   openModal() {
@@ -139,18 +136,18 @@ public headline1: string;
     this.modalRef = this.modalService.show(AuthComponent);
   }
 
-  youTube(id){
+  youTube(id: string){
     return "https://www.youtube.com/embed/" + id
   }
 
-  changeCarousel(type){
+  changeCarousel(type: string){
     this.carousel = type;
   }
 
   changeAvgScore(){
     if(this.results && this.allReviews){
       // this.avgScore = (this.allReviews.reduce((a,b) => a + b.score, 0) + this.results[0].total_rating / 10) / (this.results[0].total_rating_count + this.allReviews.length );
-      this.avgScore = ((this.results[0].total_rating / 10 * this.results[0].total_rating_count + (this.allReviews.reduce((a,b) => a + b.score, 0))) / (this.allReviews.length + this.results[0].total_rating_count));
+      this.avgScore = ((this.results[0].total_rating / 10 * this.results[0].total_rating_count + (this.allReviews.reduce((a: string ,b: { score: string | number; }) => a + b.score, 0))) / (this.allReviews.length + this.results[0].total_rating_count));
       console.log("avgScore: ", this.avgScore);
     } else if(this.results) {
       this.avgScore = this.results[0].total_rating / 10;
