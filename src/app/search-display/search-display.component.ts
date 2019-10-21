@@ -41,13 +41,13 @@ export class SearchDisplayComponent implements OnInit {
     this.searching = !this.searching;
   }
 
-  search(query){
+  search(query: any){
     this.toggleSearching();
     this._gameSearch.fetch(query, this.offset)
     .subscribe(data => {this.results = data;  this.toggleSearching(); console.log(data)})
     
   }
-  search2(query){
+  search2(query: string){
     this.toggleSearching();
     this._gameSearch.fetch(query, this.offset)
     .subscribe(data => {this.results = data;  this.toggleSearching(); console.log(data)})
@@ -76,7 +76,7 @@ export class SearchDisplayComponent implements OnInit {
 
     
   }
-  onEnter(query) {
+  onEnter(query: any) {
     // this.router.navigate({path: `/search/${query}`})
     this.router.navigate([`/search/${query}`], {relativeTo: this.route})
     this.search2(query)

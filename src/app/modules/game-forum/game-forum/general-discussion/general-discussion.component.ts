@@ -50,12 +50,12 @@ export class GeneralDiscussionComponent implements OnInit {
   }
   }
 
-  getAllTopics(query, category) {
+  getAllTopics(query: any, category: string) {
     this._topicSearch.forumTopicGetAll(query, category)
       .subscribe(data => {
         this.results = data; 
         this.results.reverse();
-        this.results.forEach((e, i) => {
+        this.results.forEach((e: { pinned: any; }, i: any) => {
           if(e.pinned){
             this.results.splice(i, 1);
             this.results.unshift(e);
@@ -65,7 +65,7 @@ export class GeneralDiscussionComponent implements OnInit {
       })
   }
 
-  createTopic(query, category, pinned, textArea, topic) {
+  createTopic(query: any, category: any, pinned: any, textArea: any, topic: any) {
 
     this._topicSearch.forumTopicPost(this.gameid, this.category, pinned, textArea, topic)
       .subscribe(data => {
@@ -179,7 +179,7 @@ export class GeneralDiscussionComponent implements OnInit {
     
   }
 
-  isPinned(id, pinned){
+  isPinned(id: any, pinned: any){
 
     this._adminService.adminPinned( id, pinned)
       .subscribe(data => {

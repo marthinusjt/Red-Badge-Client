@@ -30,11 +30,11 @@ export class GameForumService {
 
     // FORUM REPLIES
 
-    forumReplyGetAll(query, category, topicId) {
+    forumReplyGetAll(query: string, category: string, topicId: any) {
         return this.http.get(this._url3 + `all/${query}/${category}/${topicId}`)
     }
 
-    forumReplyPost(query, category, topicId, textArea) {
+    forumReplyPost(query: string, category: string, topicId: any, textArea: any) {
 
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         let token = currentUser.token;
@@ -56,7 +56,7 @@ export class GameForumService {
         
     }
 
-    forumReplyEdit(query, category, topicId, id, textArea) {
+    forumReplyEdit(query: string, category: string, topicId: any, id: any, textArea: any) {
 
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         let token = currentUser.token;
@@ -74,11 +74,11 @@ export class GameForumService {
             })
         };
 
-        return this.http.put(this._url3 +`/${id}`, body, parseHeaders)
+        return this.http.put(this._url3 +`${id}`, body, parseHeaders)
         
     }
 
-    forumReplyDelete(query, category, topicId, id) {
+    forumReplyDelete(query: string, category: string, topicId: any, id: any) {
 
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         let token = currentUser.token;
@@ -90,7 +90,7 @@ export class GameForumService {
             })
         };
 
-        return this.http.delete(this._url3 +`/${id}`, parseHeaders)
+        return this.http.delete(this._url3 +`${id}`, parseHeaders)
         
     }
 
@@ -99,12 +99,12 @@ export class GameForumService {
     // FORUM TOPICS
 
     // ALL
-    forumTopicGetAll(query, category) {
+    forumTopicGetAll(query: string, category: string) {
         return this.http.get(this._url2 + `all/${query}/${category}`)
         //data,this._proxy +     
     }
 
-    forumTopicPost(query, category, pinned, textArea, topic) {
+    forumTopicPost(query: any, category: string, pinned: any, textArea: any, topic: any) {
 
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         let token = currentUser.token;
@@ -128,7 +128,7 @@ export class GameForumService {
         
     }
 
-    forumOriginalEdit(query, category, id, textArea) {
+    forumOriginalEdit(query: string, category: string, id: any, textArea: any) {
 
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         let token = currentUser.token;
