@@ -7,7 +7,8 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 @Injectable()
 export class GameSearch {
 
-  private _url: string = `https://api-v3.igdb.com/games`
+  private _url: string = `https://api-v3.igdb.com/games`;
+  
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
 
 

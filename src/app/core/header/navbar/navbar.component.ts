@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   modalRef: MDBModalRef;
 
   public currentUser: string = JSON.parse(localStorage.getItem('currentUser'));
-  public direct: any = [];
+  public direct: {} = [];
 
   constructor(
     private modalService: MDBModalService,
@@ -50,9 +50,6 @@ export class NavbarComponent implements OnInit {
     this.currentUser = undefined;
     this.authService.isLoggedIn = false;
     this.router.navigate(['redirect'],  { relativeTo: this.route, skipLocationChange: true })
-
-
-    
   }
 
 }
