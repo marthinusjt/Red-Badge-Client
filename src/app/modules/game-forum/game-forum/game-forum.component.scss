@@ -20,3 +20,18 @@ mdb-breadcrumb-item.breadcrumb-item::before {
     margin-bottom: 2em;
     margin-top: 2em;
 }
+
+.card:hover {
+    cursor: pointer;
+    // opacity: 0.5;
+    background-color: #e9ecef;
+    transition: 200ms ease;
+}
+
+// .card-body:hover > p {
+//     opacity: 0.5;
+// }
+
+// .card-body:hover > p:hover {
+//     opacity: 1;
+// }

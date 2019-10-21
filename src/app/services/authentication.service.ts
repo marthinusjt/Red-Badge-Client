@@ -11,6 +11,12 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
+    // HEROKU URL
+    public url: string = `https://criticalhitsserver.herokuapp.com`;
+
+    // LOCALHOST URL
+    // public url: string = `http://localhost:3343/auth/login`;
+
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
@@ -21,7 +27,7 @@ export class AuthenticationService {
     }
 
     login(email, password) {
-        return this.http.post<any>(`http://localhost:3343/auth/login`, { email, password })
+        return this.http.post<any>(this.url, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));

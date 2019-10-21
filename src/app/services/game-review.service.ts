@@ -10,9 +10,14 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 @Injectable()
 export class GameReview {
 
-  private _url2: string = `http://localhost:3343/review/`
   private _url: string = `https://api-v3.igdb.com/games`
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
+  
+  // HEROKU URL
+  private _url2: string = `'https://criticalhitsserver.herokuapp.com/review/`
+
+  // LOCALHOST URL
+  // private _url2: string = `http://localhost:3343/review/`
 
   public query: string;
 

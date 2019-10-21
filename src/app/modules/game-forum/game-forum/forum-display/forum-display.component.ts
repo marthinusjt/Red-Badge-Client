@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthComponent } from 'src/app/core/auth/auth.component';
 import { AdminService } from 'src/app/admin.service';
 
+
 @Component({
   selector: 'app-forum-display',
   templateUrl: './forum-display.component.html',
@@ -12,10 +13,10 @@ import { AdminService } from 'src/app/admin.service';
 })
 export class ForumDisplayComponent implements OnInit {
 
-  public topicResults: any = [];
+  public topicResults: any = [];  //???
   public replyResults: any = [];
-  public userReply: any;
-  public gameid: any;
+  public userReply: {};
+  public gameid: string;
   public category: string;
   public topicId: any;
   public id: any;
@@ -50,13 +51,15 @@ export class ForumDisplayComponent implements OnInit {
     this.getAllTopics(this.gameid, this.category)
     this.getAllReplies(this.gameid, this.category, this.topicId)
 
-    if (this.currentUser.token.user.admin) {
-      this.adminRelogin()
-
+    if(this.currentUser){
+      if (this.currentUser.token.user.admin == true) {
+        this.adminRelogin()
+  
+      }
     }
   }
 
-  getAllTopics(query, category) {
+  getAllTopics(query, category: string) {
     this._topicSearch.forumTopicGetAll(query, category)
       .subscribe(data => {
         this.topicResults = data; 
@@ -220,10 +223,6 @@ export class ForumDisplayComponent implements OnInit {
 
     
   }
-
-
-
-
 
   openModal() { 
     this.modalRef = this.modalService.show(AuthComponent);

@@ -7,7 +7,11 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 })
 export class AdminService {
 
-  private _url: string = `http://localhost:3343/admin/admin/`
+  // HEROKU
+  private _url: string = `https://criticalhitsserver.herokuapp.com`
+
+  // LOCALHOST
+  // private _url: string = `http://localhost:3343`
 
   constructor(private http: HttpClient) { }
 
@@ -25,7 +29,7 @@ export class AdminService {
      };
 
     
-    return this.http.get(this._url+ 'all/',  parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url+ '/admin/admin/all/',  parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -61,7 +65,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put( this._url + 'delete/', body,  parseHeaders2)    //data,this._proxy + 
+    return this.http.put( this._url + '/admin/admin/delete/', body,  parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -93,7 +97,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.post( this._url+'login', body,  parseHeaders2)    //data,this._proxy + 
+    return this.http.post( this._url+'/admin/admin/login', body,  parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -115,7 +119,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.post('http://localhost:3343/auth/login2', body)    //data,this._proxy + 
+    return this.http.post(this._url + '/auth/login2', body)    //data,this._proxy + 
 
 
   }
@@ -182,7 +186,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -221,7 +225,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
   }
 
@@ -241,7 +245,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.get('http://localhost:3343/forumTopic/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url + '/forumTopic/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -262,7 +266,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.get('http://localhost:3343/forumReply/all/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url + '/forumReply/all/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -301,7 +305,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumReply/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumReply/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
   }
 
@@ -339,7 +343,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -364,7 +368,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.delete('http://localhost:3343/forumReply/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.delete(this._url + '/forumReply/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
   }
 
@@ -389,7 +393,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.delete('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.delete(this._url + '/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
   }
 
@@ -409,10 +413,41 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.get('http://localhost:3343/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
+    return this.http.get(this._url + '/review/admin/'+`${id}`, parseHeaders2)    //data,this._proxy + 
 
 
   }
 
+  adminPinned(id, pinned) {
+
+    
+
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let token = currentUser.token; // your token
+
+//console.log('here', token)
+
+
+    const parseHeaders2 = {
+      headers: new HttpHeaders({
+            'Authorization': token.sessionToken,
+            'Content-Type':'application/json'    
+           })
+     };
   
-}
+     let body = {
+      
+      pinned: pinned,
+
+
+    }
+  
+
+
+    // console.log(token.user.userName)
+
+    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+
+  }
+  }

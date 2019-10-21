@@ -25,3 +25,7 @@ mdb-breadcrumb-item.breadcrumb-item::before {
   margin-bottom: 2em;
   margin-top: 2em;
 }
+
+.topic-link:hover {
+  cursor: pointer;
+}
