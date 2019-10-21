@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthComponent } from 'src/app/core/auth/auth.component';
 import { AdminService } from 'src/app/admin.service';
 
+
 @Component({
   selector: 'app-forum-display',
   templateUrl: './forum-display.component.html',
@@ -50,9 +51,11 @@ export class ForumDisplayComponent implements OnInit {
     this.getAllTopics(this.gameid, this.category)
     this.getAllReplies(this.gameid, this.category, this.topicId)
 
-    if (this.currentUser.token.user.admin) {
-      this.adminRelogin()
-
+    if(this.currentUser){
+      if (this.currentUser.token.user.admin == true) {
+        this.adminRelogin()
+  
+      }
     }
   }
 
@@ -219,6 +222,16 @@ export class ForumDisplayComponent implements OnInit {
     }    );
 
     
+  }
+
+  isPinned(id, pinned){
+
+    this._adminService.adminPinned(id, pinned)
+      .subscribe(data => {
+        this.getAllTopics(this.gameid, this.category);
+      })
+
+
   }
 
 

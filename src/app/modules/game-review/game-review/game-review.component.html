@@ -20,8 +20,8 @@
   </div>
   <div class="row" style="margin-bottom: 4rem">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button mdbBtn type="button" [disabled]="true" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
-      <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect routerLink="/forumTopic/{{gameid}}/{{gameName}}">Forums</button>
+      <button mdbBtn type="button" [disabled]="true" color="deep-orange" class="waves-light" mdbWavesEffect>Reviews</button>
+      <button mdbBtn type="button" color="deep-orange" class="waves-light" mdbWavesEffect routerLink="/forumTopic/{{gameid}}/{{gameName}}">Forums</button>
     </div>
   </div>
   <div class="row">
@@ -30,13 +30,13 @@
       <mdb-card class="row">
         <div class="row mx-auto justify-content-center media-buttons">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].videos"
+            <button mdbBtn type="button" color="deep-orange" class="waves-light" mdbWavesEffect *ngIf="results[0].videos"
               (click)="changeCarousel('video')" size="sm">Video</button>
 
-            <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect
+            <button mdbBtn type="button" color="deep-orange" class="waves-light" mdbWavesEffect
               *ngIf="results[0].screenshots" (click)="changeCarousel('screenshots')" size="sm">Screenshots</button>
 
-            <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect *ngIf="results[0].artworks"
+            <button mdbBtn type="button" color="deep-orange" class="waves-light" mdbWavesEffect *ngIf="results[0].artworks"
               (click)="changeCarousel('artwork')" size="sm">Artwork</button>
           </div>
         </div>
@@ -112,9 +112,9 @@
     <mdb-card class="review-card">
       <div class="row" style="margin: 1em; background-color:#e9ecef;">YOUR REVIEW:</div>
       <div class="text-right" style="margin-right: 2rem" *ngIf="userReview && currentUser != null">
-          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.show()"
+          <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="basicModal2.show()"
             mdbWavesEffect>Edit</button>
-          <button type="button" mdbBtn color="primary" class="relative waves-light"
+          <button type="button" mdbBtn color="deep-orange" class="relative waves-light"
             (click)='searchDelete( gameid, 1, 1, 2, 2, 2, 2)' mdbWavesEffect>Delete</button>
       </div>
       <mdb-card-body>
@@ -169,12 +169,12 @@
     
       
       <div *ngIf="currentUser == null">
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
+        <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="openModal()"
           mdbWavesEffect>Write a Review</button>
       </div>
   
       <div class="text-center" *ngIf="currentUser != null">
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()"
+        <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="basicModal.show()"
           mdbWavesEffect>Write a Review</button>
       </div>
   
@@ -194,25 +194,25 @@
               <p>Score:</p>
               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class=" btn-group mr-2 rating-buttons" role="group" aria-label="First group">
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(1)'>1</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="2" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(2)'>2</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="3" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(3)'>3</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="4" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(4)'>4</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="5" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(5)'>5</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="6" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(6)'>6</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="7" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(7)'>7</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="8" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(8)'>8</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="9" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(9)'>9</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="10" btnCheckboxFalse="0" mdbWavesEffect
                     (click)='setScore(10)'>10</button>
                 </div>
@@ -249,7 +249,7 @@
             <div class="modal-footer  ">
               <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
                 (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-              <button type="button" mdbBtn color="primary" class="relative waves-light"
+              <button type="button" mdbBtn color="deep-orange" class="relative waves-light"
                 (click)='searchPost( gameid, 1, 1, headline.value, pros.value, cons.value, textArea.value)' mdbWavesEffect
                 [disabled]="!(score && headline.value && pros.value && cons.value && textArea.value)">Submit</button>
   
@@ -277,25 +277,25 @@
               <p>Score:</p>
               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class=" btn-group mr-2 rating-buttons" role="group" aria-label="First group">
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(1)'>1</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="2" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(2)'>2</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="3" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(3)'>3</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="4" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(4)'>4</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="5" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(5)'>5</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="6" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(6)'>6</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="7" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(7)'>7</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="8" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(8)'>8</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="9" btnCheckboxFalse="0" mdbWavesEffect (click)='setScore(9)'>9</button>
-                  <button mdbBtn type="button" color="primary" size="sm" autocomplete="off" [(ngModel)]="singleModel"
+                  <button mdbBtn type="button" color="deep-orange" size="sm" autocomplete="off" [(ngModel)]="singleModel"
                     mdbCheckbox btnCheckboxTrue="10" btnCheckboxFalse="0" mdbWavesEffect
                     (click)='setScore(10)'>10</button>
                 </div>
@@ -333,7 +333,7 @@
             <div class="modal-footer  ">
               <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
                 (click)="basicModal2.hide()" mdbWavesEffect>Close</button>
-              <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal2.hide()"
+              <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="basicModal2.hide()"
                 (click)='searchPut( gameid, 1, 1, headline2.value, pros2.value, cons2.value, textArea2.value)'
                 mdbWavesEffect>Submit</button>
             </div>

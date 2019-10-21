@@ -5,13 +5,13 @@
   <input [(ngModel)]="query" type="text" class="form-control" placeholder="ex: Super Metroid"
     aria-label="ex: Super Metroid" aria-describedby="basic-addon2" (keyup.enter)='onEnter(query)'>
   <div class="input-group-append">
-      <button routerLink="/search/{{query}}" (click)='search2(query)' type="button" mdbBtn color="primary" mdbWavesEffect>Primary</button>
+      <button routerLink="/search/{{query}}" (click)='search2(query)' type="button" mdbBtn color="deep-orange" mdbWavesEffect>Primary</button>
   </div>
 </div> -->
 <div class="container col-12 col-sm-8 col-md-7 col-lg-6 col-xl-5">
   <form class="form-inline md-form mr-auto mb-4 row mx-auto">
     <input [ngModelOptions]="{standalone: true}" [(ngModel)]="query" class="form-control mr-sm-2 col" type="text" placeholder="ex: Super Metroid" aria-label="ex: Super Metroid">
-    <button routerLink="/search/{{query}}"  routerLinkActive="active" mdbBtn size="md" color="primary" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search Games</button>
+    <button routerLink="/search/{{query}}"  routerLinkActive="active" mdbBtn size="md" color="deep-orange" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search Games</button>
   </form>
 </div>
 
@@ -68,12 +68,12 @@
         <div class="col-12 col-md-2">
           <div class="row">
 
-            <a class="col-6 col-md-12" routerLink="/review/{{ result.id }}">
+            <a class="col-6 col-md-12" routerLink="/review/{{ result.id }}/{{result.name}}">
 
-              <button  mdbBtn type="button" size="sm" color="primary" class="waves-light" mdbWavesEffect>Reviews</button>
+              <button  mdbBtn type="button" size="sm" color="deep-orange" class="waves-light" mdbWavesEffect>Reviews</button>
             </a>
             <a class="col-6 col-md-12" routerLink="/forumTopic/{{ result.id }}/{{result.name}}">
-              <button mdbBtn type="button" size="sm" color="primary" class="waves-light" outline="true" mdbWavesEffect>Forums</button>
+              <button mdbBtn type="button" size="sm" color="deep-orange" class="waves-light" outline="true" mdbWavesEffect>Forums</button>
             </a>
           </div>
         </div>

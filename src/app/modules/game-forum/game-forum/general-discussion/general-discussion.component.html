@@ -1,9 +1,13 @@
 <app-navbar></app-navbar>
 
+
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Forum</li>
-        <li class="breadcrumb-item">{{ value }}</li>
+        <li class="breadcrumb-item">                
+          <a routerLink="/forumTopic/{{gameid}}/{{value}}" routerLinkActive="active">
+          {{ value }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
     </ol>
 </nav>
@@ -13,7 +17,10 @@
   <div class="row game-header">
       <h1 class="game-name col">{{value.toUpperCase()}}</h1>
   </div>
-  <nav aria-label="Page navigation example">
+  <div class="row">
+    <h1 class="game-category col">{{category}}</h1>
+  </div>
+  <!-- <nav aria-label="Page navigation example">
     <ul class="pagination pg-blue">
       <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
       <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
@@ -21,73 +28,63 @@
       <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
       <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
     </ul>
+  </nav> -->
   
-        <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-                  <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title w-100" id="myModalLabel">Forum Topic</h4>
-              </div>
-              <div class="modal-body">
-                <!-- INPUT HERE -->
-                <div class="md-form mb-5">
-                  <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
-                  <input #topic type="text" id="form32" class="form-control" mdbInput mdbValidate>
-                  <label for="form8">Topic Title</label>
-                </div>
-  
-                <div class="md-form">
-                  <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-                  <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
-                    mdbValidate></textarea>
-                  <label for="form8">Topic Text Area</label>
-                </div>
-  
-                <!-- INPUT HERE -->
-              </div>
-              <div class="modal-footer">
-                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-                <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
-              </div>
-            </div>
-          </div>
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Forum Topic</h4>
         </div>
-  
-  
+        <div class="modal-body">
+          <!-- INPUT HERE -->
+          <div class="md-form mb-5">
+            <mdb-icon fas icon="grip-lines" class="prefix grey-text"></mdb-icon>
+            <input #topic type="text" id="form32" class="form-control" mdbInput mdbValidate>
+            <label for="form8">Topic Title</label>
+          </div>
 
-  </nav>
-  <div class="row mx-auto text-center">
+          <div class="md-form">
+            <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+            <textarea #textArea type="text" id="form8" class="md-textarea form-control" rows="3" mdbInput
+              mdbValidate></textarea>
+            <label for="form8">Topic Text Area</label>
+          </div>
 
-    <div *ngIf="currentUser == null" class="text-center">
-      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="openModal()"
-      mdbWavesEffect>New Topic</button>
-    </div>
-
-    <div *ngIf="currentUser != null">
-      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+          <!-- INPUT HERE -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="createTopic(query, category, false, textArea.value, topic.value); basicModal.hide()" mdbWavesEffect>Submit</button>
+        </div>
+      </div>
     </div>
   </div>
   
-  
-  <hr>
-  
-<!-- 
-    <div *ngFor="let result of results" class="col-12">
-      <div>
-        <a routerLink="{{ result.id }}" class="row result">{{ result.topic }}</a>
-      </div>
-    </div> -->
+  <div class="row mx-auto text-center">
 
-    <table mdbTable hover="true">
+    <div *ngIf="currentUser == null" class="col">
+      <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="openModal()"
+      mdbWavesEffect>New Topic</button>
+    </div>
+
+    <div *ngIf="currentUser != null" class="col">
+      <button type="button" mdbBtn color="deep-orange" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>New Topic</button>
+    </div>
+  </div>
+  
+    <table mdbTable hover="true" class="text-center">
       <thead>
         <tr>
           <th scope="col">Pinned</th>
           <th scope="col">Topic</th>
+          <!-- <th scope="col">Posts</th> -->
           <th scope="col">Date Created</th>
           <th scope="col">Original Poster</th>
+          <!-- <th *ngIf="currentUser && currentUser.token.user.admin" scope="col">Pin</th> -->
         </tr>
       </thead>
       <tbody>
@@ -96,9 +93,12 @@
           <td>{{result.topic}}</td>
           <td>{{result.updatedAt | date:'short'}}</td>
           <td>{{result.userName}}</td>
+          <!-- <td *ngIf="currentUser">
+            <button *ngIf="currentUser.token.user.admin && !result.pinned" type="button" size="sm" mdbBtn color="deep-orange" class="relative waves-light" (click)="isPinned(result.id, true)" mdbWavesEffect>Pin</button>
+            <button *ngIf="currentUser.token.user.admin && result.pinned" type="button" size="sm" mdbBtn color="deep-orange" class="relative waves-light" (click)="isPinned(result.id, false)" mdbWavesEffect>Unpin</button>
+          </td> -->
         </tr>
       </tbody>
     </table>  
 
 </div>
-
