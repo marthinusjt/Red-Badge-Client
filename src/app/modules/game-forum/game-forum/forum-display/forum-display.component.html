@@ -33,7 +33,7 @@
                             <button type="button" class="close pull-right" aria-label="Close" (click)="replyModal.hide()">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <h4 class="modal-title w-100" id="myModalLabel">Post Reply</h4>
+                            <h4 class="modal-title w-100" id="myModalLabel">Create New Reply</h4>
                         </div>
                         <div class="modal-body">
                             <!-- INPUT HERE -->
@@ -42,14 +42,14 @@
                                 <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
                                 <textarea #newTextArea type="text" id="form8" class="md-textarea md-textarea-auto form-control" rows="3" mdbInput
                                 mdbValidate></textarea>
-                                <label for="form8">Reply Text Area</label>
+                                <label for="form8">What is your response?</label>
                             </div>
                             
                             <!-- INPUT HERE -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="replyModal.hide()" mdbWavesEffect>Close</button>
-                            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="createReply(newTextArea.value); replyModal.hide()" mdbWavesEffect>BUTTON Create Reply</button>
+                            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="createReply(newTextArea.value); replyModal.hide()" mdbWavesEffect>Submit</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                             <button type="button" class="close pull-right" aria-label="Close" (click)="editModal.hide()">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <h4 class="modal-title w-100" id="myModalLabel">Edit Reply</h4>
+                            <h4 class="modal-title w-100" id="myModalLabel">Edit Response</h4>
                         </div>
 
                         <div class="modal-body">
@@ -74,7 +74,7 @@
                                 <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
                                 <textarea #editTextArea type="text" id="form8" class="md-textarea md-textarea-auto form-control" rows="3" mdbInput
                                 mdbValidate></textarea>
-                                <label for="form8">Reply Text Area</label>
+                                <label for="form8">Edit Text Area</label>
                             </div>
                             
                             <!-- INPUT HERE -->
@@ -82,7 +82,7 @@
 
                         <div class="modal-footer"> 
                             <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="editModal.hide()" mdbWavesEffect>Close</button>
-                            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="editReply(replyId, editTextArea.value); editModal.hide()" mdbWavesEffect>Edit Reply</button>
+                            <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="editReply(replyId, editTextArea.value); editModal.hide()" mdbWavesEffect>Save Changes</button>
                             <!-- FIX THIS CLICK -->
                         </div>
                     </div>
@@ -104,12 +104,12 @@
                         <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
                         <textarea #textArea type="text" id="form8" class="md-textarea md-textarea-auto form-control" rows="3" mdbInput
                           mdbValidate></textarea>
-                        <label for="form8">{{ topic.textArea }}</label>
+                        <label for="form8">Edit Text Area</label>
                       </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="originalPostModal.hide()" mdbWavesEffect>Close</button>
-                    <button type="button" mdbBtn color="danger" class="relative waves-light" mdbWavesEffect (click)="editOriginal(topic.id, textArea.value); originalPostModal.hide()">Save changes</button>
+                    <button type="button" mdbBtn color="danger" class="relative waves-light" mdbWavesEffect (click)="editOriginal(topic.id, textArea.value); originalPostModal.hide()">Save Changes</button>
                   </div>
                 </div>
               </div>
