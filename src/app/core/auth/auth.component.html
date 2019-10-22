@@ -2,7 +2,8 @@
     <div class="modal-header" id="center">
 
         <button  mdbBtn type="button" color="danger" outline="true" mdbWavesEffect (click)="onSwitchMode()">
-            <h4 class="modal-title w-100 font-weight-bold">Switch to {{ isLoginPage ? 'Sign Up' : 'Login' }}</h4><i *ngIf="isLoginPage" class="fas fa-address-card ml-1"></i><i *ngIf="!isLoginPage" class="fas fa-sign-in-alt"></i>
+            <p class="modal-title">{{ isLoginPage ? 'New User?' : 'Returning User?'}}</p>
+            <h4 class="modal-title w-100 font-weight-bold">{{ isLoginPage ? 'Sign Up' : 'Login' }}</h4><i *ngIf="isLoginPage" class="fas fa-address-card ml-1"></i><i *ngIf="!isLoginPage" class="fas fa-sign-in-alt"></i>
         </button>
 
     </div>
