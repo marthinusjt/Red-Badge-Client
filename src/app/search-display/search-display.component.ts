@@ -28,6 +28,7 @@ export class SearchDisplayComponent implements OnInit {
     private router: Router,
     ) {
       route.params.subscribe(val => {
+        this.offset = 0;
         this.query = this.route.snapshot.paramMap.get('searching');
         this.search2(this.query)
       });
