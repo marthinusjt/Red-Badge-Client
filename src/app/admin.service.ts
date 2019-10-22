@@ -147,7 +147,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.delete(this._url+ id, parseHeaders2)    //data,this._proxy + 
+    return this.http.delete(this._url + '/' + id, parseHeaders2)    //data,this._proxy + 
 
 
   }
@@ -447,7 +447,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.put('http://localhost:3343/forumTopic/'+`${id}`, body, parseHeaders2)    //data,this._proxy + 
+    return this.http.put(this._url + '/forumTopic/' + `${id}`, body, parseHeaders2)    //data,this._proxy + 
 
   }
   }
