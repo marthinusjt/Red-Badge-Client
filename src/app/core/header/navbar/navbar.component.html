@@ -2,7 +2,9 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark red accent-3" [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" routerLink="/">CRITICAL HITS</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="/">
+    <img src="../../../../assets/video-game bw.png" height="30" class="d-inline-block align-top" alt="">
+    CRITICAL HITS</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -12,6 +14,11 @@
       <li class="nav-item">
         <a routerLink="/donate" class="nav-link waves-light" mdbWavesEffect>Donate</a>
       </li>
+      <li class="nav-item">
+        <a href="https://twitter.com/CriticalHits5" class="nav-link">
+          <mdb-icon fab icon="twitter"></mdb-icon>
+        </a>
+      </li>
       <!-- <li class="nav-item" routerLinkActive="active">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="forum/11195">Forums</a>
       </li> -->
@@ -19,23 +26,18 @@
     <!-- Links -->
 
     <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item">
-        <a class="nav-link">
-          <mdb-icon fab icon="twitter"></mdb-icon>
-        </a>
-      </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link">
           <mdb-icon fab icon="google-plus"></mdb-icon>
         </a>
-      </li>
+      </li> -->
       <!-- Dropdown -->
       <li *ngIf="currentUser" class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           <mdb-icon fas icon="user"></mdb-icon>{{ (currentUser.token.user.firstName + ' ' + currentUser.token.user.lastName) | titlecase }}<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
           <a *ngIf="currentUser.token.user.admin" routerLink="/admin" class="dropdown-item waves-light" mdbWavesEffect >Administration</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect >My account</a>
+          <!-- <a class="dropdown-item waves-light" mdbWavesEffect >My account</a> -->
           <a class="dropdown-item waves-light"  mdbWavesEffect  (click)="onLogout()">Log out</a>
         </div>
       </li>
