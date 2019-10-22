@@ -14,13 +14,12 @@ export class GameReview {
   private _proxy: string = 'https://cors-anywhere.herokuapp.com/';
   
   // HEROKU URL
-  private _url2: string = `'https://criticalhitsserver.herokuapp.com/review/`
+  private _url2: string = `https://criticalhitsserver.herokuapp.com/review/`
 
   // LOCALHOST URL
   // private _url2: string = `http://localhost:3343/review/`
 
   public query: string;
-
 
   constructor(private http: HttpClient) {}
 
