@@ -17,13 +17,15 @@
     <br/>
     <h1>{{topic.topic}}</h1>
     <hr>
-    <nav aria-label="Page navigation example">
+    <!-- <nav aria-label="Page navigation example">
         <ul class="pagination pg-blue">
             <li class="page-item"><a class="page-link" mdbWavesEffect>Previous</a></li>
             <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
             <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
             <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
             <li class="page-item"><a class="page-link" mdbWavesEffect>Next</a></li>
+        </ul>
+    </nav> -->
             
             <!-- NEW REPLY MODAL -->
             <div mdbModal #replyModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myReplyModalLabel" aria-hidden="true">
@@ -114,8 +116,7 @@
                 </div>
               </div>
             </div>
-        </ul>
-    </nav>
+
     
     <div class="text-center">
         <div *ngIf="currentUser == null">
@@ -136,7 +137,7 @@
                     <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'MM/dd/yyyy - h:mm:ss a'}}</p> -->
                     <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'short' }}</p> -->
                     <!-- <p class="col-6 text-left">{{topic.updatedAt | date:'medium' }}</p> -->
-                    <p class="col-6 text-left">{{(topic.createdAt != topic.updatedAt ? 'Edited: ' : '') + (topic.updatedAt | date:'long') }}</p>
+                    <p class="col-6 text-left">{{(topic.createdAt != topic.updatedAt ? "Edited: "  : "") + (topic.updatedAt | date:'long')}}</p>
                     <p class="col-6 text-right">Original Post</p>
                 </div>
                 <div class="row">
@@ -158,7 +159,7 @@
             <mdb-card-body>
                     <mdb-card-text>
                         <div class="row">
-                            <p class="col-6 text-left">{{reply.updatedAt | date:'long'}}</p>
+                            <p class="col-6 text-left">{{(reply.createdAt != topic.updatedAt ? "Last edited: "  : "") + (reply.updatedAt | date:'long')}}</p>
                             <p class="col-6 text-right">{{i + 1}}</p>
                         </div>
                         <div class="row">
