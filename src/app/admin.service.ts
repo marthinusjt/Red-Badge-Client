@@ -147,7 +147,7 @@ export class AdminService {
 
     // console.log(token.user.userName)
 
-    return this.http.delete(this._url + '/admin/' + id, parseHeaders2)    //data,this._proxy + 
+    return this.http.delete(this._url + '/admin/admin/' + id, parseHeaders2)    //data,this._proxy + 
 
 
   }
